@@ -4,19 +4,19 @@ import com.fiap.hackaton.entity.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@RequiredArgsConstructor
 @Getter
 public class Insumo extends AbstractEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Setter
     private UUID id;
     @NonNull
     private String nome;
@@ -37,6 +37,16 @@ public class Insumo extends AbstractEntity<Long> {
 
     public enum Medida {
         MG, ML
+    }
+
+    public Insumo(@NonNull String nome, @NonNull BigDecimal custo, @NonNull Long quantidade, @NonNull Long peso, @NonNull LocalDate validade, @NonNull String marca, @NonNull Medida unidadeMedida) {
+        this.nome = nome;
+        this.custo = custo;
+        this.quantidade = quantidade;
+        this.peso = peso;
+        this.validade = validade;
+        this.marca = marca;
+        this.unidadeMedida = unidadeMedida;
     }
 
     public void setUnidadeMedida(@NonNull Medida unidadeMedida) {

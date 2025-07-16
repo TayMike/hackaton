@@ -1,32 +1,33 @@
 package com.fiap.hackaton.entity.colaborador.model;
 
 import com.fiap.hackaton.entity.AbstractEntity;
-import com.fiap.hackaton.entity.hospital.model.Hospital;
 import com.fiap.hackaton.entity.IPessoa;
+import com.fiap.hackaton.entity.hospital.model.Hospital;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@RequiredArgsConstructor
 @Getter
 public class Colaborador extends AbstractEntity<Long> implements IPessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Setter
     private UUID id;
-    private final String cpf;
+    @NonNull
+    private String cpf;
     @NonNull
     private String nome;
-    private final String matricula;
-    private final LocalDateTime primeiroDiaCadastro;
+    @NonNull
+    private String matricula;
+    @NonNull
+    private LocalDateTime primeiroDiaCadastro;
     @NonNull
     private String cep;
     @NonNull
@@ -35,6 +36,20 @@ public class Colaborador extends AbstractEntity<Long> implements IPessoa {
     private Hospital hospital;
     @NonNull
     private String setor;
+    @NonNull
+    private Boolean ativo;
+
+    public Colaborador(@NonNull String cpf, @NonNull String nome, @NonNull String matricula, @NonNull LocalDateTime primeiroDiaCadastro, @NonNull String cep, @NonNull Integer numeroCasa, @NonNull Hospital hospital, @NonNull String setor, @NonNull Boolean ativo) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.matricula = matricula;
+        this.primeiroDiaCadastro = primeiroDiaCadastro;
+        this.cep = cep;
+        this.numeroCasa = numeroCasa;
+        this.hospital = hospital;
+        this.setor = setor;
+        this.ativo = ativo;
+    }
 
     public void setAtivo(@NonNull Boolean ativo) {
         this.ativo = ativo;
@@ -59,8 +74,5 @@ public class Colaborador extends AbstractEntity<Long> implements IPessoa {
     public void setNome(@NonNull String nome) {
         this.nome = nome;
     }
-
-    @NonNull
-    private Boolean ativo;
 
 }

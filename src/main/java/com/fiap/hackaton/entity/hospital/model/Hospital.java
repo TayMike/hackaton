@@ -7,19 +7,21 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@RequiredArgsConstructor
 @Getter
+@NoArgsConstructor(force = true)
 public class Hospital extends AbstractEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Setter
     private UUID id;
     @NonNull
     private List<Colaborador> colaboradores;
@@ -27,6 +29,12 @@ public class Hospital extends AbstractEntity<Long> {
     private String cep;
     @NonNull
     private Integer numero;
+
+    public Hospital(@NonNull List<Colaborador> colaboradores, @NonNull String cep, @NonNull Integer numero) {
+        this.colaboradores = colaboradores;
+        this.cep = cep;
+        this.numero = numero;
+    }
 
     public void setNumero(@NonNull Integer numero) {
         this.numero = numero;

@@ -17,5 +17,4 @@ public interface IEntregaPublicData {
     LocalDateTime dataHoraRecebimento();
     Hospital hospital();
 
-
 }

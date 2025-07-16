@@ -8,26 +8,40 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@RequiredArgsConstructor
 @Getter
+@NoArgsConstructor(force = true)
 public class Entrega extends AbstractEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Setter
     private UUID id;
-    private final List<Insumo> insumo;
-    private final List<Long> quantidade;
-    private final Colaborador colaboradorRecebedor;
-    private final LocalDateTime dataHoraRecebimento;
-    private final Hospital hospital;
+    @NonNull
+    private List<Insumo> insumo;
+    @NonNull
+    private List<Long> quantidade;
+    @NonNull
+    private Colaborador colaboradorRecebedor;
+    @NonNull
+    private LocalDateTime dataHoraRecebimento;
+    @NonNull
+    private Hospital hospital;
 
+    public Entrega(@NonNull List<Insumo> insumo, @NonNull List<Long> quantidade, @NonNull Colaborador colaboradorRecebedor, @NonNull LocalDateTime dataHoraRecebimento, @NonNull Hospital hospital) {
+        this.insumo = insumo;
+        this.quantidade = quantidade;
+        this.colaboradorRecebedor = colaboradorRecebedor;
+        this.dataHoraRecebimento = dataHoraRecebimento;
+        this.hospital = hospital;
+    }
 }
