@@ -4,10 +4,10 @@ import com.fiap.hackaton.entity.coleta.model.Coleta;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
-public interface RetiradaGateway {
+public interface ColetaGateway {
     Coleta save(Coleta coleta);
-    Optional<Coleta> findById(Long id);
+    Optional<Coleta> findById(UUID id);
     List<Coleta> findAll();
-    void deleteById(Long id);
 }

@@ -4,10 +4,11 @@ import com.fiap.hackaton.entity.paciente.model.Paciente;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface PacienteGateway {
     Paciente save(Paciente paciente);
-    Optional<Paciente> findById(Long id);
+    Optional<Paciente> findById(UUID id);
     List<Paciente> findAll();
-    void deleteById(Long id);
+    Paciente update(Paciente paciente);
 }

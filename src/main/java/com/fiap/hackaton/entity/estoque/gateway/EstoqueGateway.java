@@ -4,10 +4,12 @@ import com.fiap.hackaton.entity.estoque.model.Estoque;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
-public interface EstoqueGateway {
-    Estoque save(Estoque estoque);
-    Optional<Estoque> findById(Long id);
-    List<Estoque> findAll();
-    void deleteById(Long id);
+public interface EstoqueGateway<T> {
+    Estoque<T> save(Estoque<T> estoque);
+    Optional<Estoque<T>> findById(UUID id);
+    List<Estoque<T>> findAll();
+    Estoque<T> update(Estoque<T> estoque);
+    void deleteById(UUID id);
 }

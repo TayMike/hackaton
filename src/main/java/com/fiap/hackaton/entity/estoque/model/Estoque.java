@@ -2,12 +2,13 @@ package com.fiap.hackaton.entity.estoque.model;
 
 import com.fiap.hackaton.entity.AbstractEntity;
 import com.fiap.hackaton.entity.hospital.model.Hospital;
-import com.fiap.hackaton.entity.insumo.model.Insumo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.*;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
@@ -20,8 +21,24 @@ public class Estoque<T> extends AbstractEntity<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private final List<T> itens;
-    private final List<Long> quantidades;
-    private final Hospital hospital;
+    @NonNull
+    private List<T> itens;
+    @NonNull
+    private List<Long> quantidades;
+
+    public void setHospital(@NonNull Hospital hospital) {
+        this.hospital = hospital;
+    }
+
+    public void setQuantidades(@NonNull List<Long> quantidades) {
+        this.quantidades = quantidades;
+    }
+
+    public void setItens(@NonNull List<T> itens) {
+        this.itens = itens;
+    }
+
+    @NonNull
+    private Hospital hospital;
 
 }

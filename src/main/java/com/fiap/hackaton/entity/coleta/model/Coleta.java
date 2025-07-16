@@ -27,7 +27,7 @@ public class Coleta extends AbstractEntity<Long> {
     private final List<Insumo> insumo;
     private final List<Long> quantidade;
     private final Colaborador colaboradorEntregador;
-    private final LocalDateTime dataHoraEntrega;
+    private final LocalDateTime dataHoraColeta;
     private final Paciente pacienteRecebedor;
     private final Hospital hospital;
 

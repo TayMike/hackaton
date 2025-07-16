@@ -4,10 +4,12 @@ import com.fiap.hackaton.entity.hospital.model.Hospital;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface HospitalGateway {
     Hospital save(Hospital hospital);
-    Optional<Hospital> findById(Long id);
+    Optional<Hospital> findById(UUID id);
     List<Hospital> findAll();
-    void deleteById(Long id);
+    Hospital update(Hospital hospital);
+    void deleteById(UUID id);
 }

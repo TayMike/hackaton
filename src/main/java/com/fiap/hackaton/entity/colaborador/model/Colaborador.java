@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -22,13 +23,44 @@ public class Colaborador extends AbstractEntity<Long> implements IPessoa {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private final String cpf;
-    private final String nome;
+    @NonNull
+    private String nome;
     private final String matricula;
     private final LocalDateTime primeiroDiaCadastro;
-    private final String cep;
-    private final Integer numeroCasa;
-    private final Hospital hospital;
-    private final String setor;
-    private final Boolean ativo;
+    @NonNull
+    private String cep;
+    @NonNull
+    private Integer numeroCasa;
+    @NonNull
+    private Hospital hospital;
+    @NonNull
+    private String setor;
+
+    public void setAtivo(@NonNull Boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public void setSetor(@NonNull String setor) {
+        this.setor = setor;
+    }
+
+    public void setHospital(@NonNull Hospital hospital) {
+        this.hospital = hospital;
+    }
+
+    public void setNumeroCasa(@NonNull Integer numeroCasa) {
+        this.numeroCasa = numeroCasa;
+    }
+
+    public void setCep(@NonNull String cep) {
+        this.cep = cep;
+    }
+
+    public void setNome(@NonNull String nome) {
+        this.nome = nome;
+    }
+
+    @NonNull
+    private Boolean ativo;
 
 }

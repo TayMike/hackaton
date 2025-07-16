@@ -4,10 +4,12 @@ import com.fiap.hackaton.entity.insumo.model.Insumo;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface InsumoGateway {
     Insumo save(Insumo insumo);
-    Optional<Insumo> findById(Long id);
+    Optional<Insumo> findById(UUID id);
     List<Insumo> findAll();
-    void deleteById(Long id);
+    Insumo update(Insumo insumo);
+    void deleteById(UUID id);
 }

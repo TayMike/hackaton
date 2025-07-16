@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -21,9 +22,24 @@ public class Paciente extends AbstractEntity<Long> implements IPessoa {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private final String cpf;
-    private final String nome;
+    @NonNull
+    private String nome;
     private final LocalDateTime primeiroDiaCadastro;
-    private final String cep;
-    private final Integer numeroCasa;
+    @NonNull
+    private String cep;
+    @NonNull
+    private Integer numeroCasa;
+
+    public void setNome(@NonNull String nome) {
+        this.nome = nome;
+    }
+
+    public void setCep(@NonNull String cep) {
+        this.cep = cep;
+    }
+
+    public void setNumeroCasa(@NonNull Integer numeroCasa) {
+        this.numeroCasa = numeroCasa;
+    }
 
 }

@@ -4,10 +4,11 @@ import com.fiap.hackaton.entity.colaborador.model.Colaborador;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface ColaboradorGateway {
     Colaborador save(Colaborador colaborador);
-    Optional<Colaborador> findById(Long id);
+    Optional<Colaborador> findById(UUID id);
     List<Colaborador> findAll();
-    void deleteById(Long id);
+    Colaborador update(Colaborador colaborador);
 }
