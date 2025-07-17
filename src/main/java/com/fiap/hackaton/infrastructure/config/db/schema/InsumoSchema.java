@@ -57,13 +57,13 @@ public class InsumoSchema extends AbstractEntitySchema<UUID> {
 
     public Insumo toInsumo() {
         Insumo insumo = new Insumo(
-                this.getNome(),
-                this.getCusto(),
-                this.getQuantidade(),
-                this.getPeso(),
-                this.getValidade(),
-                this.getMarca(),
-                this.getUnidadeMedida()
+                this.nome,
+                this.custo,
+                this.quantidade,
+                this.peso,
+                this.validade,
+                this.marca,
+                this.unidadeMedida
         );
 
         insumo.setId(this.getId());

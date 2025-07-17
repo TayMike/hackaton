@@ -28,6 +28,12 @@ public class UpdateHospitalUseCase {
         if (dados.numero() != null)
             hospital.setNumero(dados.numero());
 
+        if (dados.quantidadeLeitoAtual() != null)
+            hospital.setQuantidadeLeitoAtual(dados.quantidadeLeitoAtual());
+
+        if (dados.quantidadeLeitoMaximo() != null)
+            hospital.setQuantidadeLeitoMaximo(dados.quantidadeLeitoMaximo());
+
         return this.hospitalGateway.update(hospital);
     }
 

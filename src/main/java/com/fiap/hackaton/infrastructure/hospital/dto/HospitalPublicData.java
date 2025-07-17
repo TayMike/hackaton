@@ -11,7 +11,9 @@ public record HospitalPublicData(
         UUID id,
         List<Colaborador> colaboradores,
         String cep,
-        Integer numero
+        Integer numero,
+        Integer quantidadeLeitoAtual,
+        Integer quantidadeLeitoMaximo
 ) implements IHospitalPublicData {
 
     public HospitalPublicData(Hospital hospital) {
@@ -19,7 +21,9 @@ public record HospitalPublicData(
                 hospital.getId(),
                 hospital.getColaboradores(),
                 hospital.getCep(),
-                hospital.getNumero()
+                hospital.getNumero(),
+                hospital.getQuantidadeLeitoAtual(),
+                hospital.getQuantidadeLeitoMaximo()
         );
     }
 }

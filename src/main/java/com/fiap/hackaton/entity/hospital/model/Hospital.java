@@ -16,12 +16,12 @@ import java.util.UUID;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor(force = true)
 public class Hospital extends AbstractEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Setter
     private UUID id;
     @NonNull
     private List<Colaborador> colaboradores;
@@ -29,23 +29,17 @@ public class Hospital extends AbstractEntity<Long> {
     private String cep;
     @NonNull
     private Integer numero;
+    @NonNull
+    private Integer quantidadeLeitoAtual;
+    @NonNull
+    private Integer quantidadeLeitoMaximo;
 
-    public Hospital(@NonNull List<Colaborador> colaboradores, @NonNull String cep, @NonNull Integer numero) {
+    public Hospital(@NonNull List<Colaborador> colaboradores, @NonNull String cep, @NonNull Integer numero, @NonNull Integer quantidadeLeitoAtual, @NonNull Integer quantidadeLeitoMaximo) {
         this.colaboradores = colaboradores;
         this.cep = cep;
         this.numero = numero;
-    }
-
-    public void setNumero(@NonNull Integer numero) {
-        this.numero = numero;
-    }
-
-    public void setCep(@NonNull String cep) {
-        this.cep = cep;
-    }
-
-    public void setColaboradores(@NonNull List<Colaborador> colaboradores) {
-        this.colaboradores = colaboradores;
+        this.quantidadeLeitoAtual = quantidadeLeitoAtual;
+        this.quantidadeLeitoMaximo = quantidadeLeitoMaximo;
     }
 
 }

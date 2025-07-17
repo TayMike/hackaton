@@ -15,4 +15,8 @@ public interface IHospitalPublicData {
 
     Integer numero();
 
+    Integer quantidadeLeitoAtual();
+
+    Integer quantidadeLeitoMaximo();
+
 }

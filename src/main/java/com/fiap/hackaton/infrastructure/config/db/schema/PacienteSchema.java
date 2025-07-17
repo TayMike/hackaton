@@ -46,11 +46,11 @@ public class PacienteSchema extends AbstractEntitySchema<UUID> {
 
     public Paciente toPaciente() {
         Paciente paciente = new Paciente(
-                this.getCpf(),
-                this.getNome(),
-                this.getPrimeiroDiaCadastro(),
-                this.getCep(),
-                this.getNumeroCasa()
+                this.cpf,
+                this.nome,
+                this.primeiroDiaCadastro,
+                this.cep,
+                this.numeroCasa
         );
         paciente.setId(this.getId());
         return paciente;

@@ -9,14 +9,18 @@ import java.util.List;
 public record HospitalRegistrationData(
         List<Colaborador> colaboradores,
         String cep,
-        Integer numero
+        Integer numero,
+        Integer quantidadeLeitoAtual,
+        Integer quantidadeLeitoMaximo
 ) implements IHospitalRegistrationData {
 
     public HospitalRegistrationData(Hospital hospital) {
         this(
                 hospital.getColaboradores(),
                 hospital.getCep(),
-                hospital.getNumero()
+                hospital.getNumero(),
+                hospital.getQuantidadeLeitoAtual(),
+                hospital.getQuantidadeLeitoMaximo()
         );
     }
 }

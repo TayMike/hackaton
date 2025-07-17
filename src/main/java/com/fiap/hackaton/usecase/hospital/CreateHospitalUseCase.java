@@ -14,7 +14,7 @@ public class CreateHospitalUseCase {
 
     public Hospital execute(IHospitalRegistrationData dados) {
 
-        Hospital hospital = new Hospital(dados.colaboradores(), dados.cep(), dados.numero());
+        Hospital hospital = new Hospital(dados.colaboradores(), dados.cep(), dados.numero(), dados.quantidadeLeitoAtual(), dados.quantidadeLeitoMaximo());
 
         return this.hospitalGateway.save(hospital);
     }
