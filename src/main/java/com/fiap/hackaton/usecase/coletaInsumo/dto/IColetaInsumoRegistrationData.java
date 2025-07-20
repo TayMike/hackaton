@@ -11,10 +11,15 @@ import java.util.List;
 public interface IColetaInsumoRegistrationData {
 
     List<Insumo> insumos();
+
     List<Long> quantidades();
+
     Colaborador colaboradorEntregador();
+
     LocalDateTime dataHoraColeta();
+
     Paciente pacienteRecebedor();
+
     Hospital hospital();
 
 }

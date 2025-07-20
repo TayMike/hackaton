@@ -9,8 +9,11 @@ import java.util.UUID;
 public interface IEstoqueInsumoPublicData {
 
     UUID id();
+
     List<Insumo> itens();
+
     List<Long> quantidades();
+
     Hospital hospital();
 
 }

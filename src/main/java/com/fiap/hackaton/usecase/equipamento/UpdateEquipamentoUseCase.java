@@ -3,11 +3,9 @@ package com.fiap.hackaton.usecase.equipamento;
 import com.fiap.hackaton.entity.equipamento.exception.EquipamentoNotFoundException;
 import com.fiap.hackaton.entity.equipamento.gateway.EquipamentoGateway;
 import com.fiap.hackaton.entity.equipamento.model.Equipamento;
-import com.fiap.hackaton.entity.hospital.model.Hospital;
 import com.fiap.hackaton.usecase.equipamento.dto.IEquipamentoUpdateData;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.UUID;
 
 public class UpdateEquipamentoUseCase {

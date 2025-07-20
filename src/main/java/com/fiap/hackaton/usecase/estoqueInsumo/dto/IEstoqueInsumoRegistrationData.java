@@ -8,7 +8,9 @@ import java.util.List;
 public interface IEstoqueInsumoRegistrationData {
 
     List<Insumo> itens();
+
     List<Long> quantidades();
+
     Hospital hospital();
 
 }

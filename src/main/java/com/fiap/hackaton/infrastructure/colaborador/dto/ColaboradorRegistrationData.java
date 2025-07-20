@@ -2,6 +2,7 @@ package com.fiap.hackaton.infrastructure.colaborador.dto;
 
 import com.fiap.hackaton.entity.colaborador.model.Colaborador;
 import com.fiap.hackaton.entity.hospital.model.Hospital;
+import com.fiap.hackaton.usecase.colaborador.dto.IColaboradorRegistrationData;
 
 import java.time.LocalDateTime;
 
@@ -15,7 +16,7 @@ public record ColaboradorRegistrationData(
         Hospital hospital,
         String setor,
         Boolean ativo
-) {
+) implements IColaboradorRegistrationData {
 
     public ColaboradorRegistrationData(Colaborador colaborador) {
         this(

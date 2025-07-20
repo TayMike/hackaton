@@ -12,11 +12,17 @@ import java.util.UUID;
 public interface IColetaInsumoPublicData {
 
     UUID id();
+
     List<Insumo> insumos();
+
     List<Long> quantidades();
+
     Colaborador colaboradorEntregador();
+
     LocalDateTime dataHoraColeta();
+
     Paciente pacienteRecebedor();
+
     Hospital hospital();
 
 }

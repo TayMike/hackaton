@@ -24,14 +24,14 @@ public class ColetaInsumoSchema extends AbstractEntitySchema<UUID> {
 
     @ManyToMany
     @JoinTable(
-            name = "coleta_insumo",
-            joinColumns = @JoinColumn(name = "coleta_id"),
+            name = "coleta_insumo_itens",
+            joinColumns = @JoinColumn(name = "coleta_insumo_id"),
             inverseJoinColumns = @JoinColumn(name = "insumo_id")
     )
     private List<InsumoSchema> insumos;
 
     @ElementCollection
-    @CollectionTable(name = "coleta_quantidade", joinColumns = @JoinColumn(name = "coleta_id"))
+    @CollectionTable(name = "coleta_insumo_quantidade", joinColumns = @JoinColumn(name = "coleta_insumo_id"))
     @Column(name = "quantidade", nullable = false)
     private List<Long> quantidades;
 
@@ -39,7 +39,7 @@ public class ColetaInsumoSchema extends AbstractEntitySchema<UUID> {
     @JoinColumn(name = "colaborador_id", nullable = false)
     private ColaboradorSchema colaboradorEntregador;
 
-    @Column(name = "data_hora_coleta", nullable = false)
+    @Column(name = "data_hora_coleta_insumo", nullable = false)
     private LocalDateTime dataHoraColeta;
 
     @ManyToOne
@@ -54,7 +54,6 @@ public class ColetaInsumoSchema extends AbstractEntitySchema<UUID> {
         this.insumos = coletaInsumo.getInsumos().stream()
                 .map(InsumoSchema::new)
                 .collect(Collectors.toList());
-
         this.quantidades = coletaInsumo.getQuantidades();
         this.colaboradorEntregador = new ColaboradorSchema(coletaInsumo.getColaboradorEntregador());
         this.dataHoraColeta = coletaInsumo.getDataHoraColeta();

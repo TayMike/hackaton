@@ -5,4 +5,5 @@ public class EntregaInsumoNotFoundException extends Exception {
     public EntregaInsumoNotFoundException() {
         super("A entrega não foi encontrada!");
     }
+
 }

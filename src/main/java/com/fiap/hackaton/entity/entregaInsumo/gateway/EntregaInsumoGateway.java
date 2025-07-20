@@ -7,7 +7,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface EntregaInsumoGateway {
+
     EntregaInsumo save(EntregaInsumo entregaInsumo);
+
     Optional<EntregaInsumo> findById(UUID id);
+
     List<EntregaInsumo> findAll();
+
 }
