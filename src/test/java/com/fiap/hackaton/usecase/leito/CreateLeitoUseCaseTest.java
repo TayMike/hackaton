@@ -48,8 +48,8 @@ class CreateLeitoUseCaseTest {
         assertEquals("L1", resultado.getIdentificacao());
         assertEquals("A", resultado.getPavilhao());
         assertEquals("101", resultado.getQuarto());
-        assertEquals("Hospital X", resultado.getHospital());
-        assertEquals("Paciente Y", resultado.getPaciente());
+        assertEquals(hospitalX, resultado.getHospital());
+        assertEquals(pacienteY, resultado.getPaciente());
         verify(leitoGateway, times(1)).save(any(Leito.class));
     }
 
