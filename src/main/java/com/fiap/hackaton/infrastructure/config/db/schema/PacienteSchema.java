@@ -13,8 +13,8 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "Paciente")
-public class PacienteSchema extends AbstractEntitySchema<UUID> {
+@Table(name = "paciente")
+public class PacienteSchema {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

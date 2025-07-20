@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "Estoque_Insumo")
-public class EstoqueInsumoSchema extends AbstractEntitySchema<UUID> {
+@Table(name = "estoque_insumo")
+public class EstoqueInsumoSchema {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

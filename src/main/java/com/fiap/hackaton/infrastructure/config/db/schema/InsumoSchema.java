@@ -15,8 +15,8 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "Insumo")
-public class InsumoSchema extends AbstractEntitySchema<UUID> {
+@Table(name = "insumo")
+public class InsumoSchema {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

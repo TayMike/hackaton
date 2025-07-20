@@ -19,7 +19,7 @@ public class UpdatePacienteController {
         this.updatePacienteUseCase = updatePacienteUseCase;
     }
 
-    @PutMapping("/admins/{id}")
+    @PutMapping("/pacientes/{id}")
     @ResponseStatus(HttpStatus.OK)
     public PacientePublicData updatePaciente(@PathVariable UUID id, @Valid @RequestBody PacienteUpdateData dados) throws PacienteNotFoundException {
         return new PacientePublicData(updatePacienteUseCase.execute(id, dados));

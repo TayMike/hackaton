@@ -14,6 +14,7 @@ import java.util.UUID;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Colaborador extends AbstractEntity<Long> implements IPessoa {
 
     @Id

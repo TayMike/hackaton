@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @Entity
 @Getter
-@NoArgsConstructor(force = true)
+@NoArgsConstructor
 public class Paciente extends AbstractEntity<Long> implements IPessoa {
 
     @Id

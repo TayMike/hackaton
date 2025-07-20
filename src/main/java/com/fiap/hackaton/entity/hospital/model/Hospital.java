@@ -17,7 +17,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor(force = true)
+@NoArgsConstructor
 public class Hospital extends AbstractEntity<Long> {
 
     @Id

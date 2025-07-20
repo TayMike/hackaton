@@ -19,7 +19,7 @@ public class UpdateColaboradorController {
         this.updateColaboradorUseCase = updateColaboradorUseCase;
     }
 
-    @PutMapping("/admins/{id}")
+    @PutMapping("/colaboradores/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ColaboradorPublicData updateColaborador(@PathVariable UUID id, @Valid @RequestBody ColaboradorUpdateData dados) throws ColaboradorNotFoundException {
         return new ColaboradorPublicData(updateColaboradorUseCase.execute(id, dados));

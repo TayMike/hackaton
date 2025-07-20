@@ -14,8 +14,8 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "Leito")
-public class LeitoSchema extends AbstractEntitySchema<UUID> {
+@Table(name = "leito")
+public class LeitoSchema {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

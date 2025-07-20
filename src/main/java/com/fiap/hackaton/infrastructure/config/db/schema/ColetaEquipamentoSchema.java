@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "Coleta_Equipamento")
-public class ColetaEquipamentoSchema extends AbstractEntitySchema<UUID> {
+@Table(name = "coleta_equipamento")
+public class ColetaEquipamentoSchema {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -74,7 +74,7 @@ public class ColetaEquipamentoSchema extends AbstractEntitySchema<UUID> {
                 this.colaboradorResponsavel.toColaborador(),
                 this.hospital.toHospital()
         );
-        coletaEquipamento.setId(this.getId());
+        coletaEquipamento.setId(this.id);
         return coletaEquipamento;
     }
 }

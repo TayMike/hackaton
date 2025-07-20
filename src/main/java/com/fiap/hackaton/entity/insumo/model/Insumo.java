@@ -3,6 +3,7 @@ package com.fiap.hackaton.entity.insumo.model;
 import com.fiap.hackaton.entity.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.util.UUID;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Insumo extends AbstractEntity<Long> {
 
     @Id
