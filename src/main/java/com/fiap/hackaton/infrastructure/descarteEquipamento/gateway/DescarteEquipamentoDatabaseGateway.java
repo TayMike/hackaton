@@ -3,7 +3,10 @@ package com.fiap.hackaton.infrastructure.descarteEquipamento.gateway;
 import com.fiap.hackaton.entity.descarteEquipamento.gateway.DescarteEquipamentoGateway;
 import com.fiap.hackaton.entity.descarteEquipamento.model.DescarteEquipamento;
 import com.fiap.hackaton.infrastructure.config.db.repository.DescarteEquipamentoRepository;
+import com.fiap.hackaton.infrastructure.config.db.schema.ColaboradorSchema;
 import com.fiap.hackaton.infrastructure.config.db.schema.DescarteEquipamentoSchema;
+import com.fiap.hackaton.infrastructure.config.db.schema.EquipamentoSchema;
+import com.fiap.hackaton.infrastructure.config.db.schema.HospitalSchema;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,8 +21,8 @@ public class DescarteEquipamentoDatabaseGateway implements DescarteEquipamentoGa
     }
 
     @Override
-    public DescarteEquipamento save(DescarteEquipamento descarteEquipamento) {
-        DescarteEquipamentoSchema saved = descarteEquipamentoRepository.save(new DescarteEquipamentoSchema(descarteEquipamento));
+    public DescarteEquipamento save(DescarteEquipamento descarteEquipamento, List<EquipamentoSchema> equipamentos, ColaboradorSchema colaboradorSchema, HospitalSchema hospitalSchema) {
+        DescarteEquipamentoSchema saved = descarteEquipamentoRepository.save(new DescarteEquipamentoSchema(descarteEquipamento, equipamentos, colaboradorSchema, hospitalSchema));
         return saved.toDescarteEquipamento();
     }
 

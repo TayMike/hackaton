@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Getter
@@ -28,10 +28,10 @@ public class EquipamentoSchema {
     private BigDecimal custo;
 
     @Column(name = "tempo_garantia", nullable = false)
-    private LocalDate tempoGarantia;
+    private OffsetDateTime tempoGarantia;
 
     @Column(name = "proxima_manutencao_preventiva", nullable = false)
-    private LocalDate proximaManutencaoPreventiva;
+    private OffsetDateTime proximaManutencaoPreventiva;
 
     @Column(name = "marca", nullable = false)
     private String marca;
@@ -40,14 +40,14 @@ public class EquipamentoSchema {
     @JoinColumn(name = "hospital_id", nullable = false)
     private HospitalSchema hospital;
 
-    public EquipamentoSchema(Equipamento equipamento) {
+    public EquipamentoSchema(Equipamento equipamento , HospitalSchema hospitalSchema) {
         this.id = equipamento.getId();
         this.nome = equipamento.getNome();
         this.custo = equipamento.getCusto();
         this.tempoGarantia = equipamento.getTempoGarantia();
         this.proximaManutencaoPreventiva = equipamento.getProximaManutencaoPreventiva();
         this.marca = equipamento.getMarca();
-        this.hospital = new HospitalSchema(equipamento.getHospital());
+        this.hospital = hospitalSchema;
     }
 
     public Equipamento toEquipamento() {

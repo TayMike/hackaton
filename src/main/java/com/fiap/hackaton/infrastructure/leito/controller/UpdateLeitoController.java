@@ -1,6 +1,8 @@
 package com.fiap.hackaton.infrastructure.leito.controller;
 
+import com.fiap.hackaton.entity.hospital.exception.HospitalNotFoundException;
 import com.fiap.hackaton.entity.leito.exception.LeitoNotFoundException;
+import com.fiap.hackaton.entity.paciente.exception.PacienteNotFoundException;
 import com.fiap.hackaton.infrastructure.leito.dto.LeitoPublicData;
 import com.fiap.hackaton.infrastructure.leito.dto.LeitoUpdateData;
 import com.fiap.hackaton.usecase.leito.UpdateLeitoUseCase;
@@ -20,7 +22,7 @@ public class UpdateLeitoController {
 
     @PutMapping("/leitos/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public LeitoPublicData updateLeito(@PathVariable UUID id, @RequestBody LeitoUpdateData dados) throws LeitoNotFoundException {
+    public LeitoPublicData updateLeito(@PathVariable UUID id, @RequestBody LeitoUpdateData dados) throws LeitoNotFoundException, HospitalNotFoundException, PacienteNotFoundException {
         return new LeitoPublicData(updateLeitoUseCase.execute(id, dados));
     }
 

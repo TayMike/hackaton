@@ -16,7 +16,7 @@ public class GetEstoqueInsumoUseCase {
 
     public EstoqueInsumo execute(UUID id) throws EstoqueInsumoNotFoundException {
         return this.estoqueGateway.findById(id).
-                orElseThrow(EstoqueInsumoNotFoundException::new);
+                orElseThrow(EstoqueInsumoNotFoundException::new).toEstoqueInsumo();
     }
 
 }

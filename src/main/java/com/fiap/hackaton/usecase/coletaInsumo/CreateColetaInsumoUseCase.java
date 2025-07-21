@@ -49,7 +49,7 @@ public class CreateColetaInsumoUseCase {
         ColetaInsumo coletaInsumo = new ColetaInsumo(insumos.stream().map(InsumoSchema::toInsumo).toList(), dados.quantidades(), colaboradorSchema.toColaborador(),
                 dados.dataHoraColeta(), pacienteSchema.toPaciente(), hospitalSchema.toHospital());
 
-        return this.coletaInsumoGateway.save(coletaInsumo, insumos, colaboradorSchema, pacienteSchema, hospitalSchema);
+        return this.coletaInsumoGateway.save(coletaInsumo, insumos, colaboradorSchema, pacienteSchema, hospitalSchema).toColeta();
     }
 
 }

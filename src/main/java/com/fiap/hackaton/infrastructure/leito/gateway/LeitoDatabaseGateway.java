@@ -1,14 +1,15 @@
 package com.fiap.hackaton.infrastructure.leito.gateway;
 
-import com.fiap.hackaton.entity.leito.model.Leito;
 import com.fiap.hackaton.entity.leito.gateway.LeitoGateway;
+import com.fiap.hackaton.entity.leito.model.Leito;
 import com.fiap.hackaton.infrastructure.config.db.repository.LeitoRepository;
+import com.fiap.hackaton.infrastructure.config.db.schema.HospitalSchema;
 import com.fiap.hackaton.infrastructure.config.db.schema.LeitoSchema;
+import com.fiap.hackaton.infrastructure.config.db.schema.PacienteSchema;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class LeitoDatabaseGateway implements LeitoGateway {
 
@@ -19,28 +20,23 @@ public class LeitoDatabaseGateway implements LeitoGateway {
     }
 
     @Override
-    public Leito save(Leito leito) {
-        LeitoSchema saved = leitoRepository.save(new LeitoSchema(leito));
-        return saved.toLeito();
+    public LeitoSchema save(Leito leito, HospitalSchema hospitalSchema, PacienteSchema pacienteSchema) {
+        return leitoRepository.save(new LeitoSchema(leito, hospitalSchema, pacienteSchema));
     }
 
     @Override
-    public Optional<Leito> findById(UUID id) {
-        return leitoRepository.findById(id).map(LeitoSchema::toLeito);
+    public Optional<LeitoSchema> findById(UUID id) {
+        return leitoRepository.findById(id);
     }
 
     @Override
-    public List<Leito> findAll() {
-        return leitoRepository.findAll()
-                .stream()
-                .map(LeitoSchema::toLeito)
-                .collect(Collectors.toList());
+    public List<LeitoSchema> findAll() {
+        return leitoRepository.findAll();
     }
 
     @Override
-    public Leito update(Leito leito) {
-        LeitoSchema updated = leitoRepository.save(new LeitoSchema(leito));
-        return updated.toLeito();
+    public LeitoSchema update(Leito leito, HospitalSchema hospitalSchema, PacienteSchema pacienteSchema) {
+        return leitoRepository.save(new LeitoSchema(leito, hospitalSchema, pacienteSchema));
     }
 
     @Override

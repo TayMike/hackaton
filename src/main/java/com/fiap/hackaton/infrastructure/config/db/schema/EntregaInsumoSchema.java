@@ -6,8 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-import java.util.*;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Getter
@@ -39,21 +41,19 @@ public class EntregaInsumoSchema {
     private ColaboradorSchema colaboradorRecebedor;
 
     @Column(name = "data_hora_recebimento", nullable = false)
-    private LocalDateTime dataHoraRecebimento;
+    private OffsetDateTime dataHoraRecebimento;
 
     @ManyToOne
     @JoinColumn(name = "hospital_id", nullable = false)
     private HospitalSchema hospital;
 
-    public EntregaInsumoSchema(EntregaInsumo entregaInsumo) {
+    public EntregaInsumoSchema(EntregaInsumo entregaInsumo, List<InsumoSchema> insumos, ColaboradorSchema colaboradorRecebedorSchema, HospitalSchema hospitalSchema) {
         this.id = entregaInsumo.getId();
-        this.insumo = entregaInsumo.getInsumo().stream()
-                .map(InsumoSchema::new)
-                .collect(Collectors.toList());
+        this.insumo = insumos;
         this.quantidade = entregaInsumo.getQuantidade();
-        //this.colaboradorRecebedor = new ColaboradorSchema(entregaInsumo.getColaboradorRecebedor());
+        this.colaboradorRecebedor = colaboradorRecebedorSchema;
         this.dataHoraRecebimento = entregaInsumo.getDataHoraRecebimento();
-        this.hospital = new HospitalSchema(entregaInsumo.getHospital());
+        this.hospital = hospitalSchema;
     }
 
     public EntregaInsumo toEntrega() {

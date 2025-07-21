@@ -1,5 +1,6 @@
 package com.fiap.hackaton.infrastructure.equipamento.controller;
 
+import com.fiap.hackaton.entity.hospital.exception.HospitalNotFoundException;
 import com.fiap.hackaton.infrastructure.equipamento.dto.EquipamentoPublicData;
 import com.fiap.hackaton.infrastructure.equipamento.dto.EquipamentoRegistrationData;
 import com.fiap.hackaton.usecase.equipamento.CreateEquipamentoUseCase;
@@ -20,7 +21,7 @@ public class CreateEquipamentoController {
 
     @PostMapping("/equipamentos")
     @ResponseStatus(HttpStatus.CREATED)
-    public EquipamentoPublicData createEquipamento(@RequestBody EquipamentoRegistrationData dados) {
+    public EquipamentoPublicData createEquipamento(@RequestBody EquipamentoRegistrationData dados) throws HospitalNotFoundException {
         return new EquipamentoPublicData(createEquipamentoUseCase.execute(dados));
     }
 

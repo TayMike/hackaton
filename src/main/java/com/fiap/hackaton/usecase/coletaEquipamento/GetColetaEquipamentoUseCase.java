@@ -16,7 +16,7 @@ public class GetColetaEquipamentoUseCase {
 
     public ColetaEquipamento execute(UUID id) throws ColetaEquipamentoNotFoundException {
         return this.coletaEquipamentoGateway.findById(id).
-                orElseThrow(ColetaEquipamentoNotFoundException::new);
+                orElseThrow(ColetaEquipamentoNotFoundException::new).toColetaEquipamento();
     }
 
 }

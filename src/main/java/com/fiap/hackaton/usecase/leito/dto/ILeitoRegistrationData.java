@@ -1,7 +1,6 @@
 package com.fiap.hackaton.usecase.leito.dto;
 
-import com.fiap.hackaton.entity.hospital.model.Hospital;
-import com.fiap.hackaton.entity.paciente.model.Paciente;
+import java.util.UUID;
 
 public interface ILeitoRegistrationData {
 
@@ -11,8 +10,8 @@ public interface ILeitoRegistrationData {
 
     String quarto();
 
-    Hospital hospital();
+    UUID hospital();
 
-    Paciente paciente();
+    UUID paciente();
 
 }

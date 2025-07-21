@@ -16,7 +16,7 @@ public class GetColetaInsumoUseCase {
 
     public ColetaInsumo execute(UUID id) throws ColetaInsumoNotFoundException {
         return this.coletaInsumoGateway.findById(id).
-                orElseThrow(ColetaInsumoNotFoundException::new);
+                orElseThrow(ColetaInsumoNotFoundException::new).toColeta();
     }
 
 }

@@ -1,22 +1,19 @@
 package com.fiap.hackaton.usecase.entregaEquipamento.dto;
 
-import com.fiap.hackaton.entity.colaborador.model.Colaborador;
-import com.fiap.hackaton.entity.equipamento.model.Equipamento;
-import com.fiap.hackaton.entity.hospital.model.Hospital;
-
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 public interface IEntregaEquipamentoRegistrationData {
 
-    List<Equipamento> equipamentos();
+    List<UUID> equipamentos();
 
     List<Long> quantidade();
 
-    Colaborador colaboradorRecebedor();
+    UUID colaboradorRecebedor();
 
     LocalDateTime dataHoraRecebimento();
 
-    Hospital hospital();
+    UUID hospital();
 
 }

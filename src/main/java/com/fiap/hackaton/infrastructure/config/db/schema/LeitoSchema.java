@@ -1,8 +1,6 @@
 package com.fiap.hackaton.infrastructure.config.db.schema;
 
-import com.fiap.hackaton.entity.hospital.model.Hospital;
 import com.fiap.hackaton.entity.leito.model.Leito;
-import com.fiap.hackaton.entity.paciente.model.Paciente;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,12 +36,13 @@ public class LeitoSchema {
     @JoinColumn(name = "paciente_id", nullable = false)
     private PacienteSchema paciente;
 
-    public LeitoSchema(Leito leito) {
+    public LeitoSchema(Leito leito, HospitalSchema hospitalSchema, PacienteSchema pacienteSchema) {
+        this.id = leito.getId();
         this.identificacao = leito.getIdentificacao();
         this.pavilhao = leito.getPavilhao();
         this.quarto = leito.getQuarto();
-        this.hospital = new HospitalSchema(leito.getHospital());
-        this.paciente = new PacienteSchema(leito.getPaciente());
+        this.hospital = hospitalSchema;
+        this.paciente = pacienteSchema;
     }
 
     public Leito toLeito() {

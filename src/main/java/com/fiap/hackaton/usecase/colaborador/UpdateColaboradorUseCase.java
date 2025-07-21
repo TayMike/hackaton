@@ -5,7 +5,6 @@ import com.fiap.hackaton.entity.colaborador.gateway.ColaboradorGateway;
 import com.fiap.hackaton.entity.colaborador.model.Colaborador;
 import com.fiap.hackaton.entity.hospital.exception.HospitalNotFoundException;
 import com.fiap.hackaton.entity.hospital.gateway.HospitalGateway;
-import com.fiap.hackaton.entity.hospital.model.Hospital;
 import com.fiap.hackaton.infrastructure.config.db.schema.HospitalSchema;
 import com.fiap.hackaton.usecase.colaborador.dto.IColaboradorUpdateData;
 
@@ -47,7 +46,7 @@ public class UpdateColaboradorUseCase {
         if (dados.ativo() != null)
             colaborador.setAtivo(dados.ativo());
 
-        return this.colaboradorGateway.update(colaborador, hospitalSchema);
+        return this.colaboradorGateway.update(colaborador, hospitalSchema).toColaborador();
     }
 
 }

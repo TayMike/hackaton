@@ -16,7 +16,7 @@ public class DeleteEstoqueInsumoUseCase {
 
     public EstoqueInsumo execute(UUID id) throws EstoqueInsumoNotFoundException {
         EstoqueInsumo estoqueInsumo = estoqueGateway.findById(id)
-                .orElseThrow(EstoqueInsumoNotFoundException::new);
+                .orElseThrow(EstoqueInsumoNotFoundException::new).toEstoqueInsumo();
 
         estoqueGateway.deleteById(id);
 

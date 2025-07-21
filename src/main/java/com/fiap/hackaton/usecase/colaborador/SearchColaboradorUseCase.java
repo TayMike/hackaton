@@ -2,6 +2,7 @@ package com.fiap.hackaton.usecase.colaborador;
 
 import com.fiap.hackaton.entity.colaborador.gateway.ColaboradorGateway;
 import com.fiap.hackaton.entity.colaborador.model.Colaborador;
+import com.fiap.hackaton.infrastructure.config.db.schema.ColaboradorSchema;
 
 import java.util.List;
 
@@ -14,7 +15,9 @@ public class SearchColaboradorUseCase {
     }
 
     public List<Colaborador> execute() {
-        return this.colaboradorGateway.findAll();
+        return this.colaboradorGateway.findAll().stream().
+                map(ColaboradorSchema::toColaborador)
+                .toList();
     }
 
 }

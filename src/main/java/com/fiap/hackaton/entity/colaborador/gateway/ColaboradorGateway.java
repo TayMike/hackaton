@@ -9,8 +9,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ColaboradorGateway {
-    Colaborador save(Colaborador colaborador, HospitalSchema hospitalSchema);
+    ColaboradorSchema save(Colaborador colaborador, HospitalSchema hospitalSchema);
     Optional<ColaboradorSchema> findById(UUID id);
-    List<Colaborador> findAll();
-    Colaborador update(Colaborador colaborador, HospitalSchema hospitalSchema);
+    List<ColaboradorSchema> findAll();
+    ColaboradorSchema update(Colaborador colaborador, HospitalSchema hospitalSchema);
 }

@@ -1,6 +1,7 @@
 package com.fiap.hackaton.infrastructure.estoqueInsumo.controller;
 
 import com.fiap.hackaton.entity.estoqueInsumo.exception.EstoqueInsumoNotFoundException;
+import com.fiap.hackaton.entity.hospital.exception.HospitalNotFoundException;
 import com.fiap.hackaton.infrastructure.estoqueInsumo.dto.EstoqueInsumoPublicData;
 import com.fiap.hackaton.infrastructure.estoqueInsumo.dto.EstoqueInsumoUpdateData;
 import com.fiap.hackaton.usecase.estoqueInsumo.UpdateEstoqueInsumoUseCase;
@@ -20,7 +21,7 @@ public class UpdateEstoqueInsumoController {
 
     @PutMapping("/estoqueInsumos/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public EstoqueInsumoPublicData updateEstoqueInsumo(@PathVariable UUID id, @RequestBody EstoqueInsumoUpdateData dados) throws EstoqueInsumoNotFoundException {
+    public EstoqueInsumoPublicData updateEstoqueInsumo(@PathVariable UUID id, @RequestBody EstoqueInsumoUpdateData dados) throws EstoqueInsumoNotFoundException, HospitalNotFoundException {
         return new EstoqueInsumoPublicData(updateEstoqueInsumoUseCase.execute(id, dados));
     }
 

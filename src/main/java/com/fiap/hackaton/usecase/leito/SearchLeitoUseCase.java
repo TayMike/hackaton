@@ -2,6 +2,7 @@ package com.fiap.hackaton.usecase.leito;
 
 import com.fiap.hackaton.entity.leito.gateway.LeitoGateway;
 import com.fiap.hackaton.entity.leito.model.Leito;
+import com.fiap.hackaton.infrastructure.config.db.schema.LeitoSchema;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class SearchLeitoUseCase {
     }
 
     public List<Leito> execute() {
-        return this.leitoGateway.findAll();
+        return this.leitoGateway.findAll().stream().map(LeitoSchema::toLeito).toList();
     }
 
 }

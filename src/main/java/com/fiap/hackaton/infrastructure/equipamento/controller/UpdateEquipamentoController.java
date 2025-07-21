@@ -1,6 +1,8 @@
 package com.fiap.hackaton.infrastructure.equipamento.controller;
 
+import com.fiap.hackaton.entity.colaborador.exception.ColaboradorNotFoundException;
 import com.fiap.hackaton.entity.equipamento.exception.EquipamentoNotFoundException;
+import com.fiap.hackaton.entity.hospital.exception.HospitalNotFoundException;
 import com.fiap.hackaton.infrastructure.equipamento.dto.EquipamentoPublicData;
 import com.fiap.hackaton.infrastructure.equipamento.dto.EquipamentoUpdateData;
 import com.fiap.hackaton.usecase.equipamento.UpdateEquipamentoUseCase;
@@ -20,7 +22,7 @@ public class UpdateEquipamentoController {
 
     @PutMapping("/equipamentos/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public EquipamentoPublicData updateEquipamento(@PathVariable UUID id, @RequestBody EquipamentoUpdateData dados) throws EquipamentoNotFoundException {
+    public EquipamentoPublicData updateEquipamento(@PathVariable UUID id, @RequestBody EquipamentoUpdateData dados) throws EquipamentoNotFoundException, HospitalNotFoundException, ColaboradorNotFoundException {
         return new EquipamentoPublicData(updateEquipamentoUseCase.execute(id, dados));
     }
 

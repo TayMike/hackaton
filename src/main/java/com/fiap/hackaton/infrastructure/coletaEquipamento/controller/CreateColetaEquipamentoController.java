@@ -1,5 +1,6 @@
 package com.fiap.hackaton.infrastructure.coletaEquipamento.controller;
 
+import com.fiap.hackaton.entity.equipamento.exception.EquipamentoNotFoundException;
 import com.fiap.hackaton.infrastructure.coletaEquipamento.dto.ColetaEquipamentoPublicData;
 import com.fiap.hackaton.infrastructure.coletaEquipamento.dto.ColetaEquipamentoRegistrationData;
 import com.fiap.hackaton.usecase.coletaEquipamento.CreateColetaEquipamentoUseCase;
@@ -20,7 +21,7 @@ public class CreateColetaEquipamentoController {
 
     @PostMapping("/coletaEquipamentos")
     @ResponseStatus(HttpStatus.CREATED)
-    public ColetaEquipamentoPublicData createColetaEquipamento(@RequestBody ColetaEquipamentoRegistrationData dados) {
+    public ColetaEquipamentoPublicData createColetaEquipamento(@RequestBody ColetaEquipamentoRegistrationData dados) throws EquipamentoNotFoundException {
         return new ColetaEquipamentoPublicData(createColetaEquipamentoUseCase.execute(dados));
     }
 

@@ -37,8 +37,9 @@ public class HospitalSchema {
     @Column(nullable = false, name = "quantidade_leito_maximo")
     private Integer quantidadeLeitoMaximo;
 
-    public HospitalSchema(Hospital hospital) {
+    public HospitalSchema(Hospital hospital, List<ColaboradorSchema> colaboradores) {
         this.id = hospital.getId();
+        this.colaboradores = colaboradores;
         this.cep = hospital.getCep();
         this.numero = hospital.getNumero();
         this.quantidadeLeitoAtual = hospital.getQuantidadeLeitoAtual();

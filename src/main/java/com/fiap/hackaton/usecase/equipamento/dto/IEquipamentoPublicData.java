@@ -1,9 +1,7 @@
 package com.fiap.hackaton.usecase.equipamento.dto;
 
-import com.fiap.hackaton.entity.hospital.model.Hospital;
-
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public interface IEquipamentoPublicData {
@@ -14,12 +12,12 @@ public interface IEquipamentoPublicData {
 
     BigDecimal custo();
 
-    LocalDate tempoGarantia();
+    OffsetDateTime tempoGarantia();
 
-    LocalDate proximaManutencaoPreventiva();
+    OffsetDateTime proximaManutencaoPreventiva();
 
     String marca();
 
-    Hospital hospital();
+    UUID hospital();
 
 }

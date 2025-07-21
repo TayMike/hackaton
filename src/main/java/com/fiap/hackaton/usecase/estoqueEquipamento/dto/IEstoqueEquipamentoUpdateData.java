@@ -1,16 +1,14 @@
 package com.fiap.hackaton.usecase.estoqueEquipamento.dto;
 
-import com.fiap.hackaton.entity.equipamento.model.Equipamento;
-import com.fiap.hackaton.entity.hospital.model.Hospital;
-
 import java.util.List;
+import java.util.UUID;
 
 public interface IEstoqueEquipamentoUpdateData {
 
-    List<Equipamento> itens();
+    List<UUID> itens();
 
     List<Long> quantidades();
 
-    Hospital hospital();
+    UUID hospital();
 
 }

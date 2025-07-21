@@ -39,13 +39,11 @@ public class EstoqueInsumoSchema {
     @JoinColumn(name = "hospital_id", nullable = false)
     private HospitalSchema hospital;
 
-    public EstoqueInsumoSchema(EstoqueInsumo estoqueInsumo) {
+    public EstoqueInsumoSchema(EstoqueInsumo estoqueInsumo, List<InsumoSchema> itens, HospitalSchema hospitalSchema) {
         this.id = estoqueInsumo.getId();
-        this.itens = estoqueInsumo.getItens().stream()
-                .map(InsumoSchema::new)
-                .collect(Collectors.toList());
+        this.itens = itens;
         this.quantidades = estoqueInsumo.getQuantidades();
-        this.hospital = new HospitalSchema(estoqueInsumo.getHospital());
+        this.hospital = hospitalSchema;
     }
 
     public EstoqueInsumo toEstoqueInsumo() {

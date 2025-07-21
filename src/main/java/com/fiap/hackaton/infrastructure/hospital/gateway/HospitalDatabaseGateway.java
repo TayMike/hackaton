@@ -3,12 +3,12 @@ package com.fiap.hackaton.infrastructure.hospital.gateway;
 import com.fiap.hackaton.entity.hospital.gateway.HospitalGateway;
 import com.fiap.hackaton.entity.hospital.model.Hospital;
 import com.fiap.hackaton.infrastructure.config.db.repository.HospitalRepository;
+import com.fiap.hackaton.infrastructure.config.db.schema.ColaboradorSchema;
 import com.fiap.hackaton.infrastructure.config.db.schema.HospitalSchema;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class HospitalDatabaseGateway implements HospitalGateway {
 
@@ -19,9 +19,8 @@ public class HospitalDatabaseGateway implements HospitalGateway {
     }
 
     @Override
-    public Hospital save(Hospital hospital) {
-        HospitalSchema saved = hospitalRepository.save(new HospitalSchema(hospital));
-        return saved.toHospital();
+    public HospitalSchema save(Hospital hospital, List<ColaboradorSchema> colaboradores) {
+        return hospitalRepository.save(new HospitalSchema(hospital, colaboradores));
     }
 
     @Override
@@ -35,9 +34,8 @@ public class HospitalDatabaseGateway implements HospitalGateway {
     }
 
     @Override
-    public Hospital update(Hospital hospital) {
-        HospitalSchema updated = hospitalRepository.save(new HospitalSchema(hospital));
-        return updated.toHospital();
+    public HospitalSchema update(Hospital hospital, List<ColaboradorSchema> colaboradores) {
+        return hospitalRepository.save(new HospitalSchema(hospital, colaboradores));
     }
 
     @Override

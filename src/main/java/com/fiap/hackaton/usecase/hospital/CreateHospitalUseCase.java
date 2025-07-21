@@ -4,6 +4,7 @@ import com.fiap.hackaton.entity.colaborador.gateway.ColaboradorGateway;
 import com.fiap.hackaton.entity.colaborador.model.Colaborador;
 import com.fiap.hackaton.entity.hospital.gateway.HospitalGateway;
 import com.fiap.hackaton.entity.hospital.model.Hospital;
+import com.fiap.hackaton.infrastructure.config.db.schema.ColaboradorSchema;
 import com.fiap.hackaton.usecase.hospital.dto.IHospitalRegistrationData;
 
 import java.util.List;
@@ -21,14 +22,17 @@ public class CreateHospitalUseCase {
 
     public Hospital execute(IHospitalRegistrationData dados) {
 
-        List<Colaborador> colaboradores = colaboradorGateway.findAll()
+        List<ColaboradorSchema> colaboradoresSchema = this.colaboradorGateway.findAll()
                 .stream()
                 .filter(colaborador -> dados.colaboradores().contains(colaborador.getId()))
+                .collect(Collectors.toList());
+        List<Colaborador> colaboradores = colaboradoresSchema.stream()
+                .map(ColaboradorSchema::toColaborador)
                 .collect(Collectors.toList());
 
         Hospital hospital = new Hospital(colaboradores, dados.cep(), dados.numero(), dados.quantidadeLeitoAtual(), dados.quantidadeLeitoMaximo());
 
-        return this.hospitalGateway.save(hospital);
+        return this.hospitalGateway.save(hospital, colaboradoresSchema).toHospital();
     }
 
 }

@@ -16,7 +16,7 @@ public class GetEquipamentoUseCase {
 
     public Equipamento execute(UUID id) throws EquipamentoNotFoundException {
         return this.equipamentoGateway.findById(id).
-                orElseThrow(EquipamentoNotFoundException::new);
+                orElseThrow(EquipamentoNotFoundException::new).toEquipamento();
     }
 
 }

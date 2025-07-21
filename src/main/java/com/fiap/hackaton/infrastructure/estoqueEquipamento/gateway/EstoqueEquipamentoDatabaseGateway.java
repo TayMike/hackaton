@@ -3,12 +3,13 @@ package com.fiap.hackaton.infrastructure.estoqueEquipamento.gateway;
 import com.fiap.hackaton.entity.estoqueEquipamento.gateway.EstoqueEquipamentoGateway;
 import com.fiap.hackaton.entity.estoqueEquipamento.model.EstoqueEquipamento;
 import com.fiap.hackaton.infrastructure.config.db.repository.EstoqueEquipamentoRepository;
+import com.fiap.hackaton.infrastructure.config.db.schema.EquipamentoSchema;
 import com.fiap.hackaton.infrastructure.config.db.schema.EstoqueEquipamentoSchema;
+import com.fiap.hackaton.infrastructure.config.db.schema.HospitalSchema;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class EstoqueEquipamentoDatabaseGateway implements EstoqueEquipamentoGateway {
 
@@ -19,28 +20,25 @@ public class EstoqueEquipamentoDatabaseGateway implements EstoqueEquipamentoGate
     }
 
     @Override
-    public EstoqueEquipamento save(EstoqueEquipamento estoqueEquipamento) {
-        EstoqueEquipamentoSchema schema = new EstoqueEquipamentoSchema(estoqueEquipamento);
-        return estoqueEquipamentoRepository.save(schema).toEstoqueEquipamento();
+    public EstoqueEquipamentoSchema save(EstoqueEquipamento estoqueEquipamento, List<EquipamentoSchema> equipamentos, HospitalSchema hospitalSchema) {
+        EstoqueEquipamentoSchema schema = new EstoqueEquipamentoSchema(estoqueEquipamento, equipamentos, hospitalSchema);
+        return estoqueEquipamentoRepository.save(schema);
     }
 
     @Override
-    public Optional<EstoqueEquipamento> findById(UUID id) {
-        return estoqueEquipamentoRepository.findById(id).map(EstoqueEquipamentoSchema::toEstoqueEquipamento);
+    public Optional<EstoqueEquipamentoSchema> findById(UUID id) {
+        return estoqueEquipamentoRepository.findById(id);
     }
 
     @Override
-    public List<EstoqueEquipamento> findAll() {
-        return estoqueEquipamentoRepository.findAll()
-                .stream()
-                .map(EstoqueEquipamentoSchema::toEstoqueEquipamento)
-                .collect(Collectors.toList());
+    public List<EstoqueEquipamentoSchema> findAll() {
+        return estoqueEquipamentoRepository.findAll();
     }
 
     @Override
-    public EstoqueEquipamento update(EstoqueEquipamento estoqueEquipamento) {
-        EstoqueEquipamentoSchema schema = new EstoqueEquipamentoSchema(estoqueEquipamento);
-        return estoqueEquipamentoRepository.save(schema).toEstoqueEquipamento();
+    public EstoqueEquipamentoSchema update(EstoqueEquipamento estoqueEquipamento, List<EquipamentoSchema> equipamentos, HospitalSchema hospitalSchema) {
+        EstoqueEquipamentoSchema schema = new EstoqueEquipamentoSchema(estoqueEquipamento, equipamentos, hospitalSchema);
+        return estoqueEquipamentoRepository.save(schema);
     }
 
     @Override

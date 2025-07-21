@@ -41,12 +41,11 @@ public class EstoqueEquipamentoSchema {
     @JoinColumn(name = "hospital_id", nullable = false)
     private HospitalSchema hospital;
 
-    public EstoqueEquipamentoSchema(EstoqueEquipamento estoqueEquipamento) {
-        this.itens = estoqueEquipamento.getItens().stream()
-                .map(EquipamentoSchema::new)
-                .collect(Collectors.toList());
+    public EstoqueEquipamentoSchema(EstoqueEquipamento estoqueEquipamento, List<EquipamentoSchema> equipamentos, HospitalSchema hospitalSchema) {
+        this.id = estoqueEquipamento.getId();
+        this.itens = equipamentos;
         this.quantidades = estoqueEquipamento.getQuantidades();
-        this.hospital = new HospitalSchema(estoqueEquipamento.getHospital());
+        this.hospital = hospitalSchema;
     }
 
     public EstoqueEquipamento toEstoqueEquipamento() {

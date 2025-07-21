@@ -16,7 +16,7 @@ public class DeleteLeitoUseCase {
 
     public Leito execute(UUID id) throws LeitoNotFoundException {
         Leito leito = leitoGateway.findById(id)
-                .orElseThrow(LeitoNotFoundException::new);
+                .orElseThrow(LeitoNotFoundException::new).toLeito();
 
         leitoGateway.deleteById(id);
 

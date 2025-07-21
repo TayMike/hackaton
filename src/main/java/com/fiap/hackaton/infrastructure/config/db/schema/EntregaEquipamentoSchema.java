@@ -49,15 +49,13 @@ public class EntregaEquipamentoSchema {
     @JoinColumn(name = "hospital_id", nullable = false)
     private HospitalSchema hospital;
 
-    public EntregaEquipamentoSchema(EntregaEquipamento entregaEquipamento) {
-        this.equipamento = entregaEquipamento.getEquipamentos()
-                .stream()
-                .map(EquipamentoSchema::new)
-                .collect(Collectors.toList());
+    public EntregaEquipamentoSchema(EntregaEquipamento entregaEquipamento, List<EquipamentoSchema> equipamentos, ColaboradorSchema colaboradorRecebedorSchema, HospitalSchema hospitalSchema) {
+        this.id = entregaEquipamento.getId();
+        this.equipamento = equipamentos;
         this.quantidade = entregaEquipamento.getQuantidade();
-        //this.colaboradorRecebedor = new ColaboradorSchema(entregaEquipamento.getColaboradorRecebedor());
+        this.colaboradorRecebedor = colaboradorRecebedorSchema;
         this.dataHoraRecebimento = entregaEquipamento.getDataHoraRecebimento();
-        this.hospital = new HospitalSchema(entregaEquipamento.getHospital());
+        this.hospital = hospitalSchema;
     }
 
     public EntregaEquipamento toEntregaEquipamento() {

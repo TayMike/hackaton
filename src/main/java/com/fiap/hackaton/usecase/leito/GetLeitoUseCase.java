@@ -16,7 +16,7 @@ public class GetLeitoUseCase {
 
     public Leito execute(UUID id) throws LeitoNotFoundException {
         return this.leitoGateway.findById(id).
-                orElseThrow(LeitoNotFoundException::new);
+                orElseThrow(LeitoNotFoundException::new).toLeito();
     }
 
 }
