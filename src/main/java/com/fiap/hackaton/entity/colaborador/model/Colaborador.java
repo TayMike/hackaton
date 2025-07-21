@@ -3,24 +3,18 @@ package com.fiap.hackaton.entity.colaborador.model;
 import com.fiap.hackaton.entity.AbstractEntity;
 import com.fiap.hackaton.entity.IPessoa;
 import com.fiap.hackaton.entity.hospital.model.Hospital;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
+import java.time.OffsetDateTime;
 
-@Entity
 @Getter
+@Setter
 @NoArgsConstructor
-public class Colaborador extends AbstractEntity<Long> implements IPessoa {
+public class Colaborador extends AbstractEntity implements IPessoa {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Setter
-    private UUID id;
     @NonNull
     private String cpf;
     @NonNull
@@ -28,7 +22,7 @@ public class Colaborador extends AbstractEntity<Long> implements IPessoa {
     @NonNull
     private String matricula;
     @NonNull
-    private LocalDateTime primeiroDiaCadastro;
+    private OffsetDateTime primeiroDiaCadastro;
     @NonNull
     private String cep;
     @NonNull
@@ -40,7 +34,7 @@ public class Colaborador extends AbstractEntity<Long> implements IPessoa {
     @NonNull
     private Boolean ativo;
 
-    public Colaborador(@NonNull String cpf, @NonNull String nome, @NonNull String matricula, @NonNull LocalDateTime primeiroDiaCadastro, @NonNull String cep, @NonNull Integer numeroCasa, @NonNull Hospital hospital, @NonNull String setor, @NonNull Boolean ativo) {
+    public Colaborador(@NonNull String cpf, @NonNull String nome, @NonNull String matricula, @NonNull OffsetDateTime primeiroDiaCadastro, @NonNull String cep, @NonNull Integer numeroCasa, @NonNull Hospital hospital, @NonNull String setor, @NonNull Boolean ativo) {
         this.cpf = cpf;
         this.nome = nome;
         this.matricula = matricula;
@@ -50,30 +44,6 @@ public class Colaborador extends AbstractEntity<Long> implements IPessoa {
         this.hospital = hospital;
         this.setor = setor;
         this.ativo = ativo;
-    }
-
-    public void setAtivo(@NonNull Boolean ativo) {
-        this.ativo = ativo;
-    }
-
-    public void setSetor(@NonNull String setor) {
-        this.setor = setor;
-    }
-
-    public void setHospital(@NonNull Hospital hospital) {
-        this.hospital = hospital;
-    }
-
-    public void setNumeroCasa(@NonNull Integer numeroCasa) {
-        this.numeroCasa = numeroCasa;
-    }
-
-    public void setCep(@NonNull String cep) {
-        this.cep = cep;
-    }
-
-    public void setNome(@NonNull String nome) {
-        this.nome = nome;
     }
 
 }

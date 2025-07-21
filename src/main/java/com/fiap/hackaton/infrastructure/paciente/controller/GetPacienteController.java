@@ -22,7 +22,7 @@ public class GetPacienteController {
     }
 
     @GetMapping("/pacientes/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public PacientePublicData getPaciente(@PathVariable UUID id) throws PacienteNotFoundException {
         Paciente paciente = getPacienteUseCase.execute(id);
         return new PacientePublicData(paciente);

@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Insumo",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "nome": {
+      "type": "string",
+      "minLength": 1
+    },
+    "custo": {
+      "type": "string",
+      "pattern": "^\\d+(\\.\\d{1,2})?$",
+      "description": "Valor monetário com até duas casas decimais"
+    },
+    "quantidade": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "peso": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "validade": {
+      "type": "string",
+      "format": "date"
+    },
+    "marca": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unidadeMedida": {
+      "type": "string",
+      "enum": ["MG", "ML"]
+    }
+  },
+  "required": [
+    "nome",
+    "custo",
+    "quantidade",
+    "peso",
+    "validade",
+    "marca",
+    "unidadeMedida"
+  ]
+}

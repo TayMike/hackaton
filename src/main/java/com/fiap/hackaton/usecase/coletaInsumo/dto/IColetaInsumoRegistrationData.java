@@ -6,20 +6,22 @@ import com.fiap.hackaton.entity.insumo.model.Insumo;
 import com.fiap.hackaton.entity.paciente.model.Paciente;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.UUID;
 
 public interface IColetaInsumoRegistrationData {
 
-    List<Insumo> insumos();
+    List<UUID> insumos();
 
     List<Long> quantidades();
 
-    Colaborador colaboradorEntregador();
+    UUID colaboradorEntregador();
 
-    LocalDateTime dataHoraColeta();
+    OffsetDateTime dataHoraColeta();
 
-    Paciente pacienteRecebedor();
+    UUID pacienteRecebedor();
 
-    Hospital hospital();
+    UUID hospital();
 
 }

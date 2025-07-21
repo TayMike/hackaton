@@ -8,6 +8,7 @@ import com.fiap.hackaton.entity.paciente.model.Paciente;
 import com.fiap.hackaton.usecase.coletaInsumo.dto.IColetaInsumoPublicData;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,9 +16,9 @@ public record ColetaInsumoPublicData(
         UUID id,
         List<Insumo> insumos,
         List<Long> quantidades,
-        Colaborador colaboradorEntregador,
-        LocalDateTime dataHoraColeta,
-        Paciente pacienteRecebedor,
+        UUID colaboradorEntregador,
+        OffsetDateTime dataHoraColeta,
+        UUID pacienteRecebedor,
         Hospital hospital
 ) implements IColetaInsumoPublicData {
 
@@ -26,9 +27,9 @@ public record ColetaInsumoPublicData(
                 coletaInsumo.getId(),
                 coletaInsumo.getInsumos(),
                 coletaInsumo.getQuantidades(),
-                coletaInsumo.getColaboradorEntregador(),
+                coletaInsumo.getColaboradorEntregador().getId(),
                 coletaInsumo.getDataHoraColeta(),
-                coletaInsumo.getPacienteRecebedor(),
+                coletaInsumo.getPacienteRecebedor().getId(),
                 coletaInsumo.getHospital()
         );
     }

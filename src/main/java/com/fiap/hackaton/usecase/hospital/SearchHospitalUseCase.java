@@ -2,6 +2,7 @@ package com.fiap.hackaton.usecase.hospital;
 
 import com.fiap.hackaton.entity.hospital.gateway.HospitalGateway;
 import com.fiap.hackaton.entity.hospital.model.Hospital;
+import com.fiap.hackaton.infrastructure.config.db.schema.HospitalSchema;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class SearchHospitalUseCase {
     }
 
     public List<Hospital> execute() {
-        return this.hospitalGateway.findAll();
+        return this.hospitalGateway.findAll().stream().map(HospitalSchema::toHospital).toList();
     }
 
 }

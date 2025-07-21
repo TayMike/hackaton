@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Leito",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "identificacao": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pavilhao": {
+      "type": "string",
+      "minLength": 1
+    },
+    "quarto": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hospital": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": ["id"]
+    },
+    "paciente": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": ["id"]
+    }
+  },
+  "required": [
+    "identificacao",
+    "pavilhao",
+    "quarto",
+    "hospital"
+  ]
+}

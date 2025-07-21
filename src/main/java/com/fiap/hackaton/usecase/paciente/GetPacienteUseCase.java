@@ -16,7 +16,7 @@ public class GetPacienteUseCase {
 
     public Paciente execute(UUID id) throws PacienteNotFoundException {
         return this.pacienteGateway.findById(id).
-                orElseThrow(PacienteNotFoundException::new);
+                orElseThrow(PacienteNotFoundException::new).toPaciente();
     }
 
 }

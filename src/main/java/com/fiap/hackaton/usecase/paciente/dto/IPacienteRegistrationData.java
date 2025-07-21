@@ -1,12 +1,12 @@
 package com.fiap.hackaton.usecase.paciente.dto;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 public interface IPacienteRegistrationData {
 
     String cpf();
     String nome();
-    LocalDateTime primeiroDiaCadastro();
+    OffsetDateTime primeiroDiaCadastro();
     String cep();
     Integer numeroCasa();
 

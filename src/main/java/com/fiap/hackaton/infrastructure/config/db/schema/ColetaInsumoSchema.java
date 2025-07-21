@@ -1,12 +1,14 @@
 package com.fiap.hackaton.infrastructure.config.db.schema;
 
 import com.fiap.hackaton.entity.coletaInsumo.model.ColetaInsumo;
+import com.fiap.hackaton.entity.insumo.model.Insumo;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -40,7 +42,7 @@ public class ColetaInsumoSchema {
     private ColaboradorSchema colaboradorEntregador;
 
     @Column(name = "data_hora_coleta_insumo", nullable = false)
-    private LocalDateTime dataHoraColeta;
+    private OffsetDateTime dataHoraColeta;
 
     @ManyToOne
     @JoinColumn(name = "paciente_id", nullable = false)
@@ -50,15 +52,14 @@ public class ColetaInsumoSchema {
     @JoinColumn(name = "hospital_id", nullable = false)
     private HospitalSchema hospital;
 
-    public ColetaInsumoSchema(ColetaInsumo coletaInsumo) {
-        this.insumos = coletaInsumo.getInsumos().stream()
-                .map(InsumoSchema::new)
-                .collect(Collectors.toList());
+    public ColetaInsumoSchema(ColetaInsumo coletaInsumo, List<InsumoSchema> insumos, ColaboradorSchema colaboradorSchema, PacienteSchema pacienteSchema, HospitalSchema hospitalSchema) {
+        this.id = coletaInsumo.getId();
+        this.insumos = insumos;
         this.quantidades = coletaInsumo.getQuantidades();
-        this.colaboradorEntregador = new ColaboradorSchema(coletaInsumo.getColaboradorEntregador());
+        this.colaboradorEntregador = colaboradorSchema;
         this.dataHoraColeta = coletaInsumo.getDataHoraColeta();
-        this.pacienteRecebedor = new PacienteSchema(coletaInsumo.getPacienteRecebedor());
-        this.hospital = new HospitalSchema(coletaInsumo.getHospital());
+        this.pacienteRecebedor = pacienteSchema;
+        this.hospital = hospitalSchema;
     }
 
     public ColetaInsumo toColeta() {

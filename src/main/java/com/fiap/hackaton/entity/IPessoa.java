@@ -1,6 +1,7 @@
 package com.fiap.hackaton.entity;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public interface IPessoa {
@@ -8,7 +9,7 @@ public interface IPessoa {
     UUID id = null;
     String cpf = "";
     String nome = "";
-    LocalDateTime primeiroDiaCadastro = null;
+    OffsetDateTime primeiroDiaCadastro = null;
     String cep = "";
     Integer numeroCasa = 0;
 

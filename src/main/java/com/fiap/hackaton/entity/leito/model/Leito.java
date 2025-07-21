@@ -14,15 +14,11 @@ import lombok.Setter;
 
 import java.util.UUID;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Leito extends AbstractEntity<Long> {
+public class Leito extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
     @NonNull
     private String identificacao;
     @NonNull

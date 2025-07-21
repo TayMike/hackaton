@@ -22,7 +22,7 @@ public class GetEquipamentoController {
     }
 
     @GetMapping("/equipamentos/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public EquipamentoPublicData getEquipamento(@PathVariable UUID id) throws EquipamentoNotFoundException {
         Equipamento equipamento = getEquipamentoUseCase.execute(id);
         return new EquipamentoPublicData(equipamento);

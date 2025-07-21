@@ -20,13 +20,12 @@ public class PacienteDatabaseGateway implements PacienteGateway {
 
     @Override
     public Paciente save(Paciente paciente) {
-        PacienteSchema saved = pacienteRepository.save(new PacienteSchema(paciente));
-        return saved.toPaciente();
+        return pacienteRepository.save(new PacienteSchema(paciente)).toPaciente();
     }
 
     @Override
-    public Optional<Paciente> findById(UUID id) {
-        return pacienteRepository.findById(id).map(PacienteSchema::toPaciente);
+    public Optional<PacienteSchema> findById(UUID id) {
+        return pacienteRepository.findById(id);
     }
 
     @Override

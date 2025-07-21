@@ -4,11 +4,12 @@ import com.fiap.hackaton.entity.paciente.model.Paciente;
 import com.fiap.hackaton.usecase.paciente.dto.IPacienteRegistrationData;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 public record PacienteRegistrationData(
         String cpf,
         String nome,
-        LocalDateTime primeiroDiaCadastro,
+        OffsetDateTime primeiroDiaCadastro,
         String cep,
         Integer numeroCasa
 ) implements IPacienteRegistrationData {

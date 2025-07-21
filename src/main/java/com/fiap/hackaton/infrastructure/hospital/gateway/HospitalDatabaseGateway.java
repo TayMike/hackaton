@@ -25,21 +25,17 @@ public class HospitalDatabaseGateway implements HospitalGateway {
     }
 
     @Override
-    public Optional<Hospital> findById(UUID id) {
-        return hospitalRepository.findById(id).map(HospitalSchema::toHospital);
+    public Optional<HospitalSchema> findById(UUID id) {
+        return hospitalRepository.findById(id);
     }
 
     @Override
-    public List<Hospital> findAll() {
-        return hospitalRepository.findAll()
-                .stream()
-                .map(HospitalSchema::toHospital)
-                .collect(Collectors.toList());
+    public List<HospitalSchema> findAll() {
+        return hospitalRepository.findAll();
     }
 
     @Override
     public Hospital update(Hospital hospital) {
-        // Assumes update is same as save when the ID exists
         HospitalSchema updated = hospitalRepository.save(new HospitalSchema(hospital));
         return updated.toHospital();
     }

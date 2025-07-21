@@ -16,7 +16,7 @@ public class GetColaboradorUseCase {
 
     public Colaborador execute(UUID id) throws ColaboradorNotFoundException {
         return this.colaboradorGateway.findById(id).
-                orElseThrow(ColaboradorNotFoundException::new);
+                orElseThrow(ColaboradorNotFoundException::new).toColaborador();
     }
 
 }

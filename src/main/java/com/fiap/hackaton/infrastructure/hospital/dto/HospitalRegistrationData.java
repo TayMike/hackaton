@@ -5,9 +5,10 @@ import com.fiap.hackaton.entity.hospital.model.Hospital;
 import com.fiap.hackaton.usecase.hospital.dto.IHospitalRegistrationData;
 
 import java.util.List;
+import java.util.UUID;
 
 public record HospitalRegistrationData(
-        List<Colaborador> colaboradores,
+        List<UUID> colaboradores,
         String cep,
         Integer numero,
         Integer quantidadeLeitoAtual,
@@ -16,7 +17,9 @@ public record HospitalRegistrationData(
 
     public HospitalRegistrationData(Hospital hospital) {
         this(
-                hospital.getColaboradores(),
+                hospital.getColaboradores().stream()
+                        .map(Colaborador::getId)
+                        .toList(),
                 hospital.getCep(),
                 hospital.getNumero(),
                 hospital.getQuantidadeLeitoAtual(),

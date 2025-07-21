@@ -17,7 +17,7 @@ public class UpdatePacienteUseCase {
 
     public Paciente execute(UUID id, IPacienteUpdateData dados) throws PacienteNotFoundException {
         Paciente paciente = this.pacienteGateway.findById(id)
-                .orElseThrow(PacienteNotFoundException::new);
+                .orElseThrow(PacienteNotFoundException::new).toPaciente();
 
         if (dados.nome() != null && !dados.nome().isBlank())
             paciente.setNome(dados.nome());

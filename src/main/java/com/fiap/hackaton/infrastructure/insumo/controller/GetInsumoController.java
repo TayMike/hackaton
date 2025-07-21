@@ -22,7 +22,7 @@ public class GetInsumoController {
     }
 
     @GetMapping("/insumos/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public InsumoPublicData getInsumo(@PathVariable UUID id) throws InsumoNotFoundException {
         Insumo insumo = getInsumoUseCase.execute(id);
         return new InsumoPublicData(insumo);

@@ -22,7 +22,7 @@ public class GetLeitoController {
     }
 
     @GetMapping("/leitos/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public LeitoPublicData getLeito(@PathVariable UUID id) throws LeitoNotFoundException {
         Leito leito = getLeitoUseCase.execute(id);
         return new LeitoPublicData(leito);

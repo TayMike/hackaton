@@ -18,7 +18,7 @@ public class UpdateInsumoUseCase {
 
     public Insumo execute(UUID id, IInsumoUpdateData dados) throws InsumoNotFoundException {
         Insumo insumo = this.insumoGateway.findById(id)
-                .orElseThrow(InsumoNotFoundException::new);
+                .orElseThrow(InsumoNotFoundException::new).toInsumo();
 
         if (dados.nome() != null && !dados.nome().isBlank())
             insumo.setNome(dados.nome());

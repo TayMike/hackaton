@@ -1,5 +1,6 @@
 package com.fiap.hackaton.entity.entregaEquipamento.model;
 
+import com.fiap.hackaton.entity.AbstractEntity;
 import com.fiap.hackaton.entity.colaborador.model.Colaborador;
 import com.fiap.hackaton.entity.equipamento.model.Equipamento;
 import com.fiap.hackaton.entity.hospital.model.Hospital;
@@ -16,15 +17,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-@Entity
 @Getter
 @NoArgsConstructor
-public class EntregaEquipamento {
+public class EntregaEquipamento extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Setter
-    private UUID id;
     @NonNull
     private List<Equipamento> equipamentos;
     @NonNull

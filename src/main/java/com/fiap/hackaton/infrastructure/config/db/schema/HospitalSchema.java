@@ -11,21 +11,21 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Entity
+@Table(name = "hospital")
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "hospital")
 public class HospitalSchema {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false, name = "cep")
+    @Column(nullable = false)
     private String cep;
 
-    @Column(nullable = false, name = "numero")
+    @Column(nullable = false)
     private Integer numero;
 
     @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -38,26 +38,35 @@ public class HospitalSchema {
     private Integer quantidadeLeitoMaximo;
 
     public HospitalSchema(Hospital hospital) {
+        this.id = hospital.getId();
         this.cep = hospital.getCep();
         this.numero = hospital.getNumero();
-        this.colaboradores = hospital.getColaboradores().stream()
-                .map(ColaboradorSchema::new)
-                .collect(Collectors.toList());
         this.quantidadeLeitoAtual = hospital.getQuantidadeLeitoAtual();
         this.quantidadeLeitoMaximo = hospital.getQuantidadeLeitoMaximo();
     }
 
     public Hospital toHospital() {
         Hospital hospital = new Hospital(
-                this.colaboradores.stream().map(ColaboradorSchema::toColaborador).collect(Collectors.toList()),
-                this.cep,
-                this.numero,
-                this.quantidadeLeitoAtual,
-                this.quantidadeLeitoMaximo
+                this.getColaboradores().stream().map(ColaboradorSchema::toColaborador).collect(Collectors.toList()),
+                this.getCep(),
+                this.getNumero(),
+                this.getQuantidadeLeitoAtual(),
+                this.getQuantidadeLeitoMaximo()
         );
-
         hospital.setId(this.getId());
-
         return hospital;
     }
+
+    public Hospital toHospitalSemColaboradores() {
+        Hospital hospital = new Hospital(
+                new ArrayList<>(),
+                this.getCep(),
+                this.getNumero(),
+                this.getQuantidadeLeitoAtual(),
+                this.getQuantidadeLeitoMaximo()
+        );
+        hospital.setId(this.getId());
+        return hospital;
+    }
+
 }

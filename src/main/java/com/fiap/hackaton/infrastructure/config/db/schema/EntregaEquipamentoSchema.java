@@ -55,7 +55,7 @@ public class EntregaEquipamentoSchema {
                 .map(EquipamentoSchema::new)
                 .collect(Collectors.toList());
         this.quantidade = entregaEquipamento.getQuantidade();
-        this.colaboradorRecebedor = new ColaboradorSchema(entregaEquipamento.getColaboradorRecebedor());
+        //this.colaboradorRecebedor = new ColaboradorSchema(entregaEquipamento.getColaboradorRecebedor());
         this.dataHoraRecebimento = entregaEquipamento.getDataHoraRecebimento();
         this.hospital = new HospitalSchema(entregaEquipamento.getHospital());
     }

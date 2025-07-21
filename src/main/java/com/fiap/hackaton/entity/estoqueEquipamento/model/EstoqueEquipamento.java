@@ -1,5 +1,6 @@
 package com.fiap.hackaton.entity.estoqueEquipamento.model;
 
+import com.fiap.hackaton.entity.AbstractEntity;
 import com.fiap.hackaton.entity.equipamento.model.Equipamento;
 import com.fiap.hackaton.entity.hospital.model.Hospital;
 import jakarta.persistence.Entity;
@@ -16,13 +17,9 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
-public class EstoqueEquipamento {
+public class EstoqueEquipamento extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
     @NonNull
     private List<Equipamento> itens;
     @NonNull

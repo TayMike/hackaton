@@ -51,7 +51,7 @@ public class EntregaInsumoSchema {
                 .map(InsumoSchema::new)
                 .collect(Collectors.toList());
         this.quantidade = entregaInsumo.getQuantidade();
-        this.colaboradorRecebedor = new ColaboradorSchema(entregaInsumo.getColaboradorRecebedor());
+        //this.colaboradorRecebedor = new ColaboradorSchema(entregaInsumo.getColaboradorRecebedor());
         this.dataHoraRecebimento = entregaInsumo.getDataHoraRecebimento();
         this.hospital = new HospitalSchema(entregaInsumo.getHospital());
     }

@@ -1,6 +1,6 @@
 package com.fiap.hackaton.usecase.colaborador.dto;
 
-import com.fiap.hackaton.entity.hospital.model.Hospital;
+import java.util.UUID;
 
 public interface IColaboradorUpdateData {
 
@@ -10,7 +10,7 @@ public interface IColaboradorUpdateData {
 
     Integer numeroCasa();
 
-    Hospital hospital();
+    UUID hospital();
 
     String setor();
 

@@ -16,7 +16,7 @@ public class DeleteInsumoUseCase {
 
     public Insumo execute(UUID id) throws InsumoNotFoundException {
         Insumo insumo = insumoGateway.findById(id)
-                .orElseThrow(InsumoNotFoundException::new);
+                .orElseThrow(InsumoNotFoundException::new).toInsumo();
 
         insumoGateway.deleteById(id);
 

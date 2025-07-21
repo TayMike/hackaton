@@ -76,9 +76,10 @@ public class MvcConfig {
     }
 
     @Bean
-    public CreateColaboradorUseCase createColaboradorUseCase(ColaboradorRepository colaboradorRepository) {
+    public CreateColaboradorUseCase createColaboradorUseCase(ColaboradorRepository colaboradorRepository, HospitalRepository hospitalRepository) {
         ColaboradorGateway colaboradorGateway = new ColaboradorDatabaseGateway(colaboradorRepository);
-        return new CreateColaboradorUseCase(colaboradorGateway);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        return new CreateColaboradorUseCase(colaboradorGateway, hospitalGateway);
     }
 
     @Bean
@@ -94,9 +95,10 @@ public class MvcConfig {
     }
 
     @Bean
-    public UpdateColaboradorUseCase updateColaboradorUseCase(ColaboradorRepository colaboradorRepository) {
+    public UpdateColaboradorUseCase updateColaboradorUseCase(ColaboradorRepository colaboradorRepository, HospitalRepository hospitalRepository) {
         ColaboradorGateway colaboradorGateway = new ColaboradorDatabaseGateway(colaboradorRepository);
-        return new UpdateColaboradorUseCase(colaboradorGateway);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        return new UpdateColaboradorUseCase(colaboradorGateway, hospitalGateway);
     }
 
     @Bean
@@ -118,9 +120,17 @@ public class MvcConfig {
     }
 
     @Bean
-    public CreateColetaInsumoUseCase createColetaInsumoUseCase(ColetaInsumoRepository coletaInsumoRepository) {
+    public CreateColetaInsumoUseCase createColetaInsumoUseCase(ColetaInsumoRepository coletaInsumoRepository,
+                                                               ColaboradorRepository colaboradorRepository,
+                                                               PacienteRepository pacienteRepository,
+                                                               HospitalRepository hospitalRepository,
+                                                               InsumoRepository insumoRepository) {
         ColetaInsumoGateway coletaInsumoGateway = new ColetaInsumoDatabaseGateway(coletaInsumoRepository);
-        return new CreateColetaInsumoUseCase(coletaInsumoGateway);
+        ColaboradorGateway colaboradorGateway = new ColaboradorDatabaseGateway(colaboradorRepository);
+        PacienteGateway pacienteGateway = new PacienteDatabaseGateway(pacienteRepository);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        InsumoGateway insumoGateway = new InsumoDatabaseGateway(insumoRepository);
+        return new CreateColetaInsumoUseCase(coletaInsumoGateway, colaboradorGateway, pacienteGateway, hospitalGateway, insumoGateway);
     }
 
     @Bean
@@ -286,9 +296,10 @@ public class MvcConfig {
 
     // --- Hospital ---
     @Bean
-    public CreateHospitalUseCase createHospitalUseCase(HospitalRepository hospitalRepository) {
+    public CreateHospitalUseCase createHospitalUseCase(HospitalRepository hospitalRepository, ColaboradorRepository colaboradorRepository) {
         HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
-        return new CreateHospitalUseCase(hospitalGateway);
+        ColaboradorGateway colaboradorGateway = new ColaboradorDatabaseGateway(colaboradorRepository);
+        return new CreateHospitalUseCase(hospitalGateway, colaboradorGateway);
     }
 
     @Bean

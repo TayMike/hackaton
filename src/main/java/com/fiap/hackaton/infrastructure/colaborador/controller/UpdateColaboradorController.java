@@ -1,6 +1,7 @@
 package com.fiap.hackaton.infrastructure.colaborador.controller;
 
 import com.fiap.hackaton.entity.colaborador.exception.ColaboradorNotFoundException;
+import com.fiap.hackaton.entity.hospital.exception.HospitalNotFoundException;
 import com.fiap.hackaton.infrastructure.colaborador.dto.ColaboradorPublicData;
 import com.fiap.hackaton.infrastructure.colaborador.dto.ColaboradorUpdateData;
 import com.fiap.hackaton.usecase.colaborador.UpdateColaboradorUseCase;
@@ -21,7 +22,7 @@ public class UpdateColaboradorController {
 
     @PutMapping("/colaboradores/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ColaboradorPublicData updateColaborador(@PathVariable UUID id, @Valid @RequestBody ColaboradorUpdateData dados) throws ColaboradorNotFoundException {
+    public ColaboradorPublicData updateColaborador(@PathVariable UUID id, @Valid @RequestBody ColaboradorUpdateData dados) throws ColaboradorNotFoundException, HospitalNotFoundException {
         return new ColaboradorPublicData(updateColaboradorUseCase.execute(id, dados));
     }
 

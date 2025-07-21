@@ -4,6 +4,7 @@ import com.fiap.hackaton.entity.colaborador.gateway.ColaboradorGateway;
 import com.fiap.hackaton.entity.colaborador.model.Colaborador;
 import com.fiap.hackaton.infrastructure.config.db.repository.ColaboradorRepository;
 import com.fiap.hackaton.infrastructure.config.db.schema.ColaboradorSchema;
+import com.fiap.hackaton.infrastructure.config.db.schema.HospitalSchema;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,20 +19,19 @@ public class ColaboradorDatabaseGateway implements ColaboradorGateway {
     }
 
     @Override
-    public Colaborador save(Colaborador colaborador) {
-        return this.colaboradorRepository.save(new ColaboradorSchema(colaborador)).toColaborador();
+    public Colaborador save(Colaborador colaborador, HospitalSchema hospital) {
+        return this.colaboradorRepository.save(new ColaboradorSchema(colaborador, hospital)).toColaborador();
     }
 
     @Override
-    public Colaborador update(Colaborador colaborador) {
-        return this.colaboradorRepository.save(new ColaboradorSchema(colaborador)).toColaborador();
+    public Colaborador update(Colaborador colaborador, HospitalSchema hospital) {
+        return this.colaboradorRepository.save(new ColaboradorSchema(colaborador, hospital)).toColaborador();
     }
 
     @Override
-    public Optional<Colaborador> findById(UUID id) {
+    public Optional<ColaboradorSchema> findById(UUID id) {
         return colaboradorRepository
-                .findById(id)
-                .map(ColaboradorSchema::toColaborador);
+                .findById(id);
     }
 
     @Override

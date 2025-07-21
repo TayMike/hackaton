@@ -1,12 +1,13 @@
 package com.fiap.hackaton.infrastructure.config.db.schema;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fiap.hackaton.entity.paciente.model.Paciente;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Getter
@@ -27,7 +28,8 @@ public class PacienteSchema {
     private String nome;
 
     @Column(name = "primeiro_dia_cadastro", nullable = false)
-    private LocalDateTime primeiroDiaCadastro;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
+    private OffsetDateTime primeiroDiaCadastro;
 
     @Column(nullable = false)
     private String cep;

@@ -1,5 +1,8 @@
 package com.fiap.hackaton.infrastructure.coletaInsumo.controller;
 
+import com.fiap.hackaton.entity.colaborador.exception.ColaboradorNotFoundException;
+import com.fiap.hackaton.entity.hospital.exception.HospitalNotFoundException;
+import com.fiap.hackaton.entity.paciente.exception.PacienteNotFoundException;
 import com.fiap.hackaton.infrastructure.coletaInsumo.dto.ColetaInsumoPublicData;
 import com.fiap.hackaton.infrastructure.coletaInsumo.dto.ColetaInsumoRegistrationData;
 import com.fiap.hackaton.usecase.coletaInsumo.CreateColetaInsumoUseCase;
@@ -20,7 +23,7 @@ public class CreateColetaInsumoController {
 
     @PostMapping("/coletaInsumos")
     @ResponseStatus(HttpStatus.CREATED)
-    public ColetaInsumoPublicData createColetaInsumo(@RequestBody ColetaInsumoRegistrationData dados) {
+    public ColetaInsumoPublicData createColetaInsumo(@RequestBody ColetaInsumoRegistrationData dados) throws HospitalNotFoundException, PacienteNotFoundException, ColaboradorNotFoundException {
         return new ColetaInsumoPublicData(createColetaInsumoUseCase.execute(dados));
     }
 

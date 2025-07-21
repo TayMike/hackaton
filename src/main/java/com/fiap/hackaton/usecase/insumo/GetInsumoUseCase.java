@@ -16,7 +16,7 @@ public class GetInsumoUseCase {
 
     public Insumo execute(UUID id) throws InsumoNotFoundException {
         return this.insumoGateway.findById(id).
-                orElseThrow(InsumoNotFoundException::new);
+                orElseThrow(InsumoNotFoundException::new).toInsumo();
     }
 
 }

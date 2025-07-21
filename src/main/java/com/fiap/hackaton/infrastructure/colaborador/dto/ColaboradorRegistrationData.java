@@ -1,19 +1,20 @@
 package com.fiap.hackaton.infrastructure.colaborador.dto;
 
 import com.fiap.hackaton.entity.colaborador.model.Colaborador;
-import com.fiap.hackaton.entity.hospital.model.Hospital;
 import com.fiap.hackaton.usecase.colaborador.dto.IColaboradorRegistrationData;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.util.UUID;
 
 public record ColaboradorRegistrationData(
         String cpf,
         String nome,
         String matricula,
-        LocalDateTime primeiroDiaCadastro,
+        OffsetDateTime primeiroDiaCadastro,
         String cep,
         Integer numeroCasa,
-        Hospital hospital,
+        UUID hospital,
         String setor,
         Boolean ativo
 ) implements IColaboradorRegistrationData {
@@ -26,7 +27,7 @@ public record ColaboradorRegistrationData(
                 colaborador.getPrimeiroDiaCadastro(),
                 colaborador.getCep(),
                 colaborador.getNumeroCasa(),
-                colaborador.getHospital(),
+                colaborador.getHospital().getId(),
                 colaborador.getSetor(),
                 colaborador.getAtivo()
         );

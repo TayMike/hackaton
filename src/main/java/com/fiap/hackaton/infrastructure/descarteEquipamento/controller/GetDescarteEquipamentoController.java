@@ -22,7 +22,7 @@ public class GetDescarteEquipamentoController {
     }
 
     @GetMapping("/descarteEquipamentos/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public DescarteEquipamentoPublicData getDescarteEquipamento(@PathVariable UUID id) throws DescarteEquipamentoNotFoundException {
         DescarteEquipamento descarteEquipamento = getDescarteEquipamentoUseCase.execute(id);
         return new DescarteEquipamentoPublicData(descarteEquipamento);

@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DescarteEquipamento (IDs Only)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "equipamentoIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "quantidade": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "colaboradorResponsavelId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "dataHoraDescarte": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "hospitalId": {
+      "type": "string",
+      "format": "uuid"
+    }
+  },
+  "required": [
+    "equipamentoIds",
+    "quantidade",
+    "colaboradorResponsavelId",
+    "dataHoraDescarte",
+    "hospitalId"
+  ]
+}

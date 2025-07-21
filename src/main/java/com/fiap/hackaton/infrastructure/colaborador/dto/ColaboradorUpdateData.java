@@ -1,14 +1,15 @@
 package com.fiap.hackaton.infrastructure.colaborador.dto;
 
 import com.fiap.hackaton.entity.colaborador.model.Colaborador;
-import com.fiap.hackaton.entity.hospital.model.Hospital;
 import com.fiap.hackaton.usecase.colaborador.dto.IColaboradorUpdateData;
+
+import java.util.UUID;
 
 public record ColaboradorUpdateData(
         String nome,
         String cep,
         Integer numeroCasa,
-        Hospital hospital,
+        UUID hospital,
         String setor,
         Boolean ativo
 ) implements IColaboradorUpdateData {
@@ -18,7 +19,7 @@ public record ColaboradorUpdateData(
                 colaborador.getNome(),
                 colaborador.getCep(),
                 colaborador.getNumeroCasa(),
-                colaborador.getHospital(),
+                colaborador.getHospital().getId(),
                 colaborador.getSetor(),
                 colaborador.getAtivo()
         );

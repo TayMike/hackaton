@@ -22,7 +22,7 @@ public class GetEntregaInsumoController {
     }
 
     @GetMapping("/entregaInsumos/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public EntregaInsumoPublicData getEntregaInsumo(@PathVariable UUID id) throws EntregaInsumoNotFoundException {
         EntregaInsumo entregaInsumo = getEntregaInsumoUseCase.execute(id);
         return new EntregaInsumoPublicData(entregaInsumo);

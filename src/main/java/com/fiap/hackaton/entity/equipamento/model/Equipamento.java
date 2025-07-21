@@ -15,15 +15,11 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Equipamento extends AbstractEntity<Long> {
+public class Equipamento extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
     @NonNull
     private String nome;
     @NonNull

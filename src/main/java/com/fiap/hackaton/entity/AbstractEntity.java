@@ -1,10 +1,18 @@
 package com.fiap.hackaton.entity;
 
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
+import java.util.UUID;
 
-public abstract class AbstractEntity<ID extends Serializable> implements Serializable {
+@Setter
+@Getter
+@MappedSuperclass
+public abstract class AbstractEntity implements Serializable {
 
-    private ID id;
+    protected UUID id;
 
     @Override
     public int hashCode() {
@@ -22,7 +30,7 @@ public abstract class AbstractEntity<ID extends Serializable> implements Seriali
             return false;
         if (getClass() != obj.getClass())
             return false;
-        AbstractEntity<?> other = (AbstractEntity<?>) obj;
+        AbstractEntity other = (AbstractEntity) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -35,5 +43,4 @@ public abstract class AbstractEntity<ID extends Serializable> implements Seriali
     public String toString() {
         return "id=" + id;
     }
-
 }

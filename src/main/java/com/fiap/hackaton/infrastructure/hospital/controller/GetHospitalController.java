@@ -22,7 +22,7 @@ public class GetHospitalController {
     }
 
     @GetMapping("/hospitais/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public HospitalPublicData getHospital(@PathVariable UUID id) throws HospitalNotFoundException {
         Hospital hospital = getHospitalUseCase.execute(id);
         return new HospitalPublicData(hospital);

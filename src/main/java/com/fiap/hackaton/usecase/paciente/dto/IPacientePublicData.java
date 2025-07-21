@@ -1,6 +1,6 @@
 package com.fiap.hackaton.usecase.paciente.dto;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public interface IPacientePublicData {
@@ -11,7 +11,7 @@ public interface IPacientePublicData {
 
     String nome();
 
-    LocalDateTime primeiroDiaCadastro();
+    OffsetDateTime primeiroDiaCadastro();
 
     String cep();
 

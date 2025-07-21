@@ -54,7 +54,7 @@ public class DescarteEquipamentoSchema {
                 .map(EquipamentoSchema::new)
                 .collect(Collectors.toList());
         this.quantidade = descarteEquipamento.getQuantidade();
-        this.colaboradorResponsavel = new ColaboradorSchema(descarteEquipamento.getColaboradorResponsavel());
+        //this.colaboradorResponsavel = new ColaboradorSchema(descarteEquipamento.getColaboradorResponsavel());
         this.dataHoraDescarte = descarteEquipamento.getDataHoraDescarte();
         this.hospital = new HospitalSchema(descarteEquipamento.getHospital());
     }

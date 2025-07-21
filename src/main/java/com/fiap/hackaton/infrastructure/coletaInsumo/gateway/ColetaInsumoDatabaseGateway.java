@@ -3,7 +3,7 @@ package com.fiap.hackaton.infrastructure.coletaInsumo.gateway;
 import com.fiap.hackaton.entity.coletaInsumo.gateway.ColetaInsumoGateway;
 import com.fiap.hackaton.entity.coletaInsumo.model.ColetaInsumo;
 import com.fiap.hackaton.infrastructure.config.db.repository.ColetaInsumoRepository;
-import com.fiap.hackaton.infrastructure.config.db.schema.ColetaInsumoSchema;
+import com.fiap.hackaton.infrastructure.config.db.schema.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,8 +18,9 @@ public class ColetaInsumoDatabaseGateway implements ColetaInsumoGateway {
     }
 
     @Override
-    public ColetaInsumo save(ColetaInsumo coletaInsumo) {
-        ColetaInsumoSchema saved = coletaInsumoRepository.save(new ColetaInsumoSchema(coletaInsumo));
+    public ColetaInsumo save(ColetaInsumo coletaInsumo, List<InsumoSchema> insumoSchemas, ColaboradorSchema colaboradorEntregador,
+                             PacienteSchema pacienteRecebedor, HospitalSchema hospital) {
+        ColetaInsumoSchema saved = coletaInsumoRepository.save(new ColetaInsumoSchema(coletaInsumo, insumoSchemas, colaboradorEntregador, pacienteRecebedor, hospital));
         return saved.toColeta();
     }
 

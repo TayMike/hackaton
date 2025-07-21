@@ -25,16 +25,13 @@ public class InsumoDatabaseGateway implements InsumoGateway {
     }
 
     @Override
-    public Optional<Insumo> findById(UUID id) {
-        return insumoRepository.findById(id).map(InsumoSchema::toInsumo);
+    public Optional<InsumoSchema> findById(UUID id) {
+        return insumoRepository.findById(id);
     }
 
     @Override
-    public List<Insumo> findAll() {
-        return insumoRepository.findAll()
-                .stream()
-                .map(InsumoSchema::toInsumo)
-                .collect(Collectors.toList());
+    public List<InsumoSchema> findAll() {
+        return insumoRepository.findAll().stream().toList();
     }
 
     @Override

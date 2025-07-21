@@ -15,8 +15,9 @@ public class GetHospitalUseCase {
     }
 
     public Hospital execute(UUID id) throws HospitalNotFoundException {
-        return this.hospitalGateway.findById(id).
-                orElseThrow(HospitalNotFoundException::new);
+        return hospitalGateway.findById(id)
+                .orElseThrow(HospitalNotFoundException::new)
+                .toHospital();
     }
 
 }

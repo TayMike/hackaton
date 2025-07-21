@@ -22,7 +22,7 @@ public class GetColetaInsumoController {
     }
 
     @GetMapping("/coletaInsumos/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public ColetaInsumoPublicData getColetaInsumo(@PathVariable UUID id) throws ColetaInsumoNotFoundException {
         ColetaInsumo coletaInsumo = getColetaInsumoUseCase.execute(id);
         return new ColetaInsumoPublicData(coletaInsumo);

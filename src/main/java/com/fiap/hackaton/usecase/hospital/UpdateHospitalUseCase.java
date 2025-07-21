@@ -17,7 +17,7 @@ public class UpdateHospitalUseCase {
 
     public Hospital execute(UUID id, IHospitalUpdateData dados) throws HospitalNotFoundException {
         Hospital hospital = this.hospitalGateway.findById(id)
-                .orElseThrow(HospitalNotFoundException::new);
+                .orElseThrow(HospitalNotFoundException::new).toHospital();
 
         if (dados.colaboradores() != null && !dados.colaboradores().isEmpty())
             hospital.setColaboradores(dados.colaboradores());

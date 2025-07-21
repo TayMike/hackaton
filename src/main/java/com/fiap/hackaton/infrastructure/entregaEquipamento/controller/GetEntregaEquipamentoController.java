@@ -22,7 +22,7 @@ public class GetEntregaEquipamentoController {
     }
 
     @GetMapping("/entregaEquipamentos/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public EntregaEquipamentoPublicData getEntregaEquipamento(@PathVariable UUID id) throws EntregaEquipamentoNotFoundException {
         EntregaEquipamento entregaEquipamento = getEntregaEquipamentoUseCase.execute(id);
         return new EntregaEquipamentoPublicData(entregaEquipamento);

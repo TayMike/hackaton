@@ -3,6 +3,7 @@ package com.fiap.hackaton.usecase.hospital;
 import com.fiap.hackaton.entity.hospital.exception.HospitalNotFoundException;
 import com.fiap.hackaton.entity.hospital.gateway.HospitalGateway;
 import com.fiap.hackaton.entity.hospital.model.Hospital;
+import com.fiap.hackaton.infrastructure.config.db.schema.HospitalSchema;
 
 import java.util.UUID;
 
@@ -15,12 +16,12 @@ public class DeleteHospitalUseCase {
     }
 
     public Hospital execute(UUID id) throws HospitalNotFoundException {
-        Hospital hospital = hospitalGateway.findById(id)
+        HospitalSchema hospitalSchema = hospitalGateway.findById(id)
                 .orElseThrow(HospitalNotFoundException::new);
 
         hospitalGateway.deleteById(id);
 
-        return hospital;
+        return hospitalSchema.toHospital();
     }
 
 }

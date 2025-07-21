@@ -17,15 +17,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-@Entity
 @Getter
 @NoArgsConstructor
-public class EntregaInsumo extends AbstractEntity<Long> {
+public class EntregaInsumo extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Setter
-    private UUID id;
     @NonNull
     private List<Insumo> insumo;
     @NonNull

@@ -22,7 +22,7 @@ public class GetColaboradorController {
     }
 
     @GetMapping("/colaboradores/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public ColaboradorPublicData getColaborador(@PathVariable UUID id) throws ColaboradorNotFoundException {
         Colaborador colaborador = getColaboradorUseCase.execute(id);
         return new ColaboradorPublicData(colaborador);

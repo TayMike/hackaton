@@ -56,9 +56,9 @@ public class ColetaEquipamentoSchema {
                 .map(EquipamentoSchema::new)
                 .collect(Collectors.toList());
         this.quantidades = coletaEquipamento.getQuantidades();
-        this.colaboradorEntregador = new ColaboradorSchema(coletaEquipamento.getColaboradorEntregador());
+        //this.colaboradorEntregador = new ColaboradorSchema(coletaEquipamento.getColaboradorEntregador());
         this.dataHoraColeta = coletaEquipamento.getDataHoraColeta();
-        this.colaboradorResponsavel = new ColaboradorSchema(coletaEquipamento.getColaboradorResponsavel());
+        //this.colaboradorResponsavel = new ColaboradorSchema(coletaEquipamento.getColaboradorResponsavel());
         this.hospital = new HospitalSchema(coletaEquipamento.getHospital());
     }
 

@@ -1,8 +1,6 @@
 package com.fiap.hackaton.usecase.colaborador.dto;
 
-import com.fiap.hackaton.entity.hospital.model.Hospital;
-
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public interface IColaboradorPublicData {
@@ -15,14 +13,16 @@ public interface IColaboradorPublicData {
 
     String matricula();
 
-    LocalDateTime primeiroDiaCadastro();
+    OffsetDateTime primeiroDiaCadastro();
 
     String cep();
 
     Integer numeroCasa();
 
-    Hospital hospital();
+    UUID hospital();
 
     String setor();
+
+    Boolean ativo();
 
 }

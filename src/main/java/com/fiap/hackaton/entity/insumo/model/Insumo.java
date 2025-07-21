@@ -1,7 +1,8 @@
 package com.fiap.hackaton.entity.insumo.model;
 
 import com.fiap.hackaton.entity.AbstractEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -9,17 +10,12 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.UUID;
 
-@Entity
 @Getter
+@Setter
 @NoArgsConstructor
-public class Insumo extends AbstractEntity<Long> {
+public class Insumo extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Setter
-    private UUID id;
     @NonNull
     private String nome;
     @NonNull
@@ -49,34 +45,6 @@ public class Insumo extends AbstractEntity<Long> {
         this.validade = validade;
         this.marca = marca;
         this.unidadeMedida = unidadeMedida;
-    }
-
-    public void setUnidadeMedida(@NonNull Medida unidadeMedida) {
-        this.unidadeMedida = unidadeMedida;
-    }
-
-    public void setMarca(@NonNull String marca) {
-        this.marca = marca;
-    }
-
-    public void setValidade(@NonNull LocalDate validade) {
-        this.validade = validade;
-    }
-
-    public void setPeso(@NonNull Long peso) {
-        this.peso = peso;
-    }
-
-    public void setQuantidade(@NonNull Long quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public void setCusto(@NonNull BigDecimal custo) {
-        this.custo = custo;
-    }
-
-    public void setNome(@NonNull String nome) {
-        this.nome = nome;
     }
 
 }
