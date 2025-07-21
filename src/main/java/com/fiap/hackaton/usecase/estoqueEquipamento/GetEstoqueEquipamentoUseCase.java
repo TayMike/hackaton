@@ -16,7 +16,7 @@ public class GetEstoqueEquipamentoUseCase {
 
     public EstoqueEquipamento execute(UUID id) throws EstoqueEquipamentoNotFoundException {
         return this.estoqueGateway.findById(id).
-                orElseThrow(EstoqueEquipamentoNotFoundException::new);
+                orElseThrow(EstoqueEquipamentoNotFoundException::new).toEstoqueEquipamento();
     }
 
 }

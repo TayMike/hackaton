@@ -1,5 +1,7 @@
 package com.fiap.hackaton.infrastructure.entregaEquipamento.controller;
 
+import com.fiap.hackaton.entity.colaborador.exception.ColaboradorNotFoundException;
+import com.fiap.hackaton.entity.hospital.exception.HospitalNotFoundException;
 import com.fiap.hackaton.infrastructure.entregaEquipamento.dto.EntregaEquipamentoPublicData;
 import com.fiap.hackaton.infrastructure.entregaEquipamento.dto.EntregaEquipamentoRegistrationData;
 import com.fiap.hackaton.usecase.entregaEquipamento.CreateEntregaEquipamentoUseCase;
@@ -20,7 +22,7 @@ public class CreateEntregaEquipamentoController {
 
     @PostMapping("/entregaEquipamentos")
     @ResponseStatus(HttpStatus.CREATED)
-    public EntregaEquipamentoPublicData createEntregaEquipamento(@RequestBody EntregaEquipamentoRegistrationData dados) {
+    public EntregaEquipamentoPublicData createEntregaEquipamento(@RequestBody EntregaEquipamentoRegistrationData dados) throws HospitalNotFoundException, ColaboradorNotFoundException {
         return new EntregaEquipamentoPublicData(createEntregaEquipamentoUseCase.execute(dados));
     }
 

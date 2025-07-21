@@ -1,12 +1,13 @@
 package com.fiap.hackaton.infrastructure.config.db.schema;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fiap.hackaton.entity.coletaEquipamento.model.ColetaEquipamento;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -40,7 +41,8 @@ public class ColetaEquipamentoSchema {
     private ColaboradorSchema colaboradorEntregador;
 
     @Column(nullable = false, name = "data_hora_coleta_equipamento")
-    private LocalDateTime dataHoraColeta;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
+    private OffsetDateTime dataHoraColeta;
 
     @ManyToOne
     @JoinColumn(name = "colaborador_responsavel_id", nullable = false)
@@ -50,16 +52,14 @@ public class ColetaEquipamentoSchema {
     @JoinColumn(name = "hospital_id", nullable = false)
     private HospitalSchema hospital;
 
-    public ColetaEquipamentoSchema(ColetaEquipamento coletaEquipamento) {
-        this.equipamentos = coletaEquipamento.getEquipamentos()
-                .stream()
-                .map(EquipamentoSchema::new)
-                .collect(Collectors.toList());
+    public ColetaEquipamentoSchema(ColetaEquipamento coletaEquipamento, List<EquipamentoSchema> equipamentos, ColaboradorSchema colaboradorEntregador, ColaboradorSchema colaboradorResponsavel, HospitalSchema hospitalSchema) {
+        this.id = coletaEquipamento.getId();
+        this.equipamentos = equipamentos;
         this.quantidades = coletaEquipamento.getQuantidades();
-        //this.colaboradorEntregador = new ColaboradorSchema(coletaEquipamento.getColaboradorEntregador());
+        this.colaboradorEntregador = colaboradorEntregador;
         this.dataHoraColeta = coletaEquipamento.getDataHoraColeta();
-        //this.colaboradorResponsavel = new ColaboradorSchema(coletaEquipamento.getColaboradorResponsavel());
-        this.hospital = new HospitalSchema(coletaEquipamento.getHospital());
+        this.colaboradorResponsavel = colaboradorResponsavel;
+        this.hospital = hospitalSchema;
     }
 
     public ColetaEquipamento toColetaEquipamento() {

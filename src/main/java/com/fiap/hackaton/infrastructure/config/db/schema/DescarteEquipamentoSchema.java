@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -43,20 +43,19 @@ public class DescarteEquipamentoSchema {
     private ColaboradorSchema colaboradorResponsavel;
 
     @Column(name = "data_hora_descarte", nullable = false)
-    private LocalDateTime dataHoraDescarte;
+    private OffsetDateTime dataHoraDescarte;
 
     @ManyToOne
     @JoinColumn(name = "hospital_id", nullable = false)
     private HospitalSchema hospital;
 
-    public DescarteEquipamentoSchema(DescarteEquipamento descarteEquipamento) {
-        this.equipamentos = descarteEquipamento.getEquipamentos().stream()
-                .map(EquipamentoSchema::new)
-                .collect(Collectors.toList());
+    public DescarteEquipamentoSchema(DescarteEquipamento descarteEquipamento, List<EquipamentoSchema> equipamentos, ColaboradorSchema colaboradorSchema, HospitalSchema hospitalSchema) {
+        this.id = descarteEquipamento.getId();
+        this.equipamentos = equipamentos;
         this.quantidade = descarteEquipamento.getQuantidade();
-        //this.colaboradorResponsavel = new ColaboradorSchema(descarteEquipamento.getColaboradorResponsavel());
+        this.colaboradorResponsavel = colaboradorSchema;
         this.dataHoraDescarte = descarteEquipamento.getDataHoraDescarte();
-        this.hospital = new HospitalSchema(descarteEquipamento.getHospital());
+        this.hospital = hospitalSchema;
     }
 
     public DescarteEquipamento toDescarteEquipamento() {

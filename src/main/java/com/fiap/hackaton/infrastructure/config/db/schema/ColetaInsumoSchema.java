@@ -1,13 +1,12 @@
 package com.fiap.hackaton.infrastructure.config.db.schema;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fiap.hackaton.entity.coletaInsumo.model.ColetaInsumo;
-import com.fiap.hackaton.entity.insumo.model.Insumo;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -42,6 +41,7 @@ public class ColetaInsumoSchema {
     private ColaboradorSchema colaboradorEntregador;
 
     @Column(name = "data_hora_coleta_insumo", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
     private OffsetDateTime dataHoraColeta;
 
     @ManyToOne

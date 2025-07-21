@@ -102,9 +102,17 @@ public class MvcConfig {
     }
 
     @Bean
-    public CreateColetaEquipamentoUseCase createColetaEquipamentoUseCase(ColetaEquipamentoRepository coletaEquipamentoRepository) {
+    public CreateColetaEquipamentoUseCase createColetaEquipamentoUseCase(ColetaEquipamentoRepository coletaEquipamentoRepository,
+                                                                         ColaboradorRepository colaboradorRepository,
+                                                                           PacienteRepository pacienteRepository,
+                                                                           HospitalRepository hospitalRepository,
+                                                                           EquipamentoRepository equipamentoRepository) {
         ColetaEquipamentoGateway coletaEquipamentoGateway = new ColetaEquipamentoDatabaseGateway(coletaEquipamentoRepository);
-        return new CreateColetaEquipamentoUseCase(coletaEquipamentoGateway);
+        ColaboradorGateway colaboradorGateway = new ColaboradorDatabaseGateway(colaboradorRepository);
+        PacienteGateway pacienteGateway = new PacienteDatabaseGateway(pacienteRepository);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        EquipamentoGateway equipamentoGateway = new EquipamentoDatabaseGateway(equipamentoRepository);
+        return new CreateColetaEquipamentoUseCase(coletaEquipamentoGateway, equipamentoGateway, colaboradorGateway, hospitalGateway);
     }
 
     @Bean
@@ -146,9 +154,15 @@ public class MvcConfig {
     }
 
     @Bean
-    public CreateDescarteEquipamentoUseCase createDescarteEquipamentoUseCase(DescarteEquipamentoRepository descarteEquipamentoRepository) {
+    public CreateDescarteEquipamentoUseCase createDescarteEquipamentoUseCase(DescarteEquipamentoRepository descarteEquipamentoRepository,
+                                                                             EquipamentoRepository equipamentoRepository,
+                                                                             ColaboradorRepository colaboradorRepository,
+                                                                             HospitalRepository hospitalRepository) {
         DescarteEquipamentoGateway descarteEquipamentoGateway = new DescarteEquipamentoDatabaseGateway(descarteEquipamentoRepository);
-        return new CreateDescarteEquipamentoUseCase(descarteEquipamentoGateway);
+        EquipamentoGateway equipamentoGateway = new EquipamentoDatabaseGateway(equipamentoRepository);
+        ColaboradorGateway colaboradorGateway = new ColaboradorDatabaseGateway(colaboradorRepository);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        return new CreateDescarteEquipamentoUseCase(descarteEquipamentoGateway, equipamentoGateway, colaboradorGateway, hospitalGateway);
     }
 
     @Bean
@@ -165,9 +179,15 @@ public class MvcConfig {
 
     // --- EntregaEquipamento ---
     @Bean
-    public CreateEntregaEquipamentoUseCase createEntregaEquipamentoUseCase(EntregaEquipamentoRepository entregaEquipamentoRepository) {
+    public CreateEntregaEquipamentoUseCase createEntregaEquipamentoUseCase(EntregaEquipamentoRepository entregaEquipamentoRepository,
+                                                                           EquipamentoRepository equipamentoRepository,
+                                                                           ColaboradorRepository colaboradorRepository,
+                                                                           HospitalRepository hospitalRepository) {
         EntregaEquipamentoGateway entregaEquipamentoGateway = new EntregaEquipamentoDatabaseGateway(entregaEquipamentoRepository);
-        return new CreateEntregaEquipamentoUseCase(entregaEquipamentoGateway);
+        EquipamentoGateway equipamentoGateway = new EquipamentoDatabaseGateway(equipamentoRepository);
+        ColaboradorGateway colaboradorGateway = new ColaboradorDatabaseGateway(colaboradorRepository);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        return new CreateEntregaEquipamentoUseCase(entregaEquipamentoGateway, equipamentoGateway, colaboradorGateway, hospitalGateway);
     }
 
     @Bean
@@ -184,9 +204,15 @@ public class MvcConfig {
 
     // --- EntregaInsumo ---
     @Bean
-    public CreateEntregaInsumoUseCase createEntregaInsumoUseCase(EntregaInsumoRepository entregaInsumoRepository) {
+    public CreateEntregaInsumoUseCase createEntregaInsumoUseCase(EntregaInsumoRepository entregaInsumoRepository,
+                                                                 InsumoRepository insumoRepository,
+                                                                 ColaboradorRepository colaboradorRepository,
+                                                                 HospitalRepository hospitalRepository) {
         EntregaInsumoGateway entregaInsumoGateway = new EntregaInsumoDatabaseGateway(entregaInsumoRepository);
-        return new CreateEntregaInsumoUseCase(entregaInsumoGateway);
+        InsumoGateway insumoGateway = new InsumoDatabaseGateway(insumoRepository);
+        ColaboradorGateway colaboradorGateway = new ColaboradorDatabaseGateway(colaboradorRepository);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        return new CreateEntregaInsumoUseCase(entregaInsumoGateway, insumoGateway, colaboradorGateway, hospitalGateway);
     }
 
     @Bean
@@ -203,9 +229,11 @@ public class MvcConfig {
 
     // --- Equipamento ---
     @Bean
-    public CreateEquipamentoUseCase createEquipamentoUseCase(EquipamentoRepository equipamentoRepository) {
+    public CreateEquipamentoUseCase createEquipamentoUseCase(EquipamentoRepository equipamentoRepository,
+                                                             HospitalRepository hospitalRepository) {
         EquipamentoGateway equipamentoGateway = new EquipamentoDatabaseGateway(equipamentoRepository);
-        return new CreateEquipamentoUseCase(equipamentoGateway);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        return new CreateEquipamentoUseCase(equipamentoGateway, hospitalGateway);
     }
 
     @Bean
@@ -227,16 +255,21 @@ public class MvcConfig {
     }
 
     @Bean
-    public UpdateEquipamentoUseCase updateEquipamentoUseCase(EquipamentoRepository equipamentoRepository) {
+    public UpdateEquipamentoUseCase updateEquipamentoUseCase(EquipamentoRepository equipamentoRepository, HospitalRepository hospitalRepository) {
         EquipamentoGateway equipamentoGateway = new EquipamentoDatabaseGateway(equipamentoRepository);
-        return new UpdateEquipamentoUseCase(equipamentoGateway);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        return new UpdateEquipamentoUseCase(equipamentoGateway, hospitalGateway);
     }
 
     // --- EstoqueEquipamento ---
     @Bean
-    public CreateEstoqueEquipamentoUseCase createEstoqueEquipamentoUseCase(EstoqueEquipamentoRepository estoqueEquipamentoRepository) {
+    public CreateEstoqueEquipamentoUseCase createEstoqueEquipamentoUseCase(EstoqueEquipamentoRepository estoqueEquipamentoRepository,
+                                                                           EquipamentoRepository equipamentoRepository,
+                                                                           HospitalRepository hospitalRepository) {
         EstoqueEquipamentoGateway estoqueEquipamentoGateway = new EstoqueEquipamentoDatabaseGateway(estoqueEquipamentoRepository);
-        return new CreateEstoqueEquipamentoUseCase(estoqueEquipamentoGateway);
+        EquipamentoGateway equipamentoGateway = new EquipamentoDatabaseGateway(equipamentoRepository);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        return new CreateEstoqueEquipamentoUseCase(estoqueEquipamentoGateway, equipamentoGateway, hospitalGateway);
     }
 
     @Bean
@@ -258,16 +291,24 @@ public class MvcConfig {
     }
 
     @Bean
-    public UpdateEstoqueEquipamentoUseCase updateEstoqueEquipamentoUseCase(EstoqueEquipamentoRepository estoqueEquipamentoRepository) {
+    public UpdateEstoqueEquipamentoUseCase updateEstoqueEquipamentoUseCase(EstoqueEquipamentoRepository estoqueEquipamentoRepository,
+                                                                           EquipamentoRepository equipamentoRepository,
+                                                                           HospitalRepository hospitalRepository) {
         EstoqueEquipamentoGateway estoqueEquipamentoGateway = new EstoqueEquipamentoDatabaseGateway(estoqueEquipamentoRepository);
-        return new UpdateEstoqueEquipamentoUseCase(estoqueEquipamentoGateway);
+        EquipamentoGateway equipamentoGateway = new EquipamentoDatabaseGateway(equipamentoRepository);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        return new UpdateEstoqueEquipamentoUseCase(estoqueEquipamentoGateway, equipamentoGateway, hospitalGateway);
     }
 
     // --- EstoqueInsumo ---
     @Bean
-    public CreateEstoqueInsumoUseCase createEstoqueInsumoUseCase(EstoqueInsumoRepository estoqueInsumoRepository) {
+    public CreateEstoqueInsumoUseCase createEstoqueInsumoUseCase(EstoqueInsumoRepository estoqueInsumoRepository,
+                                                                 InsumoRepository insumoRepository,
+                                                                 HospitalRepository hospitalRepository) {
         EstoqueInsumoGateway estoqueInsumoGateway = new EstoqueInsumoDatabaseGateway(estoqueInsumoRepository);
-        return new CreateEstoqueInsumoUseCase(estoqueInsumoGateway);
+        InsumoGateway insumoGateway = new InsumoDatabaseGateway(insumoRepository);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        return new CreateEstoqueInsumoUseCase(estoqueInsumoGateway, insumoGateway, hospitalGateway);
     }
 
     @Bean
@@ -289,9 +330,13 @@ public class MvcConfig {
     }
 
     @Bean
-    public UpdateEstoqueInsumoUseCase updateEstoqueInsumoUseCase(EstoqueInsumoRepository estoqueInsumoRepository) {
+    public UpdateEstoqueInsumoUseCase updateEstoqueInsumoUseCase(EstoqueInsumoRepository estoqueInsumoRepository,
+                                                                 InsumoRepository insumoRepository,
+                                                                 HospitalRepository hospitalRepository) {
         EstoqueInsumoGateway estoqueInsumoGateway = new EstoqueInsumoDatabaseGateway(estoqueInsumoRepository);
-        return new UpdateEstoqueInsumoUseCase(estoqueInsumoGateway);
+        InsumoGateway insumoGateway = new InsumoDatabaseGateway(insumoRepository);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        return new UpdateEstoqueInsumoUseCase(estoqueInsumoGateway, insumoGateway, hospitalGateway);
     }
 
     // --- Hospital ---
@@ -321,9 +366,11 @@ public class MvcConfig {
     }
 
     @Bean
-    public UpdateHospitalUseCase updateHospitalUseCase(HospitalRepository hospitalRepository) {
+    public UpdateHospitalUseCase updateHospitalUseCase(HospitalRepository hospitalRepository,
+                                                       ColaboradorRepository colaboradorRepository) {
         HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
-        return new UpdateHospitalUseCase(hospitalGateway);
+        ColaboradorGateway colaboradorGateway = new ColaboradorDatabaseGateway(colaboradorRepository);
+        return new UpdateHospitalUseCase(hospitalGateway, colaboradorGateway);
     }
 
     // --- Insumo ---
@@ -359,9 +406,13 @@ public class MvcConfig {
 
     // --- Leito ---
     @Bean
-    public CreateLeitoUseCase createLeitoUseCase(LeitoRepository leitoRepository) {
+    public CreateLeitoUseCase createLeitoUseCase(LeitoRepository leitoRepository,
+                                                 HospitalRepository hospitalRepository,
+                                                 PacienteRepository pacienteRepository) {
         LeitoGateway leitoGateway = new LeitoDatabaseGateway(leitoRepository);
-        return new CreateLeitoUseCase(leitoGateway);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        PacienteGateway pacienteGateway = new PacienteDatabaseGateway(pacienteRepository);
+        return new CreateLeitoUseCase(leitoGateway, hospitalGateway, pacienteGateway);
     }
 
     @Bean
@@ -383,9 +434,13 @@ public class MvcConfig {
     }
 
     @Bean
-    public UpdateLeitoUseCase updateLeitoUseCase(LeitoRepository leitoRepository) {
+    public UpdateLeitoUseCase updateLeitoUseCase(LeitoRepository leitoRepository,
+                                                 HospitalRepository hospitalRepository,
+                                                 PacienteRepository pacienteRepository) {
         LeitoGateway leitoGateway = new LeitoDatabaseGateway(leitoRepository);
-        return new UpdateLeitoUseCase(leitoGateway);
+        HospitalGateway hospitalGateway = new HospitalDatabaseGateway(hospitalRepository);
+        PacienteGateway pacienteGateway = new PacienteDatabaseGateway(pacienteRepository);
+        return new UpdateLeitoUseCase(leitoGateway, hospitalGateway, pacienteGateway);
     }
 
     // --- Paciente ---

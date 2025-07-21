@@ -19,13 +19,13 @@ public class ColaboradorDatabaseGateway implements ColaboradorGateway {
     }
 
     @Override
-    public Colaborador save(Colaborador colaborador, HospitalSchema hospital) {
-        return this.colaboradorRepository.save(new ColaboradorSchema(colaborador, hospital)).toColaborador();
+    public ColaboradorSchema save(Colaborador colaborador, HospitalSchema hospital) {
+        return this.colaboradorRepository.save(new ColaboradorSchema(colaborador, hospital));
     }
 
     @Override
-    public Colaborador update(Colaborador colaborador, HospitalSchema hospital) {
-        return this.colaboradorRepository.save(new ColaboradorSchema(colaborador, hospital)).toColaborador();
+    public ColaboradorSchema update(Colaborador colaborador, HospitalSchema hospital) {
+        return this.colaboradorRepository.save(new ColaboradorSchema(colaborador, hospital));
     }
 
     @Override
@@ -35,11 +35,8 @@ public class ColaboradorDatabaseGateway implements ColaboradorGateway {
     }
 
     @Override
-    public List<Colaborador> findAll() {
+    public List<ColaboradorSchema> findAll() {
         return colaboradorRepository
-                .findAll()
-                .stream()
-                .map(ColaboradorSchema::toColaborador)
-                .toList();
+                .findAll().stream().toList();
     }
 }

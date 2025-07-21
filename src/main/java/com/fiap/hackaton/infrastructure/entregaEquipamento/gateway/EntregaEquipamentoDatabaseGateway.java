@@ -3,7 +3,10 @@ package com.fiap.hackaton.infrastructure.entregaEquipamento.gateway;
 import com.fiap.hackaton.entity.entregaEquipamento.gateway.EntregaEquipamentoGateway;
 import com.fiap.hackaton.entity.entregaEquipamento.model.EntregaEquipamento;
 import com.fiap.hackaton.infrastructure.config.db.repository.EntregaEquipamentoRepository;
+import com.fiap.hackaton.infrastructure.config.db.schema.ColaboradorSchema;
 import com.fiap.hackaton.infrastructure.config.db.schema.EntregaEquipamentoSchema;
+import com.fiap.hackaton.infrastructure.config.db.schema.EquipamentoSchema;
+import com.fiap.hackaton.infrastructure.config.db.schema.HospitalSchema;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,8 +21,8 @@ public class EntregaEquipamentoDatabaseGateway implements EntregaEquipamentoGate
     }
 
     @Override
-    public EntregaEquipamento save(EntregaEquipamento entregaEquipamento) {
-        EntregaEquipamentoSchema saved = entregaEquipamentoRepository.save(new EntregaEquipamentoSchema(entregaEquipamento));
+    public EntregaEquipamento save(EntregaEquipamento entregaEquipamento, List<EquipamentoSchema> equipamentos, ColaboradorSchema colaboradorRecebedorSchema, HospitalSchema hospitalSchema) {
+        EntregaEquipamentoSchema saved = entregaEquipamentoRepository.save(new EntregaEquipamentoSchema(entregaEquipamento, equipamentos, colaboradorRecebedorSchema, hospitalSchema));
         return saved.toEntregaEquipamento();
     }
 

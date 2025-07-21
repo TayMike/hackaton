@@ -2,18 +2,13 @@ package com.fiap.hackaton.entity.equipamento.model;
 
 import com.fiap.hackaton.entity.AbstractEntity;
 import com.fiap.hackaton.entity.hospital.model.Hospital;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.UUID;
+import java.time.OffsetDateTime;
 
 @Getter
 @Setter
@@ -25,15 +20,15 @@ public class Equipamento extends AbstractEntity {
     @NonNull
     private BigDecimal custo;
     @NonNull
-    private LocalDate tempoGarantia;
+    private OffsetDateTime tempoGarantia;
     @NonNull
-    private LocalDate proximaManutencaoPreventiva;
+    private OffsetDateTime proximaManutencaoPreventiva;
     @NonNull
     private String marca;
     @NonNull
     private Hospital hospital;
 
-    public Equipamento(@NonNull String nome, @NonNull BigDecimal custo, @NonNull LocalDate tempoGarantia, @NonNull LocalDate proximaManutencaoPreventiva, @NonNull String marca, @NonNull Hospital hospital) {
+    public Equipamento(@NonNull String nome, @NonNull BigDecimal custo, @NonNull OffsetDateTime tempoGarantia, @NonNull OffsetDateTime proximaManutencaoPreventiva, @NonNull String marca, @NonNull Hospital hospital) {
         this.nome = nome;
         this.custo = custo;
         this.tempoGarantia = tempoGarantia;

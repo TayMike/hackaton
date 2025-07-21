@@ -2,18 +2,18 @@ package com.fiap.hackaton.infrastructure.equipamento.dto;
 
 import com.fiap.hackaton.entity.equipamento.model.Equipamento;
 import com.fiap.hackaton.usecase.equipamento.dto.IEquipamentoUpdateData;
-import com.fiap.hackaton.entity.hospital.model.Hospital;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.UUID;
 
 public record EquipamentoUpdateData(
         String nome,
         BigDecimal custo,
-        LocalDate tempoGarantia,
-        LocalDate proximaManutencaoPreventiva,
+        OffsetDateTime tempoGarantia,
+        OffsetDateTime proximaManutencaoPreventiva,
         String marca,
-        Hospital hospital
+        UUID hospital
 ) implements IEquipamentoUpdateData {
 
     public EquipamentoUpdateData(Equipamento equipamento) {
@@ -23,7 +23,7 @@ public record EquipamentoUpdateData(
                 equipamento.getTempoGarantia(),
                 equipamento.getProximaManutencaoPreventiva(),
                 equipamento.getMarca(),
-                equipamento.getHospital()
+                equipamento.getHospital().getId()
         );
     }
 }

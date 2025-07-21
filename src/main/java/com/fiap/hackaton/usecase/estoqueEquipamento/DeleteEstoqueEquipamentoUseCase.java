@@ -16,7 +16,7 @@ public class DeleteEstoqueEquipamentoUseCase {
 
     public EstoqueEquipamento execute(UUID id) throws EstoqueEquipamentoNotFoundException {
         EstoqueEquipamento estoqueEquipamento = estoqueGateway.findById(id)
-                .orElseThrow(EstoqueEquipamentoNotFoundException::new);
+                .orElseThrow(EstoqueEquipamentoNotFoundException::new).toEstoqueEquipamento();
 
         estoqueGateway.deleteById(id);
 

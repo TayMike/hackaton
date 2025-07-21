@@ -1,12 +1,11 @@
 package com.fiap.hackaton.usecase.hospital.dto;
 
-import com.fiap.hackaton.entity.colaborador.model.Colaborador;
-
 import java.util.List;
+import java.util.UUID;
 
 public interface IHospitalUpdateData {
 
-    List<Colaborador> colaboradores();
+    List<UUID> colaboradores();
 
     String cep();
 

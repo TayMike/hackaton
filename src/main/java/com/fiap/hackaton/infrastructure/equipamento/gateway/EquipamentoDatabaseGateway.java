@@ -4,11 +4,11 @@ import com.fiap.hackaton.entity.equipamento.gateway.EquipamentoGateway;
 import com.fiap.hackaton.entity.equipamento.model.Equipamento;
 import com.fiap.hackaton.infrastructure.config.db.repository.EquipamentoRepository;
 import com.fiap.hackaton.infrastructure.config.db.schema.EquipamentoSchema;
+import com.fiap.hackaton.infrastructure.config.db.schema.HospitalSchema;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class EquipamentoDatabaseGateway implements EquipamentoGateway {
 
@@ -19,28 +19,23 @@ public class EquipamentoDatabaseGateway implements EquipamentoGateway {
     }
 
     @Override
-    public Equipamento save(Equipamento equipamento) {
-        EquipamentoSchema saved = equipamentoRepository.save(new EquipamentoSchema(equipamento));
-        return saved.toEquipamento();
+    public EquipamentoSchema save(Equipamento equipamento, HospitalSchema hospitalSchema) {
+        return equipamentoRepository.save(new EquipamentoSchema(equipamento, hospitalSchema));
     }
 
     @Override
-    public Optional<Equipamento> findById(UUID id) {
-        return equipamentoRepository.findById(id).map(EquipamentoSchema::toEquipamento);
+    public Optional<EquipamentoSchema> findById(UUID id) {
+        return equipamentoRepository.findById(id);
     }
 
     @Override
-    public List<Equipamento> findAll() {
-        return equipamentoRepository.findAll()
-                .stream()
-                .map(EquipamentoSchema::toEquipamento)
-                .collect(Collectors.toList());
+    public List<EquipamentoSchema> findAll() {
+        return equipamentoRepository.findAll();
     }
 
     @Override
-    public Equipamento update(Equipamento equipamento) {
-        EquipamentoSchema updated = equipamentoRepository.save(new EquipamentoSchema(equipamento));
-        return updated.toEquipamento();
+    public EquipamentoSchema update(Equipamento equipamento, HospitalSchema hospitalSchema) {
+        return equipamentoRepository.save(new EquipamentoSchema(equipamento, hospitalSchema));
     }
 
     @Override

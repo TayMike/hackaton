@@ -1,5 +1,7 @@
 package com.fiap.hackaton.infrastructure.entregaInsumo.controller;
 
+import com.fiap.hackaton.entity.colaborador.exception.ColaboradorNotFoundException;
+import com.fiap.hackaton.entity.hospital.exception.HospitalNotFoundException;
 import com.fiap.hackaton.infrastructure.entregaInsumo.dto.EntregaInsumoPublicData;
 import com.fiap.hackaton.infrastructure.entregaInsumo.dto.EntregaInsumoRegistrationData;
 import com.fiap.hackaton.usecase.entregaInsumo.CreateEntregaInsumoUseCase;
@@ -20,7 +22,7 @@ public class CreateEntregaInsumoController {
 
     @PostMapping("/entregaInsumos")
     @ResponseStatus(HttpStatus.CREATED)
-    public EntregaInsumoPublicData createEntregaInsumo(@RequestBody EntregaInsumoRegistrationData dados) {
+    public EntregaInsumoPublicData createEntregaInsumo(@RequestBody EntregaInsumoRegistrationData dados) throws HospitalNotFoundException, ColaboradorNotFoundException {
         return new EntregaInsumoPublicData(createEntregaInsumoUseCase.execute(dados));
     }
 

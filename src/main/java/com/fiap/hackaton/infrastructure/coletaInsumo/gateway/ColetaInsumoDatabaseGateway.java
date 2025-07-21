@@ -18,23 +18,18 @@ public class ColetaInsumoDatabaseGateway implements ColetaInsumoGateway {
     }
 
     @Override
-    public ColetaInsumo save(ColetaInsumo coletaInsumo, List<InsumoSchema> insumoSchemas, ColaboradorSchema colaboradorEntregador,
+    public ColetaInsumoSchema save(ColetaInsumo coletaInsumo, List<InsumoSchema> insumoSchemas, ColaboradorSchema colaboradorEntregador,
                              PacienteSchema pacienteRecebedor, HospitalSchema hospital) {
-        ColetaInsumoSchema saved = coletaInsumoRepository.save(new ColetaInsumoSchema(coletaInsumo, insumoSchemas, colaboradorEntregador, pacienteRecebedor, hospital));
-        return saved.toColeta();
+        return coletaInsumoRepository.save(new ColetaInsumoSchema(coletaInsumo, insumoSchemas, colaboradorEntregador, pacienteRecebedor, hospital));
     }
 
     @Override
-    public Optional<ColetaInsumo> findById(UUID id) {
-        return coletaInsumoRepository.findById(id)
-                .map(ColetaInsumoSchema::toColeta);
+    public Optional<ColetaInsumoSchema> findById(UUID id) {
+        return coletaInsumoRepository.findById(id);
     }
 
     @Override
-    public List<ColetaInsumo> findAll() {
-        return coletaInsumoRepository.findAll()
-                .stream()
-                .map(ColetaInsumoSchema::toColeta)
-                .toList();
+    public List<ColetaInsumoSchema> findAll() {
+        return coletaInsumoRepository.findAll().stream().toList();
     }
 }

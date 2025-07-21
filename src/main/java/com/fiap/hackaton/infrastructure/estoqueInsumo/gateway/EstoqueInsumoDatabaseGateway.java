@@ -4,11 +4,12 @@ import com.fiap.hackaton.entity.estoqueInsumo.gateway.EstoqueInsumoGateway;
 import com.fiap.hackaton.entity.estoqueInsumo.model.EstoqueInsumo;
 import com.fiap.hackaton.infrastructure.config.db.repository.EstoqueInsumoRepository;
 import com.fiap.hackaton.infrastructure.config.db.schema.EstoqueInsumoSchema;
+import com.fiap.hackaton.infrastructure.config.db.schema.HospitalSchema;
+import com.fiap.hackaton.infrastructure.config.db.schema.InsumoSchema;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class EstoqueInsumoDatabaseGateway implements EstoqueInsumoGateway {
 
@@ -19,28 +20,25 @@ public class EstoqueInsumoDatabaseGateway implements EstoqueInsumoGateway {
     }
 
     @Override
-    public EstoqueInsumo save(EstoqueInsumo estoqueInsumo) {
-        EstoqueInsumoSchema schema = new EstoqueInsumoSchema(estoqueInsumo);
-        return estoqueInsumoRepository.save(schema).toEstoqueInsumo();
+    public EstoqueInsumoSchema save(EstoqueInsumo estoqueInsumo, List<InsumoSchema> itens, HospitalSchema hospitalSchema) {
+        EstoqueInsumoSchema schema = new EstoqueInsumoSchema(estoqueInsumo, itens, hospitalSchema);
+        return estoqueInsumoRepository.save(schema);
     }
 
     @Override
-    public Optional<EstoqueInsumo> findById(UUID id) {
-        return estoqueInsumoRepository.findById(id).map(EstoqueInsumoSchema::toEstoqueInsumo);
+    public Optional<EstoqueInsumoSchema> findById(UUID id) {
+        return estoqueInsumoRepository.findById(id);
     }
 
     @Override
-    public List<EstoqueInsumo> findAll() {
-        return estoqueInsumoRepository.findAll()
-                .stream()
-                .map(EstoqueInsumoSchema::toEstoqueInsumo)
-                .collect(Collectors.toList());
+    public List<EstoqueInsumoSchema> findAll() {
+        return estoqueInsumoRepository.findAll();
     }
 
     @Override
-    public EstoqueInsumo update(EstoqueInsumo estoqueInsumo) {
-        EstoqueInsumoSchema schema = new EstoqueInsumoSchema(estoqueInsumo);
-        return estoqueInsumoRepository.save(schema).toEstoqueInsumo();
+    public EstoqueInsumoSchema update(EstoqueInsumo estoqueInsumo, List<InsumoSchema> itens, HospitalSchema hospitalSchema) {
+        EstoqueInsumoSchema schema = new EstoqueInsumoSchema(estoqueInsumo, itens, hospitalSchema);
+        return estoqueInsumoRepository.save(schema);
     }
 
     @Override

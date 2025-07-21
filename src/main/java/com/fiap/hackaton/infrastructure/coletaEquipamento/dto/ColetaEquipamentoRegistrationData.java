@@ -1,31 +1,31 @@
 package com.fiap.hackaton.infrastructure.coletaEquipamento.dto;
 
-import com.fiap.hackaton.entity.colaborador.model.Colaborador;
 import com.fiap.hackaton.entity.coletaEquipamento.model.ColetaEquipamento;
 import com.fiap.hackaton.entity.equipamento.model.Equipamento;
-import com.fiap.hackaton.entity.hospital.model.Hospital;
 import com.fiap.hackaton.usecase.coletaEquipamento.dto.IColetaEquipamentoRegistrationData;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.UUID;
 
 public record ColetaEquipamentoRegistrationData(
-        List<Equipamento> equipamentos,
+        List<UUID> equipamentos,
         List<Long> quantidades,
-        Colaborador colaboradorEntregador,
-        LocalDateTime dataHoraColeta,
-        Colaborador colaboradorResponsavel,
-        Hospital hospital
+        UUID colaboradorEntregador,
+        OffsetDateTime dataHoraColeta,
+        UUID colaboradorResponsavel,
+        UUID hospital
 ) implements IColetaEquipamentoRegistrationData {
 
     public ColetaEquipamentoRegistrationData(ColetaEquipamento coletaEquipamento) {
-        this(
-                coletaEquipamento.getEquipamentos(),
+        this(  
+                coletaEquipamento.getEquipamentos().stream()
+                        .map(Equipamento::getId)
+                        .toList(),
                 coletaEquipamento.getQuantidades(),
-                coletaEquipamento.getColaboradorEntregador(),
+                coletaEquipamento.getColaboradorEntregador().getId(),
                 coletaEquipamento.getDataHoraColeta(),
-                coletaEquipamento.getColaboradorResponsavel(),
-                coletaEquipamento.getHospital()
-        );
+                coletaEquipamento.getColaboradorResponsavel().getId(),
+                coletaEquipamento.getHospital().getId());
     }
 }

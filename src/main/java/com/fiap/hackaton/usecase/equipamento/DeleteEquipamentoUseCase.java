@@ -16,7 +16,7 @@ public class DeleteEquipamentoUseCase {
 
     public Equipamento execute(UUID id) throws EquipamentoNotFoundException {
         Equipamento equipamento = equipamentoGateway.findById(id)
-                .orElseThrow(EquipamentoNotFoundException::new);
+                .orElseThrow(EquipamentoNotFoundException::new).toEquipamento();
 
         equipamentoGateway.deleteById(id);
 
