@@ -53,18 +53,17 @@ class UpdateColaboradorUseCaseTest {
         ColaboradorSchema colaboradorSchema = mock(ColaboradorSchema.class);
         when(colaboradorGateway.findById(colaboradorId)).thenReturn(Optional.of(colaboradorSchema));
 
-        Colaborador colaborador = mock(Colaborador.class);
-        when(colaboradorSchema.toColaborador()).thenReturn(colaborador);
+        Colaborador colaborador1 = mock(Colaborador.class);
+        when(colaboradorSchema.toColaborador()).thenReturn(colaborador1);
 
-        Colaborador colaboradorAtualizado = mock(Colaborador.class);
-        when(colaboradorGateway.update(colaborador, hospitalSchema)).thenReturn(colaboradorAtualizado);
+        when(colaboradorGateway.update(colaborador1, hospitalSchema)).thenReturn(colaboradorSchema);
 
         Colaborador resultado = useCase.execute(colaboradorId, dados);
 
         assertNotNull(resultado);
         verify(hospitalGateway, times(1)).findById(hospital1Id);
         verify(colaboradorGateway, times(1)).findById(colaboradorId);
-        verify(colaboradorGateway, times(1)).update(colaborador, hospitalSchema);
+        verify(colaboradorGateway, times(1)).update(colaborador1, hospitalSchema);
     }
 
     @Test
@@ -122,8 +121,7 @@ class UpdateColaboradorUseCaseTest {
         Colaborador colaborador = mock(Colaborador.class);
         when(colaboradorSchema.toColaborador()).thenReturn(colaborador);
 
-        Colaborador colaboradorAtualizado = mock(Colaborador.class);
-        when(colaboradorGateway.update(colaborador, hospitalSchema)).thenReturn(colaboradorAtualizado);
+        when(colaboradorGateway.update(colaborador, hospitalSchema)).thenReturn(colaboradorSchema);
 
         Colaborador resultado = useCase.execute(colaboradorId, dados);
 

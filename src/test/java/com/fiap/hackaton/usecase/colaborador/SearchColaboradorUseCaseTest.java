@@ -2,6 +2,7 @@ package com.fiap.hackaton.usecase.colaborador;
 
 import com.fiap.hackaton.entity.colaborador.gateway.ColaboradorGateway;
 import com.fiap.hackaton.entity.colaborador.model.Colaborador;
+import com.fiap.hackaton.infrastructure.config.db.schema.ColaboradorSchema;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,7 +27,7 @@ class SearchColaboradorUseCaseTest {
     @Test
     @DisplayName("Deve retornar lista de colaboradores quando existirem colaboradores")
     void shouldReturnListOfColaboradoresWhenColaboradoresExist() {
-        Colaborador colaborador = mock(Colaborador.class);
+        ColaboradorSchema colaborador = mock(ColaboradorSchema.class);
         when(colaboradorGateway.findAll()).thenReturn(List.of(colaborador));
 
         List<Colaborador> resultado = useCase.execute();
