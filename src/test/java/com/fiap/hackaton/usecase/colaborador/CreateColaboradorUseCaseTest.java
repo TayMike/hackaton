@@ -4,6 +4,7 @@ import com.fiap.hackaton.entity.colaborador.gateway.ColaboradorGateway;
 import com.fiap.hackaton.entity.colaborador.model.Colaborador;
 import com.fiap.hackaton.entity.hospital.exception.HospitalNotFoundException;
 import com.fiap.hackaton.entity.hospital.gateway.HospitalGateway;
+import com.fiap.hackaton.infrastructure.config.db.schema.ColaboradorSchema;
 import com.fiap.hackaton.infrastructure.config.db.schema.HospitalSchema;
 import com.fiap.hackaton.usecase.colaborador.CreateColaboradorUseCase;
 import com.fiap.hackaton.usecase.colaborador.dto.IColaboradorRegistrationData;
@@ -53,8 +54,11 @@ class CreateColaboradorUseCaseTest {
         when(hospitalGateway.findById(hospital1Id)).thenReturn(Optional.of(hospitalSchema));
         when(hospitalSchema.toHospital()).thenReturn(mock(com.fiap.hackaton.entity.hospital.model.Hospital.class));
 
-        Colaborador colaboradorCriado = mock(Colaborador.class);
-        when(colaboradorGateway.save(any(Colaborador.class), eq(hospitalSchema))).thenReturn(colaboradorCriado);
+        ColaboradorSchema colaboradorSchema = mock(ColaboradorSchema.class);
+        when(colaboradorGateway.save(any(Colaborador.class), eq(hospitalSchema))).thenReturn(colaboradorSchema);
+
+        Colaborador colaborador = mock(Colaborador.class);
+        when(colaboradorSchema.toColaborador()).thenReturn(colaborador);
 
         Colaborador resultado = useCase.execute(dados);
 
