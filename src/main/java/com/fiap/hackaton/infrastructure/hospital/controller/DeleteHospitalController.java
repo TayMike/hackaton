@@ -1,7 +1,6 @@
 package com.fiap.hackaton.infrastructure.hospital.controller;
 
 import com.fiap.hackaton.entity.hospital.exception.HospitalNotFoundException;
-import com.fiap.hackaton.infrastructure.hospital.dto.HospitalPublicData;
 import com.fiap.hackaton.usecase.hospital.DeleteHospitalUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,8 +21,8 @@ public class DeleteHospitalController {
 
     @DeleteMapping("/hospitais/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public HospitalPublicData deleteHospital(@PathVariable UUID id) throws HospitalNotFoundException {
-        return new HospitalPublicData(deleteHospitalUserCase.execute(id));
+    public void deleteHospital(@PathVariable UUID id) throws HospitalNotFoundException {
+        deleteHospitalUserCase.execute(id);
     }
 
 }

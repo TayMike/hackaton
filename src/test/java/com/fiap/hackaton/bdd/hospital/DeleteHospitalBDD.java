@@ -12,14 +12,15 @@ import static io.restassured.RestAssured.given;
 public class DeleteHospitalBDD {
 
     private Response response;
-    private String hospitalJson;
     private String hospitalId;
 
     @Dado("que existe um hospital cadastrado - Delete")
     public void que_existe_um_hospital_cadastrado() {
 
-        hospitalJson = """
+        String hospitalJson = """
         {
+            "nome": "Hospital Central",
+            "cnpj": "12345678000402",
             "colaboradores": [],
             "cep": "12345678",
             "numero": 100,
@@ -43,7 +44,6 @@ public class DeleteHospitalBDD {
 
         response = given()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .body(hospitalJson)
                 .when()
                 .delete("/hospitais/" + hospitalId);
     }

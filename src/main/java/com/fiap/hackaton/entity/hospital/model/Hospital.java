@@ -14,6 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 public class Hospital extends AbstractEntity {
 
+    @NonNull
+    private String nome;
+    @NonNull
+    private String cnpj;
     private List<Colaborador> colaboradores;
     @NonNull
     private String cep;
@@ -24,7 +28,9 @@ public class Hospital extends AbstractEntity {
     @NonNull
     private Integer quantidadeLeitoMaximo;
 
-    public Hospital(List<Colaborador> colaboradores, @NonNull String cep, @NonNull Integer numero, @NonNull Integer quantidadeLeitoAtual, @NonNull Integer quantidadeLeitoMaximo) {
+    public Hospital(@NonNull String nome, @NonNull String cnpj, List<Colaborador> colaboradores, @NonNull String cep, @NonNull Integer numero, @NonNull Integer quantidadeLeitoAtual, @NonNull Integer quantidadeLeitoMaximo) {
+        this.nome = nome;
+        this.cnpj = cnpj;
         this.colaboradores = colaboradores;
         this.cep = cep;
         this.numero = numero;

@@ -16,7 +16,6 @@ public class UpdateColaboradorBDD {
 
     private Response response;
     private String colaboradorId;
-    private String colaboradorJson;
     private String colaboradorJsonPut;
     private final OffsetDateTime dataCadastro = OffsetDateTime.now();
     private final String dataFormatada = dataCadastro.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
@@ -25,6 +24,8 @@ public class UpdateColaboradorBDD {
     public void que_existe_um_colaborador_cadastrado() {
         String hospitalJson = """
     {
+        "nome": "Hospital Central",
+        "cnpj": "12345678000204",
         "colaboradores": [],
         "cep": "12345678",
         "numero": 100,
@@ -41,19 +42,19 @@ public class UpdateColaboradorBDD {
 
         response.then().statusCode(201);
 
-        colaboradorJson = String.format("""
-        {
-            "cpf": "12345678901",
-            "nome": "João Silva",
-            "matricula": "MAT123",
-            "primeiroDiaCadastro": "%s",
-            "cep": "01001000",
-            "numeroCasa": 101,
-            "hospital": "%s",
-            "setor": "UTI",
-            "ativo": true
-        }
-        """, dataFormatada, response.jsonPath().getString("id"));
+        String colaboradorJson = String.format("""
+                {
+                    "cpf": "12345678920",
+                    "nome": "João Silva",
+                    "matricula": "MAT123",
+                    "primeiroDiaCadastro": "%s",
+                    "cep": "01001000",
+                    "numeroCasa": 101,
+                    "hospital": "%s",
+                    "setor": "UTI",
+                    "ativo": true
+                }
+                """, dataFormatada, response.jsonPath().getString("id"));
 
         Response responseColaborador = given()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)

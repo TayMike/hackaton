@@ -22,20 +22,21 @@ public class EstoqueInsumoSchema {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "estoque_insumo_insumo",
+            name = "estoque_insumo_itens",
             joinColumns = @JoinColumn(name = "estoque_id"),
             inverseJoinColumns = @JoinColumn(name = "insumo_id")
     )
     private List<InsumoSchema> itens = new ArrayList<>();
+
 
     @ElementCollection
     @CollectionTable(name = "estoque_quantidade", joinColumns = @JoinColumn(name = "estoque_id"))
     @Column(name = "quantidade", nullable = false)
     private List<Long> quantidades = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "hospital_id", nullable = false)
     private HospitalSchema hospital;
 

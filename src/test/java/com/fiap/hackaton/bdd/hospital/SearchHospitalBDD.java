@@ -18,7 +18,9 @@ public class SearchHospitalBDD {
 
         String hospitalJson = """
     {
-        "hospitais": [],
+        "nome": "Hospital Central",
+        "cnpj": "12345678000404",
+        "colaboradores": [],
         "cep": "12345678",
         "numero": 100,
         "quantidadeLeitoAtual": 10,

@@ -1,11 +1,9 @@
 package com.fiap.hackaton.bdd.colaborador;
 
-import com.fiap.hackaton.infrastructure.config.db.repository.HospitalRepository;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import io.restassured.response.Response;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
@@ -16,10 +14,7 @@ import static io.restassured.RestAssured.given;
 
 public class GetColaboradorBDD {
 
-    @Autowired
-    private HospitalRepository hospitalRepository;
     private Response response;
-    private String colaboradorJson;
     private String colaboradorId;
     private final OffsetDateTime dataCadastro = OffsetDateTime.now();
     private final String dataFormatada = dataCadastro.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
@@ -28,6 +23,8 @@ public class GetColaboradorBDD {
     public void que_existe_um_colaborador_cadastrado_em_um_hospital() {
         String hospitalJson = """
     {
+        "nome": "Hospital Central",
+        "cnpj": "12345678000202",
         "colaboradores": [],
         "cep": "12345678",
         "numero": 100,
@@ -44,19 +41,19 @@ public class GetColaboradorBDD {
 
         response.then().statusCode(201);
 
-        colaboradorJson = String.format("""
-        {
-            "cpf": "12345678900",
-            "nome": "João Silva",
-            "matricula": "MAT123",
-            "primeiroDiaCadastro": "%s",
-            "cep": "01001000",
-            "numeroCasa": 101,
-            "hospital": "%s",
-            "setor": "UTI",
-            "ativo": true
-        }
-        """, dataFormatada, response.jsonPath().getString("id"));
+        String colaboradorJson = String.format("""
+                {
+                    "cpf": "12345678900",
+                    "nome": "João Silva",
+                    "matricula": "MAT123",
+                    "primeiroDiaCadastro": "%s",
+                    "cep": "01001000",
+                    "numeroCasa": 101,
+                    "hospital": "%s",
+                    "setor": "UTI",
+                    "ativo": true
+                }
+                """, dataFormatada, response.jsonPath().getString("id"));
 
         Response responseColaborador = given()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)

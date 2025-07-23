@@ -15,7 +15,6 @@ import static io.restassured.RestAssured.given;
 public class SearchColaboradorBDD {
 
     private Response response;
-    private String colaboradorJson;
     private final OffsetDateTime dataCadastro = OffsetDateTime.now();
     private final String dataFormatada = dataCadastro.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
 
@@ -23,6 +22,8 @@ public class SearchColaboradorBDD {
     public void que_existem_varios_colaboradores_cadastrados_em_um_hospital() {
         String hospitalJson = """
     {
+        "nome": "Hospital Central",
+        "cnpj": "12345678000203",
         "colaboradores": [],
         "cep": "12345678",
         "numero": 100,
@@ -39,19 +40,19 @@ public class SearchColaboradorBDD {
 
         response.then().statusCode(201);
 
-        colaboradorJson = String.format("""
-        {
-            "cpf": "12345678900",
-            "nome": "João Silva",
-            "matricula": "MAT123",
-            "primeiroDiaCadastro": "%s",
-            "cep": "01001000",
-            "numeroCasa": 101,
-            "hospital": "%s",
-            "setor": "UTI",
-            "ativo": true
-        }
-        """, dataFormatada, response.jsonPath().getString("id"));
+        String colaboradorJson = String.format("""
+                {
+                    "cpf": "12345678900",
+                    "nome": "João Silva",
+                    "matricula": "MAT123",
+                    "primeiroDiaCadastro": "%s",
+                    "cep": "01001000",
+                    "numeroCasa": 101,
+                    "hospital": "%s",
+                    "setor": "UTI",
+                    "ativo": true
+                }
+                """, dataFormatada, response.jsonPath().getString("id"));
     }
 
     @Quando("os colaboradores foram buscados pelo ID - Search")

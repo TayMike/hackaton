@@ -22,7 +22,9 @@ public class SearchColetaInsumoBDD {
     public void que_existem_varios_coletaInsumos_cadastrados_em_um_hospital() {
         String hospitalJson = """
     {
-        "coleta insumoes": [],
+        "nome": "Hospital Central",
+        "cnpj": "12345678000303",
+        "colaboradores": [],
         "cep": "12345678",
         "numero": 100,
         "quantidadeLeitoAtual": 10,

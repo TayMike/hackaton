@@ -30,7 +30,7 @@ public class CreateHospitalUseCase {
                 .map(ColaboradorSchema::toColaborador)
                 .collect(Collectors.toList());
 
-        Hospital hospital = new Hospital(colaboradores, dados.cep(), dados.numero(), dados.quantidadeLeitoAtual(), dados.quantidadeLeitoMaximo());
+        Hospital hospital = new Hospital(dados.nome(), dados.cnpj(), colaboradores, dados.cep(), dados.numero(), dados.quantidadeLeitoAtual(), dados.quantidadeLeitoMaximo());
 
         return this.hospitalGateway.save(hospital, colaboradoresSchema).toHospital();
     }

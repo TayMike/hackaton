@@ -10,11 +10,8 @@
     "insumos": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "id": { "type": "string", "format": "uuid" }
-        },
-        "required": ["id"]
+        "type": "string",
+        "format": "uuid"
       }
     },
     "quantidades": {
@@ -24,13 +21,7 @@
     "colaboradorEntregador": { "type": "string", "format": "uuid" },
     "dataHoraColeta": { "type": "string", "format": "date-time" },
     "pacienteRecebedor": { "type": "string", "format": "uuid" },
-    "hospital": {
-      "type": "object",
-      "properties": {
-        "id": { "type": "string", "format": "uuid" }
-      },
-      "required": ["id"]
-    }
+    "hospital": { "type": "string", "format": "uuid" }
   },
   "required": [
     "insumos",

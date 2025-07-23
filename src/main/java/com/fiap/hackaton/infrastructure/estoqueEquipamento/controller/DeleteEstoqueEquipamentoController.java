@@ -1,7 +1,6 @@
 package com.fiap.hackaton.infrastructure.estoqueEquipamento.controller;
 
 import com.fiap.hackaton.entity.estoqueEquipamento.exception.EstoqueEquipamentoNotFoundException;
-import com.fiap.hackaton.infrastructure.estoqueEquipamento.dto.EstoqueEquipamentoPublicData;
 import com.fiap.hackaton.usecase.estoqueEquipamento.DeleteEstoqueEquipamentoUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,8 +21,8 @@ public class DeleteEstoqueEquipamentoController {
 
     @DeleteMapping("/estoqueEquipamentos/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public EstoqueEquipamentoPublicData deleteEstoqueEquipamento(@PathVariable UUID id) throws EstoqueEquipamentoNotFoundException {
-        return new EstoqueEquipamentoPublicData(deleteEstoqueEquipamentoUserCase.execute(id));
+    public void deleteEstoqueEquipamento(@PathVariable UUID id) throws EstoqueEquipamentoNotFoundException {
+        deleteEstoqueEquipamentoUserCase.execute(id);
     }
 
 }

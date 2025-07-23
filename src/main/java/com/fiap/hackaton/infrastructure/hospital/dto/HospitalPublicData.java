@@ -9,7 +9,9 @@ import java.util.UUID;
 
 public record HospitalPublicData(
         UUID id,
-        List<Colaborador> colaboradores,
+        String nome,
+        String cnpj,
+        List<UUID> colaboradores,
         String cep,
         Integer numero,
         Integer quantidadeLeitoAtual,
@@ -19,7 +21,11 @@ public record HospitalPublicData(
     public HospitalPublicData(Hospital hospital) {
         this(
                 hospital.getId(),
-                hospital.getColaboradores(),
+                hospital.getNome(),
+                hospital.getCnpj(),
+                hospital.getColaboradores().stream()
+                        .map(Colaborador::getId)
+                        .toList(),
                 hospital.getCep(),
                 hospital.getNumero(),
                 hospital.getQuantidadeLeitoAtual(),

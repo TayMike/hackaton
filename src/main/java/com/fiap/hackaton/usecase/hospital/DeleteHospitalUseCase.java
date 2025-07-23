@@ -15,13 +15,11 @@ public class DeleteHospitalUseCase {
         this.hospitalGateway = hospitalGateway;
     }
 
-    public Hospital execute(UUID id) throws HospitalNotFoundException {
-        HospitalSchema hospitalSchema = hospitalGateway.findById(id)
+    public void execute(UUID id) throws HospitalNotFoundException {
+        hospitalGateway.findById(id)
                 .orElseThrow(HospitalNotFoundException::new);
 
         hospitalGateway.deleteById(id);
-
-        return hospitalSchema.toHospital();
     }
 
 }

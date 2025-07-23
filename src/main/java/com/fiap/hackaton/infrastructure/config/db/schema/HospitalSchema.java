@@ -23,6 +23,12 @@ public class HospitalSchema {
     private UUID id;
 
     @Column(nullable = false)
+    private String nome;
+
+    @Column(nullable = false, unique = true)
+    private String cnpj;
+
+    @Column(nullable = false)
     private String cep;
 
     @Column(nullable = false)
@@ -39,6 +45,8 @@ public class HospitalSchema {
 
     public HospitalSchema(Hospital hospital, List<ColaboradorSchema> colaboradores) {
         this.id = hospital.getId();
+        this.nome = hospital.getNome();
+        this.cnpj = hospital.getCnpj();
         this.colaboradores = colaboradores;
         this.cep = hospital.getCep();
         this.numero = hospital.getNumero();
@@ -48,6 +56,8 @@ public class HospitalSchema {
 
     public Hospital toHospital() {
         Hospital hospital = new Hospital(
+                this.getNome(),
+                this.getCnpj(),
                 this.getColaboradores().stream().map(ColaboradorSchema::toColaborador).collect(Collectors.toList()),
                 this.getCep(),
                 this.getNumero(),
@@ -60,6 +70,8 @@ public class HospitalSchema {
 
     public Hospital toHospitalSemColaboradores() {
         Hospital hospital = new Hospital(
+                this.getNome(),
+                this.getCnpj(),
                 new ArrayList<>(),
                 this.getCep(),
                 this.getNumero(),

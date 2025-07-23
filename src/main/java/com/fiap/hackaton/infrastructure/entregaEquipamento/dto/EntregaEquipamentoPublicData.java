@@ -1,9 +1,7 @@
 package com.fiap.hackaton.infrastructure.entregaEquipamento.dto;
 
-import com.fiap.hackaton.entity.colaborador.model.Colaborador;
 import com.fiap.hackaton.entity.entregaEquipamento.model.EntregaEquipamento;
 import com.fiap.hackaton.entity.equipamento.model.Equipamento;
-import com.fiap.hackaton.entity.hospital.model.Hospital;
 import com.fiap.hackaton.usecase.entregaEquipamento.dto.IEntregaEquipamentoPublicData;
 
 import java.time.LocalDateTime;
@@ -12,21 +10,21 @@ import java.util.UUID;
 
 public record EntregaEquipamentoPublicData (
         UUID id,
-        List<Equipamento> equipamentos,
+        List<UUID> equipamentos,
         List<Long> quantidade,
-        Colaborador colaboradorRecebedor,
+        UUID colaboradorRecebedor,
         LocalDateTime dataHoraRecebimento,
-        Hospital hospital
+        UUID hospital
 ) implements IEntregaEquipamentoPublicData {
 
     public EntregaEquipamentoPublicData(EntregaEquipamento entregaEquipamento) {
         this(
                 entregaEquipamento.getId(),
-                entregaEquipamento.getEquipamentos(),
+                entregaEquipamento.getEquipamentos().stream().map(Equipamento::getId).toList(),
                 entregaEquipamento.getQuantidade(),
-                entregaEquipamento.getColaboradorRecebedor(),
+                entregaEquipamento.getColaboradorRecebedor().getId(),
                 entregaEquipamento.getDataHoraRecebimento(),
-                entregaEquipamento.getHospital()
+                entregaEquipamento.getHospital().getId()
         );
     }
 }

@@ -5,6 +5,8 @@ import java.util.UUID;
 
 public interface IHospitalRegistrationData {
 
+    String nome();
+    String cnpj();
     List<UUID> colaboradores();
     String cep();
     Integer numero();

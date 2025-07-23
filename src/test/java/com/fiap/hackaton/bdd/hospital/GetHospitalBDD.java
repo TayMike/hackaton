@@ -12,21 +12,22 @@ import static io.restassured.RestAssured.given;
 public class GetHospitalBDD {
 
     private Response response;
-    private String hospitalJson;
     private String hospitalId;
 
     @Dado("que existe um hospital cadastrado - Get")
     public void que_existe_um_hospital_cadastrado() {
 
-        hospitalJson = """
-        {
-            "colaboradores": [],
-            "cep": "12345678",
-            "numero": 100,
-            "quantidadeLeitoAtual": 10,
-            "quantidadeLeitoMaximo": 20
-        }
-        """;
+        String hospitalJson = """
+                {
+                    "nome": "Hospital Central",
+                    "cnpj": "12345678000403",
+                    "colaboradores": [],
+                    "cep": "12345678",
+                    "numero": 100,
+                    "quantidadeLeitoAtual": 10,
+                    "quantidadeLeitoMaximo": 20
+                }
+                """;
 
         Response responseColaborador = given()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)

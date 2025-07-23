@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.UUID;
 
 public record HospitalRegistrationData(
+        String nome,
+        String cnpj,
         List<UUID> colaboradores,
         String cep,
         Integer numero,
@@ -17,6 +19,8 @@ public record HospitalRegistrationData(
 
     public HospitalRegistrationData(Hospital hospital) {
         this(
+                hospital.getNome(),
+                hospital.getCnpj(),
                 hospital.getColaboradores().stream()
                         .map(Colaborador::getId)
                         .toList(),
