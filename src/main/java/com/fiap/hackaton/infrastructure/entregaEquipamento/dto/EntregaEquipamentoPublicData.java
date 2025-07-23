@@ -4,7 +4,7 @@ import com.fiap.hackaton.entity.entregaEquipamento.model.EntregaEquipamento;
 import com.fiap.hackaton.entity.equipamento.model.Equipamento;
 import com.fiap.hackaton.usecase.entregaEquipamento.dto.IEntregaEquipamentoPublicData;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,7 +13,7 @@ public record EntregaEquipamentoPublicData (
         List<UUID> equipamentos,
         List<Long> quantidade,
         UUID colaboradorRecebedor,
-        LocalDateTime dataHoraRecebimento,
+        OffsetDateTime dataHoraRecebimento,
         UUID hospital
 ) implements IEntregaEquipamentoPublicData {
 

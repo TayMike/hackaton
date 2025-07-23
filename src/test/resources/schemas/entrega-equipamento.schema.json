@@ -7,7 +7,7 @@
       "type": "string",
       "format": "uuid"
     },
-    "equipamentoIds": {
+    "equipamentos": {
       "type": "array",
       "items": {
         "type": "string",
@@ -21,7 +21,7 @@
         "minimum": 0
       }
     },
-    "colaboradorRecebedorId": {
+    "colaboradorRecebedor": {
       "type": "string",
       "format": "uuid"
     },
@@ -29,16 +29,16 @@
       "type": "string",
       "format": "date-time"
     },
-    "hospitalId": {
+    "hospital": {
       "type": "string",
       "format": "uuid"
     }
   },
   "required": [
-    "equipamentoIds",
+    "equipamentos",
     "quantidade",
-    "colaboradorRecebedorId",
+    "colaboradorRecebedor",
     "dataHoraRecebimento",
-    "hospitalId"
+    "hospital"
   ]
 }

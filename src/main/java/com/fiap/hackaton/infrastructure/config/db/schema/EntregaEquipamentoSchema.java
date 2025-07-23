@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -43,7 +43,7 @@ public class EntregaEquipamentoSchema {
     private ColaboradorSchema colaboradorRecebedor;
 
     @Column(name = "data_hora_recebimento", nullable = false)
-    private LocalDateTime dataHoraRecebimento;
+    private OffsetDateTime dataHoraRecebimento;
 
     @ManyToOne
     @JoinColumn(name = "hospital_id", nullable = false)

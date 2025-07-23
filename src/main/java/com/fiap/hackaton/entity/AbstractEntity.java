@@ -19,7 +19,6 @@ public abstract class AbstractEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.UUID)
     protected UUID id;
 
-
     @Override
     public int hashCode() {
         final int prime = 31;
