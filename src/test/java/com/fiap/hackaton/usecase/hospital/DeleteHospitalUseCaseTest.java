@@ -35,9 +35,8 @@ class DeleteHospitalUseCaseTest {
         when(hospitalGateway.findById(id)).thenReturn(Optional.of(hospitalSchema));
         when(hospitalSchema.toHospital()).thenReturn(hospital);
 
-        Hospital resultado = useCase.execute(id);
+        useCase.execute(id);
 
-        assertNotNull(resultado);
         verify(hospitalGateway, times(1)).findById(id);
         verify(hospitalGateway, times(1)).deleteById(id);
     }

@@ -34,10 +34,8 @@ class DeleteInsumoUseCaseTest {
         when(insumoGateway.findById(id)).thenReturn(Optional.of(insumoSchema));
         when(insumoSchema.toInsumo()).thenReturn(insumo);
 
-        Insumo resultado = useCase.execute(id);
+        useCase.execute(id);
 
-        assertNotNull(resultado);
-        assertEquals(insumo, resultado);
         verify(insumoGateway, times(1)).findById(id);
         verify(insumoGateway, times(1)).deleteById(id);
     }
