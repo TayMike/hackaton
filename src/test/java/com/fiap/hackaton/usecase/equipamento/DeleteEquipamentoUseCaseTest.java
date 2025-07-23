@@ -35,10 +35,8 @@ class DeleteEquipamentoUseCaseTest {
         when(equipamentoGateway.findById(id)).thenReturn(Optional.of(equipamentoSchema));
         when(equipamentoSchema.toEquipamento()).thenReturn(equipamento);
 
-        Equipamento resultado = useCase.execute(id);
+        useCase.execute(id);
 
-        assertNotNull(resultado);
-        assertEquals(equipamento, resultado);
         verify(equipamentoGateway, times(1)).findById(id);
         verify(equipamentoGateway, times(1)).deleteById(id);
     }

@@ -35,10 +35,8 @@ class DeleteLeitoUseCaseTest {
         when(leitoGateway.findById(id)).thenReturn(Optional.of(leitoSchema));
         when(leitoSchema.toLeito()).thenReturn(leito);
 
-        Leito resultado = useCase.execute(id);
+        useCase.execute(id);
 
-        assertNotNull(resultado);
-        assertEquals(leito, resultado);
         verify(leitoGateway, times(1)).findById(id);
         verify(leitoGateway, times(1)).deleteById(id);
     }

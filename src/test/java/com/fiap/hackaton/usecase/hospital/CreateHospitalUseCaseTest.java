@@ -36,6 +36,8 @@ class CreateHospitalUseCaseTest {
     void shouldCreateHospitalWithValidDataAndExistingColaboradores() {
         UUID colaboradorId = UUID.randomUUID();
         IHospitalRegistrationData dados = mock(IHospitalRegistrationData.class);
+        when(dados.nome()).thenReturn("Hospital Teste");
+        when(dados.cnpj()).thenReturn("12312312312312");
         when(dados.colaboradores()).thenReturn(List.of(colaboradorId));
         when(dados.cep()).thenReturn("12345678");
         when(dados.numero()).thenReturn(100);
@@ -63,6 +65,8 @@ class CreateHospitalUseCaseTest {
     @DisplayName("Deve criar hospital sem colaboradores quando lista de colaboradores está vazia")
     void shouldCreateHospitalWithNoColaboradoresWhenColaboradoresListIsEmpty() {
         IHospitalRegistrationData dados = mock(IHospitalRegistrationData.class);
+        when(dados.nome()).thenReturn("Hospital Teste");
+        when(dados.cnpj()).thenReturn("12312312312312");
         when(dados.colaboradores()).thenReturn(Collections.emptyList());
         when(dados.cep()).thenReturn("87654321");
         when(dados.numero()).thenReturn(200);
@@ -88,6 +92,8 @@ class CreateHospitalUseCaseTest {
     void shouldIgnoreNonexistentColaboradoresInColaboradoresList() {
         UUID colaboradorId = UUID.randomUUID();
         IHospitalRegistrationData dados = mock(IHospitalRegistrationData.class);
+        when(dados.nome()).thenReturn("Hospital Teste");
+        when(dados.cnpj()).thenReturn("12312312312312");
         when(dados.colaboradores()).thenReturn(List.of(colaboradorId));
         when(dados.cep()).thenReturn("11111111");
         when(dados.numero()).thenReturn(300);
