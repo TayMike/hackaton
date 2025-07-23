@@ -1,6 +1,6 @@
 package com.fiap.hackaton.usecase.entregaEquipamento.dto;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,7 +12,7 @@ public interface IEntregaEquipamentoRegistrationData {
 
     UUID colaboradorRecebedor();
 
-    LocalDateTime dataHoraRecebimento();
+    OffsetDateTime dataHoraRecebimento();
 
     UUID hospital();
 

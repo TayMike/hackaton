@@ -1,13 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "EntregaInsumo (IDs Only)",
+  "title": "EntregaInsumo",
   "type": "object",
   "properties": {
     "id": {
       "type": "string",
       "format": "uuid"
     },
-    "insumoIds": {
+    "insumo": {
       "type": "array",
       "items": {
         "type": "string",
@@ -21,24 +21,24 @@
         "minimum": 0
       }
     },
-    "colaboradorRecebedorId": {
+    "colaboradorRecebedor": {
       "type": "string",
       "format": "uuid"
     },
     "dataHoraRecebimento": {
-      "type": "string",
-      "format": "date-time"
+      "type": "string"
     },
-    "hospitalId": {
+    "hospital": {
       "type": "string",
       "format": "uuid"
     }
   },
   "required": [
-    "insumoIds",
+    "id",
+    "insumo",
     "quantidade",
-    "colaboradorRecebedorId",
+    "colaboradorRecebedor",
     "dataHoraRecebimento",
-    "hospitalId"
+    "hospital"
   ]
 }

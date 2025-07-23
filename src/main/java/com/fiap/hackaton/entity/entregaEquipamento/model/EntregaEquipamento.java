@@ -4,18 +4,12 @@ import com.fiap.hackaton.entity.AbstractEntity;
 import com.fiap.hackaton.entity.colaborador.model.Colaborador;
 import com.fiap.hackaton.entity.equipamento.model.Equipamento;
 import com.fiap.hackaton.entity.hospital.model.Hospital;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
@@ -28,11 +22,11 @@ public class EntregaEquipamento extends AbstractEntity {
     @NonNull
     private Colaborador colaboradorRecebedor;
     @NonNull
-    private LocalDateTime dataHoraRecebimento;
+    private OffsetDateTime dataHoraRecebimento;
     @NonNull
     private Hospital hospital;
 
-    public EntregaEquipamento(@NonNull List<Equipamento> equipamentos, @NonNull List<Long> quantidade, @NonNull Colaborador colaboradorRecebedor, @NonNull LocalDateTime dataHoraRecebimento, @NonNull Hospital hospital) {
+    public EntregaEquipamento(@NonNull List<Equipamento> equipamentos, @NonNull List<Long> quantidade, @NonNull Colaborador colaboradorRecebedor, @NonNull OffsetDateTime dataHoraRecebimento, @NonNull Hospital hospital) {
         this.equipamentos = equipamentos;
         this.quantidade = quantidade;
         this.colaboradorRecebedor = colaboradorRecebedor;
