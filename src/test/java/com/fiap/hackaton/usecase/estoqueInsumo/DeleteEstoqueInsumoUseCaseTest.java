@@ -35,10 +35,8 @@ class DeleteEstoqueInsumoUseCaseTest {
         when(estoqueGateway.findById(id)).thenReturn(Optional.of(estoqueSchema));
         when(estoqueSchema.toEstoqueInsumo()).thenReturn(estoque);
 
-        EstoqueInsumo resultado = useCase.execute(id);
+        useCase.execute(id);
 
-        assertNotNull(resultado);
-        assertEquals(estoque, resultado);
         verify(estoqueGateway, times(1)).findById(id);
         verify(estoqueGateway, times(1)).deleteById(id);
     }

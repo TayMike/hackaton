@@ -35,10 +35,8 @@ class DeleteEstoqueEquipamentoUseCaseTest {
         when(estoqueGateway.findById(id)).thenReturn(Optional.of(estoqueSchema));
         when(estoqueSchema.toEstoqueEquipamento()).thenReturn(estoque);
 
-        EstoqueEquipamento resultado = useCase.execute(id);
+        useCase.execute(id);
 
-        assertNotNull(resultado);
-        assertEquals(estoque, resultado);
         verify(estoqueGateway, times(1)).findById(id);
         verify(estoqueGateway, times(1)).deleteById(id);
     }
