@@ -15,7 +15,6 @@ import static io.restassured.RestAssured.given;
 public class GetColetaInsumoBDD {
 
     private Response response;
-    private String coletaInsumoJson;
     private String coletaInsumoId;
     private final OffsetDateTime dataCadastro = OffsetDateTime.now();
     private final String dataFormatada = dataCadastro.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
@@ -24,7 +23,9 @@ public class GetColetaInsumoBDD {
     public void que_existe_um_coleta_insumo_cadastrado_em_um_hospital() {
         String hospitalJson = """
     {
-        "coleta insumoes": [],
+        "nome": "Hospital Central",
+        "cnpj": "12345678000302",
+        "colaboradores": [],
         "cep": "12345678",
         "numero": 100,
         "quantidadeLeitoAtual": 10,
@@ -44,9 +45,9 @@ public class GetColetaInsumoBDD {
 
         String colaboradorJson = String.format("""
         {
-            "cpf": "12345678901",
+            "cpf": "12345678123",
             "nome": "João Silva",
-            "matricula": "MAT1234",
+            "matricula": "MAT1221",
             "primeiroDiaCadastro": "%s",
             "cep": "01001000",
             "numeroCasa": 101,
@@ -108,18 +109,18 @@ public class GetColetaInsumoBDD {
 
         String insumo = responseInsumo.jsonPath().getString("id");
 
-        coletaInsumoJson = String.format("""
-            {
-             "insumos": [
-                "%s"
-              ],
-              "quantidades": [5],
-              "colaboradorEntregador": "%s",
-              "dataHoraColeta": "%s",
-              "pacienteRecebedor": "%s",
-              "hospital": "%s"
-            }
-            """, insumo, colaborador, dataFormatada, paciente, hospital);
+        String coletaInsumoJson = String.format("""
+                {
+                 "insumos": [
+                    "%s"
+                  ],
+                  "quantidades": [5],
+                  "colaboradorEntregador": "%s",
+                  "dataHoraColeta": "%s",
+                  "pacienteRecebedor": "%s",
+                  "hospital": "%s"
+                }
+                """, insumo, colaborador, dataFormatada, paciente, hospital);
 
         Response responseColetaInsumo = given()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)

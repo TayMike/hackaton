@@ -29,6 +29,8 @@ public class CreateColaboradorBDD {
     public void que_existe_um_hospital_cadastrado() {
         String hospitalJson = """
     {
+        "nome": "Hospital Central",
+        "cnpj": "12345678000201",
         "colaboradores": [],
         "cep": "12345678",
         "numero": 100,

@@ -12,9 +12,8 @@
       "minLength": 1
     },
     "custo": {
-      "type": "string",
-      "pattern": "^\\d+(\\.\\d{1,2})?$",
-      "description": "Valor monetário com até duas casas decimais"
+      "type": "number",
+      "minimum": 0
     },
     "quantidade": {
       "type": "integer",
@@ -38,6 +37,7 @@
     }
   },
   "required": [
+    "id",
     "nome",
     "custo",
     "quantidade",

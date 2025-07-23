@@ -20,6 +20,8 @@ public class UpdateHospitalBDD {
 
         String hospitalJson = """
                 {
+                    "nome": "Hospital Central",
+                    "cnpj": "12345678000405",
                     "colaboradores": [],
                     "cep": "12345678",
                     "numero": 100,
@@ -36,6 +38,9 @@ public class UpdateHospitalBDD {
 
         hospitalJsonPut = """
         {
+            "nome": "Hospital Central",
+            "cnpj": "12345678000195",
+            "colaboradores": [],
             "cep": "12345628",
             "numero": 110,
             "quantidadeLeitoAtual": 11,

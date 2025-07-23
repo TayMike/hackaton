@@ -2,7 +2,6 @@ package com.fiap.hackaton.usecase.insumo;
 
 import com.fiap.hackaton.entity.insumo.exception.InsumoNotFoundException;
 import com.fiap.hackaton.entity.insumo.gateway.InsumoGateway;
-import com.fiap.hackaton.entity.insumo.model.Insumo;
 
 import java.util.UUID;
 
@@ -14,13 +13,11 @@ public class DeleteInsumoUseCase {
         this.insumoGateway = insumoGateway;
     }
 
-    public Insumo execute(UUID id) throws InsumoNotFoundException {
-        Insumo insumo = insumoGateway.findById(id)
-                .orElseThrow(InsumoNotFoundException::new).toInsumo();
+    public void execute(UUID id) throws InsumoNotFoundException {
+        insumoGateway.findById(id)
+                .orElseThrow(InsumoNotFoundException::new);
 
         insumoGateway.deleteById(id);
-
-        return insumo;
     }
 
 }

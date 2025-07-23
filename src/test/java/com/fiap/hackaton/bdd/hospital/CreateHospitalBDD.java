@@ -24,6 +24,8 @@ public class CreateHospitalBDD {
     public void que_foi_construido_um_hospital() {
         hospitalJson = """
                 {
+                    "nome": "Hospital Central",
+                    "cnpj": "12345678000401",
                     "colaboradores": [],
                     "cep": "12345678",
                     "numero": 100,

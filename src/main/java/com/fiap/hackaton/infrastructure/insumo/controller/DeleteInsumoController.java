@@ -1,7 +1,6 @@
 package com.fiap.hackaton.infrastructure.insumo.controller;
 
 import com.fiap.hackaton.entity.insumo.exception.InsumoNotFoundException;
-import com.fiap.hackaton.infrastructure.insumo.dto.InsumoPublicData;
 import com.fiap.hackaton.usecase.insumo.DeleteInsumoUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,8 +21,8 @@ public class DeleteInsumoController {
 
     @DeleteMapping("/insumos/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public InsumoPublicData deleteInsumo(@PathVariable UUID id) throws InsumoNotFoundException {
-        return new InsumoPublicData(deleteInsumoUserCase.execute(id));
+    public void deleteInsumo(@PathVariable UUID id) throws InsumoNotFoundException {
+        deleteInsumoUserCase.execute(id);
     }
 
 }

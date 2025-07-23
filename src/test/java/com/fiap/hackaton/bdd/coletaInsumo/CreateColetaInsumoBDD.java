@@ -25,7 +25,9 @@ public class CreateColetaInsumoBDD {
     public void que_um_coleta_insumo_foi_realizada() {
         String hospitalJson = """
     {
-        "coleta insumoes": [],
+        "nome": "Hospital Central",
+        "cnpj": "12345678000301",
+        "colaboradores": [],
         "cep": "12345678",
         "numero": 100,
         "quantidadeLeitoAtual": 10,
