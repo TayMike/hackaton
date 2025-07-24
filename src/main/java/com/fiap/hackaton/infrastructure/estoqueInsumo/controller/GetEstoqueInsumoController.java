@@ -21,7 +21,7 @@ public class GetEstoqueInsumoController {
         this.getEstoqueInsumoUseCase = getEstoqueInsumoUseCase;
     }
 
-    @GetMapping("/estoqueInsumos/{id}")
+    @GetMapping("/estoque-insumos/{id}")
     @ResponseStatus(HttpStatus.OK)
     public EstoqueInsumoPublicData getEstoqueInsumo(@PathVariable UUID id) throws EstoqueInsumoNotFoundException {
         EstoqueInsumo estoqueInsumo = getEstoqueInsumoUseCase.execute(id);

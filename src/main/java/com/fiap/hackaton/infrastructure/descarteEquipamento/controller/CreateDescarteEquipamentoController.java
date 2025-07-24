@@ -20,7 +20,7 @@ public class CreateDescarteEquipamentoController {
         this.createDescarteEquipamentoUseCase = createDescarteEquipamentoUseCase;
     }
 
-    @PostMapping("/descarteEquipamentos")
+    @PostMapping("/descarte-equipamentos")
     @ResponseStatus(HttpStatus.CREATED)
     public DescarteEquipamentoPublicData createDescarteEquipamento(@RequestBody DescarteEquipamentoRegistrationData dados) throws HospitalNotFoundException, ColaboradorNotFoundException {
         return new DescarteEquipamentoPublicData(createDescarteEquipamentoUseCase.execute(dados));

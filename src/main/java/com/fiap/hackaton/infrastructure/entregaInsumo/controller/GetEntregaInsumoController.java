@@ -21,7 +21,7 @@ public class GetEntregaInsumoController {
         this.getEntregaInsumoUseCase = getEntregaInsumoUseCase;
     }
 
-    @GetMapping("/entregaInsumos/{id}")
+    @GetMapping("/entrega-insumos/{id}")
     @ResponseStatus(HttpStatus.OK)
     public EntregaInsumoPublicData getEntregaInsumo(@PathVariable UUID id) throws EntregaInsumoNotFoundException {
         EntregaInsumo entregaInsumo = getEntregaInsumoUseCase.execute(id);

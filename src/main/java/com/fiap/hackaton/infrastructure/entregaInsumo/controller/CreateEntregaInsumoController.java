@@ -20,7 +20,7 @@ public class CreateEntregaInsumoController {
         this.createEntregaInsumoUseCase = createEntregaInsumoUseCase;
     }
 
-    @PostMapping("/entregaInsumos")
+    @PostMapping("/entrega-insumos")
     @ResponseStatus(HttpStatus.CREATED)
     public EntregaInsumoPublicData createEntregaInsumo(@RequestBody EntregaInsumoRegistrationData dados) throws HospitalNotFoundException, ColaboradorNotFoundException {
         return new EntregaInsumoPublicData(createEntregaInsumoUseCase.execute(dados));

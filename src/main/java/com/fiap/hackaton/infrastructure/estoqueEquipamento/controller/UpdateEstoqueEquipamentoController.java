@@ -19,7 +19,7 @@ public class UpdateEstoqueEquipamentoController {
         this.updateEstoqueEquipamentoUseCase = updateEstoqueEquipamentoUseCase;
     }
 
-    @PutMapping("/estoqueEquipamentos/{id}")
+    @PutMapping("/estoque-equipamentos/{id}")
     @ResponseStatus(HttpStatus.OK)
     public EstoqueEquipamentoPublicData updateEstoqueEquipamento(@PathVariable UUID id, @RequestBody EstoqueEquipamentoUpdateData dados) throws EstoqueEquipamentoNotFoundException, HospitalNotFoundException {
         return new EstoqueEquipamentoPublicData(updateEstoqueEquipamentoUseCase.execute(id, dados));

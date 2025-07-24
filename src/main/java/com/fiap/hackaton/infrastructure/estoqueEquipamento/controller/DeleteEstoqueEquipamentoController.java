@@ -19,7 +19,7 @@ public class DeleteEstoqueEquipamentoController {
         this.deleteEstoqueEquipamentoUserCase = deleteEstoqueEquipamentoUserCase;
     }
 
-    @DeleteMapping("/estoqueEquipamentos/{id}")
+    @DeleteMapping("/estoque-equipamentos/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteEstoqueEquipamento(@PathVariable UUID id) throws EstoqueEquipamentoNotFoundException {
         deleteEstoqueEquipamentoUserCase.execute(id);

@@ -21,7 +21,7 @@ public class GetDescarteEquipamentoController {
         this.getDescarteEquipamentoUseCase = getDescarteEquipamentoUseCase;
     }
 
-    @GetMapping("/descarteEquipamentos/{id}")
+    @GetMapping("/descarte-equipamentos/{id}")
     @ResponseStatus(HttpStatus.OK)
     public DescarteEquipamentoPublicData getDescarteEquipamento(@PathVariable UUID id) throws DescarteEquipamentoNotFoundException {
         DescarteEquipamento descarteEquipamento = getDescarteEquipamentoUseCase.execute(id);

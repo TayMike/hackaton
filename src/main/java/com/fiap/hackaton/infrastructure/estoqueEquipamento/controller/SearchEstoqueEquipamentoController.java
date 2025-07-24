@@ -19,7 +19,7 @@ public class SearchEstoqueEquipamentoController {
         this.searchEstoqueEquipamentoUseCase = searchEstoqueEquipamentoUseCase;
     }
 
-    @GetMapping("/estoqueEquipamentos")
+    @GetMapping("/estoque-equipamentos")
     @ResponseStatus(HttpStatus.OK)
     public List<EstoqueEquipamentoPublicData> searchEstoqueEquipamento() {
         List<EstoqueEquipamento> estoqueEquipamentos = this.searchEstoqueEquipamentoUseCase.execute();

@@ -19,7 +19,7 @@ public class SearchColetaInsumoController {
         this.searchColetaInsumoUseCase = searchColetaInsumoUseCase;
     }
 
-    @GetMapping("/coletaInsumos")
+    @GetMapping("/coleta-insumos")
     @ResponseStatus(HttpStatus.OK)
     public List<ColetaInsumoPublicData> searchColetaInsumo() {
         List<ColetaInsumo> coletaInsumoes = this.searchColetaInsumoUseCase.execute();

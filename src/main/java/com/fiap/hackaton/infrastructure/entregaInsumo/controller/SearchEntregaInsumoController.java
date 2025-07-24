@@ -19,7 +19,7 @@ public class SearchEntregaInsumoController {
         this.searchEntregaInsumoUseCase = searchEntregaInsumoUseCase;
     }
 
-    @GetMapping("/entregaInsumos")
+    @GetMapping("/entrega-insumos")
     @ResponseStatus(HttpStatus.OK)
     public List<EntregaInsumoPublicData> searchEntregaInsumo() {
         List<EntregaInsumo> entregaInsumoes = this.searchEntregaInsumoUseCase.execute();

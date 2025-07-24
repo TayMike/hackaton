@@ -19,7 +19,7 @@ public class SearchDescarteEquipamentoController {
         this.searchDescarteEquipamentoUseCase = searchDescarteEquipamentoUseCase;
     }
 
-    @GetMapping("/descarteEquipamentos")
+    @GetMapping("/descarte-equipamentos")
     @ResponseStatus(HttpStatus.OK)
     public List<DescarteEquipamentoPublicData> searchDescarteEquipamento() {
         List<DescarteEquipamento> descarteEquipamentoes = this.searchDescarteEquipamentoUseCase.execute();

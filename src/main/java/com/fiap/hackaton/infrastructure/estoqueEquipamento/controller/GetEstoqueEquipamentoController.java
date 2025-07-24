@@ -21,7 +21,7 @@ public class GetEstoqueEquipamentoController {
         this.getEstoqueEquipamentoUseCase = getEstoqueEquipamentoUseCase;
     }
 
-    @GetMapping("/estoqueEquipamentos/{id}")
+    @GetMapping("/estoque-equipamentos/{id}")
     @ResponseStatus(HttpStatus.OK)
     public EstoqueEquipamentoPublicData getEstoqueEquipamento(@PathVariable UUID id) throws EstoqueEquipamentoNotFoundException {
         EstoqueEquipamento estoqueEquipamento = getEstoqueEquipamentoUseCase.execute(id);

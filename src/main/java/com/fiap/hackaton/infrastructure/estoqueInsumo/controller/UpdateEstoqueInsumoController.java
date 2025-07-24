@@ -19,7 +19,7 @@ public class UpdateEstoqueInsumoController {
         this.updateEstoqueInsumoUseCase = updateEstoqueInsumoUseCase;
     }
 
-    @PutMapping("/estoqueInsumos/{id}")
+    @PutMapping("/estoque-insumos/{id}")
     @ResponseStatus(HttpStatus.OK)
     public EstoqueInsumoPublicData updateEstoqueInsumo(@PathVariable UUID id, @RequestBody EstoqueInsumoUpdateData dados) throws EstoqueInsumoNotFoundException, HospitalNotFoundException {
         return new EstoqueInsumoPublicData(updateEstoqueInsumoUseCase.execute(id, dados));

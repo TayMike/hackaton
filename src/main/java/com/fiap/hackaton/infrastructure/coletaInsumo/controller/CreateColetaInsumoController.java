@@ -21,7 +21,7 @@ public class CreateColetaInsumoController {
         this.createColetaInsumoUseCase = createColetaInsumoUseCase;
     }
 
-    @PostMapping("/coletaInsumos")
+    @PostMapping("/coleta-insumos")
     @ResponseStatus(HttpStatus.CREATED)
     public ColetaInsumoPublicData createColetaInsumo(@RequestBody ColetaInsumoRegistrationData dados) throws HospitalNotFoundException, PacienteNotFoundException, ColaboradorNotFoundException {
         return new ColetaInsumoPublicData(createColetaInsumoUseCase.execute(dados));

@@ -19,7 +19,7 @@ public class CreateColetaEquipamentoController {
         this.createColetaEquipamentoUseCase = createColetaEquipamentoUseCase;
     }
 
-    @PostMapping("/coletaEquipamentos")
+    @PostMapping("/coleta-equipamentos")
     @ResponseStatus(HttpStatus.CREATED)
     public ColetaEquipamentoPublicData createColetaEquipamento(@RequestBody ColetaEquipamentoRegistrationData dados) throws EquipamentoNotFoundException {
         return new ColetaEquipamentoPublicData(createColetaEquipamentoUseCase.execute(dados));

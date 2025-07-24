@@ -19,7 +19,7 @@ public class CreateEstoqueEquipamentoController {
         this.createEstoqueEquipamentoUseCase = createEstoqueEquipamentoUseCase;
     }
 
-    @PostMapping("/estoqueEquipamentos")
+    @PostMapping("/estoque-equipamentos")
     @ResponseStatus(HttpStatus.CREATED)
     public EstoqueEquipamentoPublicData createEstoqueEquipamento(@RequestBody EstoqueEquipamentoRegistrationData dados) throws HospitalNotFoundException {
         return new EstoqueEquipamentoPublicData(createEstoqueEquipamentoUseCase.execute(dados));
