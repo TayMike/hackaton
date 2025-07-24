@@ -18,6 +18,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -55,7 +56,7 @@ class CreateEntregaEquipamentoUseCaseTest {
         when(dados.quantidade()).thenReturn(List.of(2L));
         when(dados.colaboradorRecebedor()).thenReturn(colaboradorId);
         when(dados.hospital()).thenReturn(hospitalId);
-        when(dados.dataHoraRecebimento()).thenReturn(LocalDateTime.now());
+        when(dados.dataHoraRecebimento()).thenReturn(OffsetDateTime.now());
 
         EquipamentoSchema equipamentoSchema = mock(EquipamentoSchema.class);
         when(equipamentoSchema.getId()).thenReturn(equipamentoId);
@@ -139,7 +140,7 @@ class CreateEntregaEquipamentoUseCaseTest {
         when(dados.quantidade()).thenReturn(List.of(1L));
         when(dados.colaboradorRecebedor()).thenReturn(colaboradorId);
         when(dados.hospital()).thenReturn(hospitalId);
-        when(dados.dataHoraRecebimento()).thenReturn(LocalDateTime.now());
+        when(dados.dataHoraRecebimento()).thenReturn(OffsetDateTime.now());
 
         when(equipamentoGateway.findAll()).thenReturn(Collections.emptyList());
 
