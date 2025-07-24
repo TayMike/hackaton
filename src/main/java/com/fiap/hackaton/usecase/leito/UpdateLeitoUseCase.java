@@ -29,9 +29,9 @@ public class UpdateLeitoUseCase {
         Leito leito = this.leitoGateway.findById(id)
                 .orElseThrow(LeitoNotFoundException::new).toLeito();
 
-        HospitalSchema hospitalSchema = this.hospitalGateway.findById(dados.hospital().getId()).orElseThrow(HospitalNotFoundException::new);
+        HospitalSchema hospitalSchema = this.hospitalGateway.findById(dados.hospital()).orElseThrow(HospitalNotFoundException::new);
 
-        PacienteSchema pacienteSchema = this.pacienteGateway.findById(dados.paciente().getId())
+        PacienteSchema pacienteSchema = this.pacienteGateway.findById(dados.paciente())
                 .orElseThrow(PacienteNotFoundException::new);
 
         if (dados.identificacao() != null && !dados.identificacao().isBlank())

@@ -62,8 +62,8 @@ class UpdateLeitoUseCaseTest {
         UUID hospitalId = UUID.randomUUID();
         UUID pacienteId = UUID.randomUUID();
 
-        when(dados.hospital()).thenReturn(hospital);
-        when(dados.paciente()).thenReturn(paciente);
+        when(dados.hospital()).thenReturn(hospitalId);
+        when(dados.paciente()).thenReturn(pacienteId);
         when(dados.identificacao()).thenReturn("A101");
         when(dados.pavilhao()).thenReturn("Pavilhão 1");
         when(dados.quarto()).thenReturn("Quarto 10");
@@ -106,7 +106,7 @@ class UpdateLeitoUseCaseTest {
 
         when(leitoGateway.findById(id)).thenReturn(Optional.of(leitoSchema));
         when(leitoSchema.toLeito()).thenReturn(leito);
-        when(dados.hospital()).thenReturn(hospital);
+        when(dados.hospital()).thenReturn(hospitalId);
         when(hospital.getId()).thenReturn(hospitalId);
         when(hospitalGateway.findById(hospitalId)).thenReturn(Optional.empty());
 
@@ -130,10 +130,10 @@ class UpdateLeitoUseCaseTest {
 
         when(leitoGateway.findById(id)).thenReturn(Optional.of(leitoSchema));
         when(leitoSchema.toLeito()).thenReturn(leito);
-        when(dados.hospital()).thenReturn(hospital);
+        when(dados.hospital()).thenReturn(hospitalId);
         when(hospital.getId()).thenReturn(hospitalId);
         when(hospitalGateway.findById(hospitalId)).thenReturn(Optional.of(hospitalSchema));
-        when(dados.paciente()).thenReturn(paciente);
+        when(dados.paciente()).thenReturn(pacienteId);
         when(paciente.getId()).thenReturn(pacienteId);
         when(pacienteGateway.findById(pacienteId)).thenReturn(Optional.empty());
 
@@ -166,8 +166,8 @@ class UpdateLeitoUseCaseTest {
         UUID hospitalId = UUID.randomUUID();
         UUID pacienteId = UUID.randomUUID();
 
-        when(dados.hospital()).thenReturn(hospital);
-        when(dados.paciente()).thenReturn(paciente);
+        when(dados.hospital()).thenReturn(hospitalId);
+        when(dados.paciente()).thenReturn(pacienteId);
         when(dados.identificacao()).thenReturn(" ");
         when(dados.pavilhao()).thenReturn(null);
         when(dados.quarto()).thenReturn("");
