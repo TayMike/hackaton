@@ -3,6 +3,10 @@ package com.fiap.hackaton.infrastructure.auxiliar.configuration.db.schema;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fiap.hackaton.entity.equipamentoDominio.equipamento.model.Equipamento;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,34 +19,51 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "equipamento")
+@Table(
+        name = "equipamento",
+        indexes = {
+                @Index(name = "idx_equipamento_numero_serie", columnList = "numero_serie"),
+                @Index(name = "idx_equipamento_marca", columnList = "marca")
+        }
+)
 public class EquipamentoSchema {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "nome", nullable = false)
+    @Column(name = "nome", nullable = false, length = 100)
+    @NotBlank(message = "Nome não pode estar vazio")
+    @Size(max = 100, message = "Nome deve ter no máximo 100 caracteres")
     private String nome;
 
     @Column(name = "custo", nullable = false)
+    @NotNull(message = "Custo não pode ser nulo")
+    @Positive(message = "Custo deve ser maior que zero")
     private BigDecimal custo;
 
     @Column(name = "tempo_garantia", nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+    @NotNull(message = "Tempo de garantia não pode ser nulo")
     private OffsetDateTime tempoGarantia;
 
     @Column(name = "proxima_manutencao_preventiva", nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+    @NotNull(message = "Próxima manutenção preventiva não pode ser nula")
     private OffsetDateTime proximaManutencaoPreventiva;
 
-    @Column(name = "numero_serie", nullable = false)
+    @Column(name = "numero_serie", nullable = false, unique = true, length = 50)
+    @NotBlank(message = "Número de série não pode estar vazio")
+    @Size(max = 50, message = "Número de série deve ter no máximo 50 caracteres")
     private String numeroSerie;
 
-    @Column(name = "marca", nullable = false)
+    @Column(name = "marca", nullable = false, length = 50)
+    @NotBlank(message = "Marca não pode estar vazia")
+    @Size(max = 50, message = "Marca deve ter no máximo 50 caracteres")
     private String marca;
 
     @Column(name = "descarte")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private OffsetDateTime descarte;
 
     public EquipamentoSchema(Equipamento equipamento) {

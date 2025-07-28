@@ -19,7 +19,7 @@ public class CreatePacienteBDD {
     public void que_foi_construído_um_paciente_criar() {
         pacienteJson = """
                 {
-                    "cpf": "12345678900",
+                    "cpf": "12348248900",
                     "nome": "João da Silva",
                     "primeiroDiaCadastro": "2025-01-01T10:00:00Z",
                     "cep": "12345000",

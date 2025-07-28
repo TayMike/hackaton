@@ -38,7 +38,7 @@ public class DeleteLeitoBDD {
 
         String pacienteJson = """
             {
-                "cpf": "12345678900",
+                "cpf": "82655678900",
                 "nome": "João da Silva",
                 "primeiroDiaCadastro": "2024-01-01T12:00:00Z",
                 "cep": "12345000",

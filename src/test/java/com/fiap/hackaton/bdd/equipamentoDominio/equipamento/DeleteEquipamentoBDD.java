@@ -19,8 +19,8 @@ public class DeleteEquipamentoBDD {
     private final OffsetDateTime dataCadastro = OffsetDateTime.now();
     private final String dataFormatada = dataCadastro.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
 
-    @Dado("que existe um hospital e um equipamento cadastrados - Delete")
-    public void que_existe_um_hospital_e_um_equipamento_cadastrados() {
+    @Dado("que existe um equipamento cadastrados - Delete")
+    public void que_existe_um_equipamento_cadastrados() {
 
         String equipamentoJson = String.format("""
                 {
@@ -28,7 +28,7 @@ public class DeleteEquipamentoBDD {
                   "custo": "1500.00",
                   "tempoGarantia": "%s",
                   "proximaManutencaoPreventiva": "%s",
-                  "numeroSerie": "SN124256789",
+                  "numeroSerie": "SN121026789",
                   "marca": "Marca Z",
                   "descarte": null
                 }

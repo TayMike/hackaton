@@ -57,7 +57,7 @@ public class CreateEstoqueEquipamentoBDD {
                   "custo": "1500.00",
                   "tempoGarantia": "%s",
                   "proximaManutencaoPreventiva": "%s",
-                  "numeroSerie": "SN124256789",
+                  "numeroSerie": "SN120556789",
                   "marca": "Marca YL",
                   "descarte": null
                 }
