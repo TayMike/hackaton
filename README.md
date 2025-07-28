@@ -1,5 +1,5 @@
 # Hackaton
 Postgraduate course completion work
 
-## Domain-Driven Design 
+## Domain-Driven Design
 https://miro.com/app/board/uXjVJezNcEM=/
