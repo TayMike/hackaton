@@ -1,0 +1,28 @@
+package com.fiap.hackaton.infrastructure.core.paciente.controller;
+
+import com.fiap.hackaton.entity.core.paciente.exception.PacienteNotFoundException;
+import com.fiap.hackaton.infrastructure.core.paciente.dto.PacientePublicData;
+import com.fiap.hackaton.infrastructure.core.paciente.dto.PacienteUpdateData;
+import com.fiap.hackaton.usecase.core.paciente.UpdatePacienteUseCase;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
+
+@RestController
+public class UpdatePacienteController {
+
+    private final UpdatePacienteUseCase updatePacienteUseCase;
+
+    public UpdatePacienteController(UpdatePacienteUseCase updatePacienteUseCase) {
+        this.updatePacienteUseCase = updatePacienteUseCase;
+    }
+
+    @PutMapping("/pacientes/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public PacientePublicData updatePaciente(@PathVariable UUID id, @Valid @RequestBody PacienteUpdateData dados) throws PacienteNotFoundException {
+        return new PacientePublicData(updatePacienteUseCase.execute(id, dados));
+    }
+
+}

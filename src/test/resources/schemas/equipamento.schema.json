@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Equipamento",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "nome": {
+      "type": "string"
+    },
+    "custo": {
+      "type": "number"
+    },
+    "tempoGarantia": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "proximaManutencaoPreventiva": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "numeroSerie": {
+      "type": "string"
+    },
+    "marca": {
+      "type": "string"
+    },
+    "descarte": {
+      "anyOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "null" }
+      ]
+    }
+  },
+  "required": [
+    "nome",
+    "custo",
+    "tempoGarantia",
+    "proximaManutencaoPreventiva",
+    "numeroSerie",
+    "marca"
+  ]
+}

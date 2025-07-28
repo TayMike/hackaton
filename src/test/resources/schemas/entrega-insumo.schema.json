@@ -7,38 +7,41 @@
       "type": "string",
       "format": "uuid"
     },
-    "insumo": {
+    "insumos": {
       "type": "array",
       "items": {
-        "type": "string",
-        "format": "uuid"
+        "type": "object",
+        "properties": {
+          "insumoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "quantidade": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": ["insumoId", "quantidade"]
       }
     },
-    "quantidade": {
-      "type": "array",
-      "items": {
-        "type": "integer",
-        "minimum": 0
-      }
-    },
-    "colaboradorRecebedor": {
+    "colaboradorRecebedorId": {
       "type": "string",
       "format": "uuid"
     },
     "dataHoraRecebimento": {
-      "type": "string"
+      "type": "string",
+      "format": "date-time"
     },
-    "hospital": {
+    "hospitalId": {
       "type": "string",
       "format": "uuid"
     }
   },
   "required": [
     "id",
-    "insumo",
-    "quantidade",
-    "colaboradorRecebedor",
+    "insumos",
+    "colaboradorRecebedorId",
     "dataHoraRecebimento",
-    "hospital"
+    "hospitalId"
   ]
 }

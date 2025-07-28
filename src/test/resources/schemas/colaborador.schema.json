@@ -3,49 +3,16 @@
   "title": "Colaborador",
   "type": "object",
   "properties": {
-    "id": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "cpf": {
-      "type": "string"
-    },
-    "nome": {
-      "type": "string"
-    },
-    "matricula": {
-      "type": "string"
-    },
-    "primeiroDiaCadastro": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "cep": {
-      "type": "string"
-    },
-    "numeroCasa": {
-      "type": "integer"
-    },
-    "hospitalId": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "setor": {
-      "type": "string"
-    },
-    "ativo": {
-      "type": "boolean"
-    }
+    "id": { "type": "string", "format": "uuid" },
+    "cpf": { "type": "string", "minLength": 11, "maxLength": 11, "pattern": "^\\d{11}$" },
+    "nome": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "matricula": { "type": "string", "minLength": 1, "maxLength": 50 },
+    "primeiroDiaCadastro": { "type": "string", "format": "date-time" },
+    "ultimoDiaCadastro": { "type": ["string", "null"], "format": "date-time" },
+    "cep": { "type": "string", "minLength": 8, "maxLength": 8, "pattern": "^\\d{8}$" },
+    "numeroCasa": { "type": "integer", "minimum": 1 },
+    "hospitalId": { "type": "string", "format": "uuid" },
+    "setor": { "type": "string", "minLength": 1, "maxLength": 50 }
   },
-  "required": [
-    "cpf",
-    "nome",
-    "matricula",
-    "primeiroDiaCadastro",
-    "cep",
-    "numeroCasa",
-    "hospital",
-    "setor",
-    "ativo"
-  ]
+  "required": ["cpf", "nome", "matricula", "primeiroDiaCadastro", "cep", "numeroCasa", "hospitalId", "setor"]
 }

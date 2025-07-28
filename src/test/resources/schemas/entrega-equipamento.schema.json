@@ -1,27 +1,17 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "EntregaEquipamento (IDs Only)",
+  "title": "EntregaEquipamento (IDs únicos)",
   "type": "object",
   "properties": {
     "id": {
       "type": "string",
       "format": "uuid"
     },
-    "equipamentos": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "format": "uuid"
-      }
+    "equipamentoId": {
+      "type": "string",
+      "format": "uuid"
     },
-    "quantidade": {
-      "type": "array",
-      "items": {
-        "type": "integer",
-        "minimum": 0
-      }
-    },
-    "colaboradorRecebedor": {
+    "colaboradorRecebedorId": {
       "type": "string",
       "format": "uuid"
     },
@@ -29,16 +19,15 @@
       "type": "string",
       "format": "date-time"
     },
-    "hospital": {
+    "hospitalId": {
       "type": "string",
       "format": "uuid"
     }
   },
   "required": [
-    "equipamentos",
-    "quantidade",
-    "colaboradorRecebedor",
+    "equipamentoId",
+    "colaboradorRecebedorId",
     "dataHoraRecebimento",
-    "hospital"
+    "hospitalId"
   ]
 }

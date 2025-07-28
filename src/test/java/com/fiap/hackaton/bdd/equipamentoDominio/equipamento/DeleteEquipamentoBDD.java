@@ -1,0 +1,58 @@
+package com.fiap.hackaton.bdd.equipamentoDominio.equipamento;
+
+import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.Então;
+import io.cucumber.java.pt.Quando;
+import io.restassured.response.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+
+import static io.restassured.RestAssured.given;
+
+public class DeleteEquipamentoBDD {
+
+    private Response response;
+    private String equipamentoId;
+    private final OffsetDateTime dataCadastro = OffsetDateTime.now();
+    private final String dataFormatada = dataCadastro.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+
+    @Dado("que existe um hospital e um equipamento cadastrados - Delete")
+    public void que_existe_um_hospital_e_um_equipamento_cadastrados() {
+
+        String equipamentoJson = String.format("""
+                {
+                  "nome": "Marca L",
+                  "custo": "1500.00",
+                  "tempoGarantia": "%s",
+                  "proximaManutencaoPreventiva": "%s",
+                  "numeroSerie": "SN124256789",
+                  "marca": "Marca Z",
+                  "descarte": null
+                }
+                """, dataFormatada, dataFormatada);
+
+        Response equipamentoResponse = given()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(equipamentoJson)
+                .when()
+                .post("/equipamentos");
+
+        equipamentoId = equipamentoResponse.jsonPath().getString("id");
+    }
+
+    @Quando("o equipamento for deletado pelo ID - Delete")
+    public void o_equipamento_for_deletado_pelo_id() {
+        response = given()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .when()
+                .delete("/equipamentos/" + equipamentoId);
+    }
+
+    @Então("o equipamento deletado não será retornado no sistema - Delete")
+    public void o_equipamento_deletado_nao_sera_retornado_no_sistema() {
+        response.then().statusCode(HttpStatus.OK.value());
+    }
+}
