@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Hospital",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "colaboradoresIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "cep": {
+      "type": "string",
+      "pattern": "^\\d{5}-?\\d{3}$"
+    },
+    "numero": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "quantidadeLeitoAtual": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "quantidadeLeitoMaximo": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "colaboradoresIds",
+    "cep",
+    "numero",
+    "quantidadeLeitoAtual",
+    "quantidadeLeitoMaximo"
+  ]
+}

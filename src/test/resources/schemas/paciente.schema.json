@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Paciente",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "cpf": {
+      "type": "string",
+      "pattern": "^[0-9]{11}$"
+    },
+    "nome": {
+      "type": "string",
+      "minLength": 1
+    },
+    "primeiroDiaCadastro": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "cep": {
+      "type": "string",
+      "pattern": "^[0-9]{8}$"
+    },
+    "numeroCasa": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "cpf",
+    "nome",
+    "primeiroDiaCadastro",
+    "cep",
+    "numeroCasa"
+  ]
+}

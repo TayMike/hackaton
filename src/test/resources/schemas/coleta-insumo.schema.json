@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ColetaInsumo",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "insumos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "insumoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "quantidade": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "insumoId",
+          "quantidade"
+        ]
+      }
+    },
+    "colaboradorEntregadorId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "dataHoraColeta": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "pacienteRecebedorId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "hospitalId": {
+      "type": "string",
+      "format": "uuid"
+    }
+  },
+  "required": [
+    "insumos",
+    "colaboradorEntregadorId",
+    "dataHoraColeta",
+    "pacienteRecebedorId",
+    "hospitalId"
+  ]
+}

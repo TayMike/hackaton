@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EstoqueInsumo",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "itens": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "minItems": 0
+    },
+    "quantidades": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "minItems": 0
+    },
+    "hospital": {
+      "type": "string",
+      "format": "uuid"
+    }
+  },
+  "required": ["id", "itens", "quantidades", "hospital"]
+}
