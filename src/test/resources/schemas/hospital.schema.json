@@ -1,16 +1,17 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Hospital (com colaboradores)",
+  "title": "Hospital",
   "type": "object",
   "properties": {
     "id": {
       "type": "string",
       "format": "uuid"
     },
-    "colaboradores": {
+    "colaboradoresIds": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "string",
+        "format": "uuid"
       }
     },
     "cep": {
@@ -31,7 +32,7 @@
     }
   },
   "required": [
-    "colaboradores",
+    "colaboradoresIds",
     "cep",
     "numero",
     "quantidadeLeitoAtual",
