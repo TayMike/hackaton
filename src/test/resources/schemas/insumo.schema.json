@@ -3,41 +3,16 @@
   "title": "Insumo",
   "type": "object",
   "properties": {
-    "id": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "nome": {
-      "type": "string",
-      "minLength": 1
-    },
-    "custo": {
-      "type": "number",
-      "minimum": 0
-    },
-    "quantidade": {
-      "type": "integer",
-      "minimum": 0
-    },
-    "peso": {
-      "type": "integer",
-      "minimum": 0
-    },
-    "validade": {
-      "type": "string",
-      "format": "date"
-    },
-    "marca": {
-      "type": "string",
-      "minLength": 1
-    },
-    "unidadeMedida": {
-      "type": "string",
-      "enum": ["MG", "ML"]
-    }
+    "id": { "type": "string", "format": "uuid" },
+    "nome": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "custo": { "type": "number", "minimum": 0, "exclusiveMinimum": true },
+    "quantidade": { "type": "integer", "minimum": 0 },
+    "peso": { "type": "integer", "minimum": 0 },
+    "validade": { "type": "string", "format": "date-time" },
+    "marca": { "type": "string", "minLength": 1, "maxLength": 50 },
+    "unidadeMedida": { "type": "string", "enum": ["UNIDADE", "KG", "G", "ML", "L"] }
   },
   "required": [
-    "id",
     "nome",
     "custo",
     "quantidade",

@@ -3,30 +3,12 @@
   "title": "Leito",
   "type": "object",
   "properties": {
-    "id": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "identificacao": {
-      "type": "string",
-      "minLength": 1
-    },
-    "pavilhao": {
-      "type": "string",
-      "minLength": 1
-    },
-    "quarto": {
-      "type": "string",
-      "minLength": 1
-    },
-    "hospitalId": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "pacienteId": {
-      "type": "string",
-      "format": "uuid"
-    }
+    "id": { "type": "string", "format": "uuid" },
+    "identificacao": { "type": "string", "minLength": 1, "maxLength": 50 },
+    "pavilhao": { "type": "string", "minLength": 1, "maxLength": 50 },
+    "quarto": { "type": "string", "minLength": 1, "maxLength": 50 },
+    "hospitalId": { "type": "string", "format": "uuid" },
+    "pacienteId": { "type": ["string", "null"], "format": "uuid" }
   },
   "required": [
     "identificacao",

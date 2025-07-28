@@ -27,7 +27,7 @@ public class SearchEquipamentoBDD {
                   "custo": "1500.00",
                   "tempoGarantia": "%s",
                   "proximaManutencaoPreventiva": "%s",
-                  "numeroSerie": "SN124256789",
+                  "numeroSerie": "SN122066789",
                   "marca": "Marca F",
                   "descarte": null
                 }

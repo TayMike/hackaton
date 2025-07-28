@@ -39,7 +39,7 @@ public class GetLeitoBDD {
 
         String pacienteJson = """
             {
-                "cpf": "12345678900",
+                "cpf": "90456789000",
                 "nome": "João da Silva",
                 "primeiroDiaCadastro": "2024-01-01T12:00:00Z",
                 "cep": "12345000",

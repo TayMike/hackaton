@@ -4,6 +4,8 @@ import com.fiap.hackaton.entity.insumoDominio.auxiliar.QuantidadeInsumo;
 import com.fiap.hackaton.entity.insumoDominio.estoqueInsumo.model.EstoqueInsumo;
 import com.fiap.hackaton.infrastructure.auxiliar.configuration.db.embeddable.QuantidadeInsumoEmbeddable;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +17,12 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "estoque_insumo")
+@Table(
+        name = "estoque_insumo",
+        indexes = {
+                @Index(name = "idx_estoque_insumo_hospital_id", columnList = "hospital_id")
+        }
+)
 public class EstoqueInsumoSchema {
 
     @Id
@@ -24,9 +31,11 @@ public class EstoqueInsumoSchema {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "estoque_quantidade_insumo", joinColumns = @JoinColumn(name = "estoque_id"))
+    @NotEmpty(message = "A lista de insumos não pode estar vazia")
     private List<QuantidadeInsumoEmbeddable> insumos;
 
     @Column(name = "hospital_id", nullable = false)
+    @NotNull(message = "Hospital ID não pode ser nulo")
     private UUID hospitalId;
 
     public EstoqueInsumoSchema(EstoqueInsumo estoqueInsumo) {

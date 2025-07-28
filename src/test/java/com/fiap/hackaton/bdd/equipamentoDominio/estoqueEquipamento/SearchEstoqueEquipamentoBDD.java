@@ -24,7 +24,7 @@ public class SearchEstoqueEquipamentoBDD {
         String hospitalJson = """
                 {
                     "nome": "Hospital Teste",
-                    "cnpj": "172895678420100",
+                    "cnpj": "17279567842010",
                     "colaboradoresIds": [],
                     "cep": "12345678",
                     "numero": 123,
@@ -48,7 +48,7 @@ public class SearchEstoqueEquipamentoBDD {
                   "custo": "1500.00",
                   "tempoGarantia": "%s",
                   "proximaManutencaoPreventiva": "%s",
-                  "numeroSerie": "SN124252789",
+                  "numeroSerie": "SN122842789",
                   "marca": "Marca D",
                   "descarte": null
                 }

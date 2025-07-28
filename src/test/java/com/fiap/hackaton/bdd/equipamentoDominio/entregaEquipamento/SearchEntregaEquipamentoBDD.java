@@ -27,7 +27,7 @@ public class SearchEntregaEquipamentoBDD {
         String hospitalJson = """
             {
                 "nome": "Hospital Central",
-                "cnpj": "123123238210501",
+                "cnpj": "65312238210501",
                 "colaboradoresIds": [],
                 "cep": "12345678",
                 "numero": 105,

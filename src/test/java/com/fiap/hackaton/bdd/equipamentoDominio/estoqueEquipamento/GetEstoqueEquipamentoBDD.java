@@ -49,7 +49,7 @@ public class GetEstoqueEquipamentoBDD {
                   "custo": "1500.00",
                   "tempoGarantia": "%s",
                   "proximaManutencaoPreventiva": "%s",
-                  "numeroSerie": "SN124252789",
+                  "numeroSerie": "SN756252789",
                   "marca": "Marca R",
                   "descarte": null
                 }

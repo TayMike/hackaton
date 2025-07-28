@@ -3,43 +3,14 @@
   "title": "Equipamento",
   "type": "object",
   "properties": {
-    "id": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "nome": {
-      "type": "string"
-    },
-    "custo": {
-      "type": "number"
-    },
-    "tempoGarantia": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "proximaManutencaoPreventiva": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "numeroSerie": {
-      "type": "string"
-    },
-    "marca": {
-      "type": "string"
-    },
-    "descarte": {
-      "anyOf": [
-        { "type": "string", "format": "date-time" },
-        { "type": "null" }
-      ]
-    }
+    "id": { "type": "string", "format": "uuid" },
+    "nome": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "custo": { "type": "number", "minimum": 0, "exclusiveMinimum": true },
+    "tempoGarantia": { "type": "string", "format": "date-time" },
+    "proximaManutencaoPreventiva": { "type": "string", "format": "date-time" },
+    "numeroSerie": { "type": "string", "minLength": 1, "maxLength": 50 },
+    "marca": { "type": "string", "minLength": 1, "maxLength": 50 },
+    "descarte": { "type": ["string", "null"], "format": "date-time" }
   },
-  "required": [
-    "nome",
-    "custo",
-    "tempoGarantia",
-    "proximaManutencaoPreventiva",
-    "numeroSerie",
-    "marca"
-  ]
+  "required": ["nome", "custo", "tempoGarantia", "proximaManutencaoPreventiva", "numeroSerie", "marca"]
 }
