@@ -13,21 +13,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>hackaton</name>
 	<description>Postgraduate course completion work</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<cucumber.version>7.23.0</cucumber.version>
 	</properties>
 	<dependencies>
 		<!-- Spring & Docker -->
@@ -52,11 +40,16 @@
 			<optional>true</optional>
 		</dependency>
 
+
 		<!-- Banco de dados -->
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 		</dependency>
 
 		<!-- Boilerplate -->
@@ -102,13 +95,8 @@
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>json-schema-validator</artifactId>
-			<version>5.3.1</version>
+			<version>5.5.5</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jacoco</groupId>
-			<artifactId>jacoco-maven-plugin</artifactId>
-			<version>0.8.13</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -126,32 +114,31 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>7.21.1</version>
+			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-spring</artifactId>
-			<version>7.26.0</version>
+			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit-platform-engine</artifactId>
-			<version>7.21.1</version>
+			<version>${cucumber.version}</version>
 		</dependency>
 
-		<!-- Banco de dados -->
+		<!-- Teste de performance -->
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+			<groupId>io.gatling</groupId>
+			<artifactId>gatling-app</artifactId>
+			<version>3.14.3</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jetbrains</groupId>
-			<artifactId>annotations</artifactId>
-			<version>26.0.2</version>
-			<scope>compile</scope>
+			<groupId>io.gatling.highcharts</groupId>
+			<artifactId>gatling-charts-highcharts</artifactId>
+			<version>3.14.3</version>
 		</dependency>
 	</dependencies>
 
@@ -172,7 +159,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>3.0.6</version>
+				<version>3.5.3</version>
 				<configuration>
 					<excludes>
 						<exclude>
