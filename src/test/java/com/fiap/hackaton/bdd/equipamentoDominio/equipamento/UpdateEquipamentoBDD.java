@@ -29,7 +29,7 @@ public class UpdateEquipamentoBDD {
                   "custo": "1500.00",
                   "tempoGarantia": "%s",
                   "proximaManutencaoPreventiva": "%s",
-                  "numeroSerie": "SN124256789",
+                  "numeroSerie": "SN291256789",
                   "marca": "Marca H",
                   "descarte": null
                 }

@@ -3,6 +3,7 @@ package com.fiap.hackaton.infrastructure.auxiliar.configuration.db.schema;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fiap.hackaton.entity.equipamentoDominio.estoqueEquipamento.model.EstoqueEquipamento;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +15,15 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "estoque_equipamento")
+@Table(
+        name = "estoque_equipamento",
+        indexes = {
+                @Index(name = "idx_estoque_equipamento_id", columnList = "equipamento_id"),
+                @Index(name = "idx_estoque_hospital_id", columnList = "hospital_id"),
+                @Index(name = "idx_estoque_colaborador_entregador_id", columnList = "colaborador_entregador_id"),
+                @Index(name = "idx_estoque_colaborador_responsavel_id", columnList = "colaborador_responsavel_id")
+        }
+)
 public class EstoqueEquipamentoSchema {
 
     @Id
@@ -22,16 +31,18 @@ public class EstoqueEquipamentoSchema {
     private UUID id;
 
     @Column(name = "equipamento_id", nullable = false)
+    @NotNull(message = "Equipamento ID não pode ser nulo")
     private UUID equipamentoId;
 
     @Column(name = "hospital_id", nullable = false)
+    @NotNull(message = "Hospital ID não pode ser nulo")
     private UUID hospitalId;
 
     @Column(name = "colaborador_entregador_id")
     private UUID colaboradorEntregadorId;
 
     @Column(name = "data_hora_coleta")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private OffsetDateTime dataHoraColeta;
 
     @Column(name = "colaborador_responsavel_id")

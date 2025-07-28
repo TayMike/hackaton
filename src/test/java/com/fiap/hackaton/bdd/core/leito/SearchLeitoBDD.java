@@ -22,7 +22,7 @@ public class SearchLeitoBDD {
             String hospitalJson = String.format("""
                 {
                     "nome": "Hospital Central",
-                    "cnpj": "12345678021324%d",
+                    "cnpj": "8293567802132%d",
                     "colaboradoresIds": [],
                     "cep": "1234500%d",
                     "numero": 100,
@@ -33,7 +33,7 @@ public class SearchLeitoBDD {
 
             String pacienteJson = String.format("""
                 {
-                    "cpf": "1234567890%d",
+                    "cpf": "9284567890%d",
                     "nome": "Paciente %d",
                     "primeiroDiaCadastro": "2024-01-01T12:00:00Z",
                     "cep": "1234500%d",

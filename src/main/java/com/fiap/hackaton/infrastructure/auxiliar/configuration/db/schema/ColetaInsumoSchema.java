@@ -5,6 +5,8 @@ import com.fiap.hackaton.entity.insumoDominio.auxiliar.QuantidadeInsumo;
 import com.fiap.hackaton.entity.insumoDominio.coletaInsumo.model.ColetaInsumo;
 import com.fiap.hackaton.infrastructure.auxiliar.configuration.db.embeddable.QuantidadeInsumoEmbeddable;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,10 +16,17 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "coleta_insumo")
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(
+        name = "coleta_insumo",
+        indexes = {
+                @Index(name = "idx_coleta_colaborador_id", columnList = "colaborador_id"),
+                @Index(name = "idx_coleta_paciente_id", columnList = "paciente_id"),
+                @Index(name = "idx_coleta_hospital_id", columnList = "hospital_id")
+        }
+)
 public class ColetaInsumoSchema {
 
     @Id
@@ -26,19 +35,24 @@ public class ColetaInsumoSchema {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "coleta_insumo_itens", joinColumns = @JoinColumn(name = "coleta_insumo_id"))
+    @NotEmpty(message = "A lista de insumos não pode estar vazia")
     private List<QuantidadeInsumoEmbeddable> insumos;
 
     @Column(name = "colaborador_id", nullable = false)
+    @NotNull(message = "Colaborador ID não pode ser nulo")
     private UUID colaboradorEntregadorId;
 
     @Column(name = "data_hora_coleta_insumo", nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+    @NotNull(message = "Data e hora da coleta não podem ser nulas")
     private OffsetDateTime dataHoraColeta;
 
     @Column(name = "paciente_id", nullable = false)
+    @NotNull(message = "Paciente ID não pode ser nulo")
     private UUID pacienteRecebedorId;
 
     @Column(name = "hospital_id", nullable = false)
+    @NotNull(message = "Hospital ID não pode ser nulo")
     private UUID hospitalId;
 
     public ColetaInsumoSchema(ColetaInsumo coletaInsumo) {

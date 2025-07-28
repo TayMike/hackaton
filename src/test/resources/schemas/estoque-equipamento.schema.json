@@ -3,33 +3,12 @@
   "title": "EstoqueEquipamento",
   "type": "object",
   "properties": {
-    "id": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "equipamentoId": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "hospitalId": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "colaboradorEntregadorId": {
-      "type": ["string", "null"],
-      "format": "uuid"
-    },
-    "dataHoraColeta": {
-      "type": ["string", "null"],
-      "format": "date-time"
-    },
-    "colaboradorResponsavelId": {
-      "type": ["string", "null"],
-      "format": "uuid"
-    }
+    "id": { "type": "string", "format": "uuid" },
+    "equipamentoId": { "type": "string", "format": "uuid" },
+    "hospitalId": { "type": "string", "format": "uuid" },
+    "colaboradorEntregadorId": { "type": ["string", "null"], "format": "uuid" },
+    "dataHoraColeta": { "type": ["string", "null"], "format": "date-time" },
+    "colaboradorResponsavelId": { "type": ["string", "null"], "format": "uuid" }
   },
-  "required": [
-    "equipamentoId",
-    "hospitalId"
-  ]
+  "required": ["equipamentoId", "hospitalId"]
 }

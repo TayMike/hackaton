@@ -3,38 +3,24 @@
   "title": "Hospital",
   "type": "object",
   "properties": {
-    "id": {
-      "type": "string",
-      "format": "uuid"
-    },
+    "id": { "type": "string", "format": "uuid" },
+    "nome": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "cnpj": { "type": "string", "pattern": "^\\d{14}$" },
+    "cep": { "type": "string", "pattern": "^\\d{8}$" },
+    "numero": { "type": "integer", "minimum": 1 },
     "colaboradoresIds": {
       "type": "array",
-      "items": {
-        "type": "string",
-        "format": "uuid"
-      }
+      "items": { "type": "string", "format": "uuid" }
     },
-    "cep": {
-      "type": "string",
-      "pattern": "^\\d{5}-?\\d{3}$"
-    },
-    "numero": {
-      "type": "integer",
-      "minimum": 0
-    },
-    "quantidadeLeitoAtual": {
-      "type": "integer",
-      "minimum": 0
-    },
-    "quantidadeLeitoMaximo": {
-      "type": "integer",
-      "minimum": 0
-    }
+    "quantidadeLeitoAtual": { "type": "integer", "minimum": 0 },
+    "quantidadeLeitoMaximo": { "type": "integer", "minimum": 1 }
   },
   "required": [
-    "colaboradoresIds",
+    "nome",
+    "cnpj",
     "cep",
     "numero",
+    "colaboradoresIds",
     "quantidadeLeitoAtual",
     "quantidadeLeitoMaximo"
   ]
