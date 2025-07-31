@@ -5,7 +5,7 @@ Postgraduate course completion work
 https://miro.com/app/board/uXjVJezNcEM=/
 
 ### Run Performance Test
-Run the application with the performance profile to enable performance tests.
+Run the application with the performance profile to enable performance test.
 ```bash
 mvn clean gatling:test -Pperformance
 ```
