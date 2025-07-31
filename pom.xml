@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -39,7 +39,6 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-
 
 		<!-- Banco de dados -->
 		<dependency>
@@ -127,6 +126,7 @@
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit-platform-engine</artifactId>
 			<version>${cucumber.version}</version>
+			<scope>test</scope>
 		</dependency>
 
 		<!-- Teste de performance -->
@@ -134,11 +134,13 @@
 			<groupId>io.gatling</groupId>
 			<artifactId>gatling-app</artifactId>
 			<version>3.12.0</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.gatling.highcharts</groupId>
 			<artifactId>gatling-charts-highcharts</artifactId>
 			<version>3.12.0</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -160,6 +162,22 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>3.5.3</version>
+				<executions>
+					<execution>
+						<id>pre-integration-test</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>start</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>post-integration-test</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<excludes>
 						<exclude>
@@ -189,21 +207,52 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>io.gatling</groupId>
-				<artifactId>gatling-maven-plugin</artifactId>
-				<version>4.10.1</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>3.2.5</version>
 				<executions>
 					<execution>
 						<goals>
-							<goal>test</goal>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
 						</goals>
+						<configuration>
+							<includes>
+								<include>**/CucumberConfiguration.java</include>
+							</includes>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<simulationClass>com.fiap.hackaton.performance.PerformanceSimulation</simulationClass>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>performance</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.gatling</groupId>
+						<artifactId>gatling-maven-plugin</artifactId>
+						<version>4.10.1</version>
+						<executions>
+							<execution>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>test</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<simulationClass>com.fiap.hackaton.performance.PerformanceSimulation</simulationClass>
+							<jvmArgs>
+								<jvmArg>--add-opens=java.base/java.lang=ALL-UNNAMED</jvmArg>
+							</jvmArgs>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
