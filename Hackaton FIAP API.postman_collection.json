@@ -1,0 +1,1244 @@
+{
+	"info": {
+		"_postman_id": "ee6ecdcf-772d-4c7f-8003-f8180a92b3e5",
+		"name": "Hackaton FIAP API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18044447"
+	},
+	"item": [
+		{
+			"name": "Paciente",
+			"item": [
+				{
+					"name": "Cadastrar Paciente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Paciente Teste\",\n  \"cpf\": \"12345678900\",\n  \"primeiroDiaCadastro\": \"20250101\",\n  \"cep\": \"2000-000\",\n  \"numeroCasa\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Pacientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Paciente por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pacientes/7800273d-ecd6-48de-bd90-2eae97faf6c6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pacientes",
+								"7800273d-ecd6-48de-bd90-2eae97faf6c6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Paciente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Paciente Atualizado333\",\n  \"cpf\": \"12345678900\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/pacientes/7800273d-ecd6-48de-bd90-2eae97faf6c6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pacientes",
+								"7800273d-ecd6-48de-bd90-2eae97faf6c6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hospital",
+			"item": [
+				{
+					"name": "Cadastrar Hospital",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\":\"\",\n  \"cnpj\":\"1\",\n  \"colaboradoresIds\":[],\n  \"cep\": \"\",\n  \"numero\": 1,\n  \"quantidadeLeitoAtual\": 10,\n  \"quantidadeLeitoMaximo\":20\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/hospitais",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Hospitais",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Paciente Teste\",\n  \"cpf\": \"12345678900\",\n  \"dataNascimento\": \"1990-01-01\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/hospitais",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Hospital por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hospitais/f5eba5d0-7698-4a63-b28b-9b5f3d77637b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais",
+								"f5eba5d0-7698-4a63-b28b-9b5f3d77637b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Hospital",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cep\": \"22200310\",\n  \"colaboradores\":[\n\n  ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/hospitais/f5eba5d0-7698-4a63-b28b-9b5f3d77637b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais",
+								"f5eba5d0-7698-4a63-b28b-9b5f3d77637b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Hospital",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hospitais/88e94b6c-be89-457f-a1e3-e7789ffa81ea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hospitais",
+								"88e94b6c-be89-457f-a1e3-e7789ffa81ea"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Leito",
+			"item": [
+				{
+					"name": "Reservar Leito",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"identificacao\": \"Leito 1\",\n  \"pavilhao\": \"A\",\n  \"quarto\": \"01\",\n  \"hospitalId\":\"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\",\n  \"pacienteId\":\"7800273d-ecd6-48de-bd90-2eae97faf6c6\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/leitos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"leitos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Leitos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Paciente Teste\",\n  \"cpf\": \"12345678900\",\n  \"dataNascimento\": \"1990-01-01\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/leitos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"leitos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Leito por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/leitos/4e51aa82-fd6f-4e65-9a40-ee8e80381cbc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"leitos",
+								"4e51aa82-fd6f-4e65-9a40-ee8e80381cbc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Leito",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"identificacao\": \"Leito 13\",\n    \"pavilhao\": \"A\",\n    \"quarto\": \"01\",\n    \"hospitalId\": \"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\",\n    \"pacienteId\": \"7800273d-ecd6-48de-bd90-2eae97faf6c6\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/leitos/4e51aa82-fd6f-4e65-9a40-ee8e80381cbc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"leitos",
+								"4e51aa82-fd6f-4e65-9a40-ee8e80381cbc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletarLeito",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/leitos/d26277e7-5baf-4728-b8c9-21e52f4c7bef",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"leitos",
+								"d26277e7-5baf-4728-b8c9-21e52f4c7bef"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Colaborador",
+			"item": [
+				{
+					"name": "Cadastrar Colaborador",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Colaborador Teste2\",\n  \"cpf\": \"98765432120\",\n  \"matricula\": \"010-8\",\n  \"primeiroDiaCadastro\":\"20200101\",\n  \"cep\":\"22110000\",\n  \"numeroCasa\":50,\n  \"hospitalId\":\"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\",\n  \"setor\":\"Enfermagem\",\n  \"ativo\":\"True\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/colaboradores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colaboradores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Colaboradores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/colaboradores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colaboradores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Colaborador por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/colaboradores/cb68c98d-8293-44f1-8991-b7bc149e7aa8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colaboradores",
+								"cb68c98d-8293-44f1-8991-b7bc149e7aa8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Colaborador",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cpf\": \"111\",\n    \"nome\": \"Colaborador Teste333\",\n    \"matricula\": \"010-8\",\n    \"primeiroDiaCadastro\": \"1970-08-22T19:08:21Z\",\n    \"cep\": \"22110000\",\n    \"numeroCasa\": 50,\n    \"hospitalId\": \"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\",\n    \"setor\": \"Enfermagem\",\n    \"ultimoDiaCadastro\": null\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/colaboradores/cb68c98d-8293-44f1-8991-b7bc149e7aa8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colaboradores",
+								"cb68c98d-8293-44f1-8991-b7bc149e7aa8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Equipamento",
+			"item": [
+				{
+					"name": "Cadastrar Equipamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Raio X\",\n  \"custo\": \"12000\",\n  \"tempoGarantia\": \"2025-08-23T09:20:01Z\",\n  \"proximaManutencaoPreventiva\":\"2025-08-23T09:20:01Z\",\n  \"numeroSerie\": \"123\",\n  \"marca\":\"Estrela\",\n  \"descarte\":\"\"\n  \n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/equipamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"equipamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Equipamentos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/equipamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"equipamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Equipamentos por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/equipamentos/9e09e7b7-3fb2-4ed8-8b66-cc3950dad1d7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"equipamentos",
+								"9e09e7b7-3fb2-4ed8-8b66-cc3950dad1d7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Equipamento",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Raio X\",\r\n    \"custo\": 12000.00,\r\n    \"tempoGarantia\": \"2025-08-23T09:20:01Z\",\r\n    \"proximaManutencaoPreventiva\": \"2025-08-23T09:20:01Z\",\r\n    \"numeroSerie\": \"\",\r\n    \"marca\": \"Estrela\",\r\n    \"descarte\": \"2025-08-23T09:20:01Z\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/equipamentos/9e09e7b7-3fb2-4ed8-8b66-cc3950dad1d7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"equipamentos",
+								"9e09e7b7-3fb2-4ed8-8b66-cc3950dad1d7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Equipamentos",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/equipamentos/f3926633-55c0-4fdb-86f9-7dce60914afc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"equipamentos",
+								"f3926633-55c0-4fdb-86f9-7dce60914afc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Entrega de Equipamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"equipamentoId\": \"9e09e7b7-3fb2-4ed8-8b66-cc3950dad1d7\",\n  \"colaboradorRecebedorId\": \"4fa80e98-f6c9-4818-8640-c06c4a4fce5c\",\n  \"dataHoraRecebimento\": \"2025-08-23T09:20:01Z\",\n  \"hospitalId\":\"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/entrega-equipamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"entrega-equipamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Entregas de Equipamentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/entrega-equipamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"entrega-equipamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Entrega de Equipamento por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/entrega-equipamentos/f3ed0468-8f25-4908-a310-130a261615ae",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"entrega-equipamentos",
+								"f3ed0468-8f25-4908-a310-130a261615ae"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Estoque de Equipamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"equipamentoId\": \"9e09e7b7-3fb2-4ed8-8b66-cc3950dad1d7\",\n  \"hospitalId\": \"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\",\n  \"colaboradorEntregadorId\": \"4fa80e98-f6c9-4818-8640-c06c4a4fce5c\",\n  \"dataHoraColeta\": \"2024-06-01T10:00:00Z\",\n  \"colaboradorResponsavelId\": \"cb68c98d-8293-44f1-8991-b7bc149e7aa8\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/estoque-equipamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estoque-equipamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Estoque de Equipamento",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/estoque-equipamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estoque-equipamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Estoque de Equipamento por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/estoque-equipamentos/257dcaa2-eadb-4652-9d41-2cac4438d3c6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estoque-equipamentos",
+								"257dcaa2-eadb-4652-9d41-2cac4438d3c6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Estoque de Equipamento",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"equipamentoId\": \"9e09e7b7-3fb2-4ed8-8b66-cc3950dad1d7\",\r\n    \"hospitalId\": \"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\",\r\n    \"colaboradorEntregadorId\": \"4fa80e98-f6c9-4818-8640-c06c4a4fce5c\",\r\n    \"dataHoraColeta\": \"2024-06-10T10:00:00Z\",\r\n    \"colaboradorResponsavelId\": \"cb68c98d-8293-44f1-8991-b7bc149e7aa8\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/estoque-equipamentos/257dcaa2-eadb-4652-9d41-2cac4438d3c6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estoque-equipamentos",
+								"257dcaa2-eadb-4652-9d41-2cac4438d3c6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Estoque de Equipamento",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/estoque-equipamentos/257dcaa2-eadb-4652-9d41-2cac4438d3c6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estoque-equipamentos",
+								"257dcaa2-eadb-4652-9d41-2cac4438d3c6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Insumo",
+			"item": [
+				{
+					"name": "Cadastrar Insumo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Álcool Gel\",\n  \"custo\": 12.50,\n  \"quantidade\": 100,\n  \"peso\": 500,\n  \"validade\": \"2024-12-31T23:59:59Z\",\n  \"marca\": \"Marca Exemplo\",\n  \"unidadeMedida\": \"MG\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/insumos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"insumos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Insumos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/insumos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"insumos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Insumo por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/insumos/58f0c7af-7380-481d-ab52-da790ca41709",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"insumos",
+								"58f0c7af-7380-481d-ab52-da790ca41709"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Insumo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Álcool Gel\",\r\n    \"custo\": 12.50,\r\n    \"quantidade\": 10,\r\n    \"peso\": 500,\r\n    \"validade\": \"2024-12-31T23:59:59Z\",\r\n    \"marca\": \"Marca Exemplo22\",\r\n    \"unidadeMedida\": \"MG\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/insumos/58f0c7af-7380-481d-ab52-da790ca41709",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"insumos",
+								"58f0c7af-7380-481d-ab52-da790ca41709"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Insumo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/insumos/58f0c7af-7380-481d-ab52-da790ca41709",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"insumos",
+								"58f0c7af-7380-481d-ab52-da790ca41709"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Entrega de Insumos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"insumos\": [\n    {\n      \"insumoId\": \"58f0c7af-7380-481d-ab52-da790ca41709\",\n      \"quantidade\": 20\n    }\n  ],\n  \"colaboradorRecebedorId\": \"4fa80e98-f6c9-4818-8640-c06c4a4fce5c\",\n  \"dataHoraRecebimento\": \"2024-06-01T10:00:00Z\",\n  \"hospitalId\": \"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/entrega-insumos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"entrega-insumos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Entregas de Insumos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"insumos\": [\n    {\n      \"insumoId\": \"58f0c7af-7380-481d-ab52-da790ca41709\",\n      \"quantidade\": 20\n    }\n  ],\n  \"colaboradorRecebedorId\": \"4fa80e98-f6c9-4818-8640-c06c4a4fce5c\",\n  \"dataHoraRecebimento\": \"2024-06-01T10:00:00Z\",\n  \"hospitalId\": \"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/entrega-insumos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"entrega-insumos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Entrega de Insumos por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"insumos\": [\n    {\n      \"insumoId\": \"58f0c7af-7380-481d-ab52-da790ca41709\",\n      \"quantidade\": 20\n    }\n  ],\n  \"colaboradorRecebedorId\": \"4fa80e98-f6c9-4818-8640-c06c4a4fce5c\",\n  \"dataHoraRecebimento\": \"2024-06-01T10:00:00Z\",\n  \"hospitalId\": \"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/entrega-insumos/7eecea2e-292e-4e2f-a9d3-b8739ce615e4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"entrega-insumos",
+								"7eecea2e-292e-4e2f-a9d3-b8739ce615e4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Estoque de Insumos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"insumos\": [\n    {\n      \"insumoId\": \"58f0c7af-7380-481d-ab52-da790ca41709\",\n      \"quantidade\": 20\n    }\n  ],\n  \"colaboradorRecebedorId\": \"4fa80e98-f6c9-4818-8640-c06c4a4fce5c\",\n  \"dataHoraRecebimento\": \"2024-06-01T10:00:00Z\",\n  \"hospitalId\": \"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/estoque-insumos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estoque-insumos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Estoque de Insumos por Hospital",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"insumos\": [\n    {\n      \"insumoId\": \"58f0c7af-7380-481d-ab52-da790ca41709\",\n      \"quantidade\": 20\n    }\n  ],\n  \"colaboradorRecebedorId\": \"4fa80e98-f6c9-4818-8640-c06c4a4fce5c\",\n  \"dataHoraRecebimento\": \"2024-06-01T10:00:00Z\",\n  \"hospitalId\": \"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/estoque-insumos/f5eba5d0-7698-4a63-b28b-9b5f3d77637b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estoque-insumos",
+								"f5eba5d0-7698-4a63-b28b-9b5f3d77637b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Coleta de Insumo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"insumos\": [\n    {\n      \"insumoId\": \"58f0c7af-7380-481d-ab52-da790ca41709\",\n      \"quantidade\": 10\n    }\n  ],\n  \"colaboradorEntregadorId\": \"cb68c98d-8293-44f1-8991-b7bc149e7aa8\",\n  \"dataHoraColeta\": \"2024-06-01T10:00:00Z\",\n  \"pacienteRecebedorId\": \"7800273d-ecd6-48de-bd90-2eae97faf6c6\",\n  \"hospitalId\": \"f5eba5d0-7698-4a63-b28b-9b5f3d77637b\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/coleta-insumos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"coleta-insumos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Coletas de Insumos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/coleta-insumos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"coleta-insumos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Coleta de Insumos por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/coleta-insumos/57c52ac0-4b51-4827-a49a-402f1718dc13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"coleta-insumos",
+								"57c52ac0-4b51-4827-a49a-402f1718dc13"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
