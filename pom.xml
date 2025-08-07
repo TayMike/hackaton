@@ -103,6 +103,20 @@
 			<version>2.8.5</version>
 		</dependency>
 
+		<!-- Teste cache -->
+		<dependency>
+			<groupId>it.ozimov</groupId>
+			<artifactId>embedded-redis</artifactId>
+			<version>0.7.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.kstyrc</groupId>
+			<artifactId>embedded-redis</artifactId>
+			<version>0.6</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- Teste de comportamento BDD -->
 		<dependency>
 			<groupId>org.junit.platform</groupId>
@@ -141,6 +155,16 @@
 			<artifactId>gatling-charts-highcharts</artifactId>
 			<version>3.12.0</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Cache -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
 	</dependencies>
 

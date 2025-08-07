@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
@@ -23,7 +24,7 @@ import java.util.UUID;
                 @Index(name = "idx_leito_identificacao_hospital", columnList = "identificacao, hospital_id", unique = true)
         }
 )
-public class LeitoSchema {
+public class LeitoSchema implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

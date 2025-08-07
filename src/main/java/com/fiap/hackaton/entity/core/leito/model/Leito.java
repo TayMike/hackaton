@@ -6,12 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class Leito extends AbstractEntity {
+public class Leito extends AbstractEntity implements Serializable {
 
     @NonNull
     private String identificacao;

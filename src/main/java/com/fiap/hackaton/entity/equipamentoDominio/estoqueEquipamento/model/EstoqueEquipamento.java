@@ -6,13 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class EstoqueEquipamento extends AbstractEntity {
+public class EstoqueEquipamento extends AbstractEntity implements Serializable {
 
     @NonNull
     private UUID equipamentoId;

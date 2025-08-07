@@ -1,16 +1,16 @@
 package com.fiap.hackaton.entity.core.paciente.model;
 
 import com.fiap.hackaton.entity.auxiliar.AbstractEntity;
-import com.fiap.hackaton.entity.core.auxiliar.IPessoa;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 @Getter
 @NoArgsConstructor
-public class Paciente extends AbstractEntity implements IPessoa {
+public class Paciente extends AbstractEntity implements Serializable {
 
     @NonNull
     private String cpf;

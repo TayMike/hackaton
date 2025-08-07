@@ -4,11 +4,12 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Setter
 @Getter
-public class QuantidadeInsumo{
+public class QuantidadeInsumo implements Serializable {
 
     @NonNull
     private UUID insumoId;

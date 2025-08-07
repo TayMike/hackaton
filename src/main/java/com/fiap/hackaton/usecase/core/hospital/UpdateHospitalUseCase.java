@@ -21,8 +21,8 @@ public class UpdateHospitalUseCase {
         Hospital hospital = this.hospitalGateway.findById(id)
                 .orElseThrow(() -> new HospitalNotFoundException("Hospital not found: " + id));
 
-        if (!hospital.getColaboradoresIds().isEmpty())
-            hospital.setColaboradoresIds(hospital.getColaboradoresIds());
+        if (!dados.colaboradoresIds().isEmpty())
+            hospital.setColaboradoresIds(dados.colaboradoresIds());
 
         if (dados.cep() != null && !dados.cep().isBlank())
             hospital.setCep(dados.cep());

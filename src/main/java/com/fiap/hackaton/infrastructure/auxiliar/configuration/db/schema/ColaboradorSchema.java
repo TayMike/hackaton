@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -16,7 +17,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Table(name = "colaborador")
-public class ColaboradorSchema {
+public class ColaboradorSchema implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

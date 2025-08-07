@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -22,7 +23,7 @@ import java.util.UUID;
                 @Index(name = "idx_paciente_cpf", columnList = "cpf", unique = true)
         }
 )
-public class PacienteSchema {
+public class PacienteSchema implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

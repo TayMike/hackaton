@@ -1,19 +1,19 @@
 package com.fiap.hackaton.entity.core.colaborador.model;
 
 import com.fiap.hackaton.entity.auxiliar.AbstractEntity;
-import com.fiap.hackaton.entity.core.auxiliar.IPessoa;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class Colaborador extends AbstractEntity implements IPessoa {
+public class Colaborador extends AbstractEntity implements Serializable {
 
     @NonNull
     private String cpf;
@@ -38,11 +38,12 @@ public class Colaborador extends AbstractEntity implements IPessoa {
         this.cpf = cpf;
         this.nome = nome;
         this.matricula = matricula;
-        this.primeiroDiaCadastro = primeiroDiaCadastro;
         this.cep = cep;
         this.numeroCasa = numeroCasa;
         this.hospitalId = hospitalId;
         this.setor = setor;
+        this.primeiroDiaCadastro = primeiroDiaCadastro;
+        this.ultimoDiaCadastro = ultimoDiaCadastro;
     }
 
 }

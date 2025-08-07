@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -24,7 +25,7 @@ import java.util.UUID;
                 @Index(name = "idx_estoque_colaborador_responsavel_id", columnList = "colaborador_responsavel_id")
         }
 )
-public class EstoqueEquipamentoSchema {
+public class EstoqueEquipamentoSchema implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
