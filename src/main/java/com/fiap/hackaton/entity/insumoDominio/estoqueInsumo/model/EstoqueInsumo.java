@@ -11,14 +11,14 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class EstoqueInsumo extends AbstractEntity {
+public class EstoqueInsumo extends AbstractEntity implements Serializable {
 
     @NonNull
     private List<QuantidadeInsumo> insumos;

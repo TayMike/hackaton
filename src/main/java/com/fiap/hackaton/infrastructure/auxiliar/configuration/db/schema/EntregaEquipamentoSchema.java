@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -23,7 +24,7 @@ import java.util.UUID;
                 @Index(name = "idx_entrega_hospital_id", columnList = "hospital_id")
         }
 )
-public class EntregaEquipamentoSchema {
+public class EntregaEquipamentoSchema implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

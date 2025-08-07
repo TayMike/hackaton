@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -26,7 +27,7 @@ import java.util.UUID;
                 @Index(name = "idx_entrega_insumo_hospital_id", columnList = "hospital_id")
         }
 )
-public class EntregaInsumoSchema {
+public class EntregaInsumoSchema implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

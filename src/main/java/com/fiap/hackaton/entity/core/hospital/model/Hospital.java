@@ -6,13 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class Hospital extends AbstractEntity {
+public class Hospital extends AbstractEntity implements Serializable {
 
     @NonNull
     private String nome;

@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -23,7 +24,7 @@ import java.util.UUID;
                 @Index(name = "idx_insumo_nome", columnList = "nome")
         }
 )
-public class InsumoSchema {
+public class InsumoSchema implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

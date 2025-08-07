@@ -6,13 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class Equipamento extends AbstractEntity {
+public class Equipamento extends AbstractEntity implements Serializable {
 
     @NonNull
     private String nome;

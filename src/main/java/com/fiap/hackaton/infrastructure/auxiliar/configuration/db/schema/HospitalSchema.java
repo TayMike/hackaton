@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +22,7 @@ import java.util.UUID;
                 @Index(name = "idx_hospital_nome", columnList = "nome")
         }
 )
-public class HospitalSchema {
+public class HospitalSchema implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
