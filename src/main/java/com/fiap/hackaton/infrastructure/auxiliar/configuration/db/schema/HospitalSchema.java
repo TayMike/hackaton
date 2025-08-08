@@ -50,8 +50,9 @@ public class HospitalSchema implements Serializable {
     @Positive(message = "Número deve ser positivo")
     private Integer numero;
 
-    @Column(nullable = false, name = "colaboradores_ids")
-    @NotNull(message = "Lista de colaboradores não pode ser nula")
+    @ElementCollection
+    @CollectionTable(name = "hospital_colaboradores", joinColumns = @JoinColumn(name = "hospital_id"))
+    @Column(name = "colaborador_id", nullable = false)
     private List<UUID> colaboradoresIds = new ArrayList<>();
 
     @Column(nullable = false, name = "quantidade_leito_atual")

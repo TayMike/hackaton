@@ -15,7 +15,7 @@ import static io.gatling.javaapi.http.HttpDsl.status;
 public class PerformanceSimulation extends Simulation {
 
     private final HttpProtocolBuilder httpProtocolBuilder =
-            http.baseUrl("http://localhost:8080")
+            http.baseUrl("http://localhost:8081")
                     .header("Content-Type", "application/json");
 
     private final String dataValidade = OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
